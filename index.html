@@ -25,7 +25,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">PROJECT LISTEN</a>
+        <a class="navbar-brand" href="#">Muzzle</a>
         <div class="nav-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -35,69 +35,12 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-<div class="chatbox">
-<body onload="boot()">
-
-Log<br /><textarea rows='15' cols='80' id='body'></textarea>	
-
-<br />  Message: <input type='text'  id='message' value=''  />
-
-	<input type="button" value="Send" onclick="send()">
-
-
-<script  type="text/javascript" >
-
-function el(tid) {return document.getElementById(tid);}
-
-    function aGet(turl, callback) {
-        var XHRt =!window.XMLHttpRequest ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
-        XHRt.open("GET", turl, true);
-        XHRt.onreadystatechange =    function () {
-  	      if (XHRt.readyState == 4 && XHRt.responseText) {
-        	    callback(XHRt.responseText);
-	        }
-    }
-        XHRt.setRequestHeader("Content-Type", "text/html");
-        XHRt.send("");
-        return XHRt;
-    }
-
-function IO(U, V) {
-    var X = !window.XMLHttpRequest ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
-    X.open(V ? 'PUT' : 'GET', U, !1);
-    X.setRequestHeader('Content-Type', 'text/html')
-    X.send(V ? V : '');
-return X.responseText;}
-
-
-var resp,bod,mess;
-
-function boot(){
-	pf= "im.tmp" //page file
-	resp="";
-	bod = el("body");
-	mess = el("message");
-	var tim=setInterval(check, 5000);
-}
-
-function incoming(text){
-	if(text!=resp){ resp = text; } else{ return;}
-	bod.value = bod.value + resp+"\n______________________\n"
-}
-
-function check(){
-	aGet(pf+"?"+(new Date).getTime(), incoming);
-}
-
-function send(){
-  IO(pf, mess.value);
-}
-
- </script>
- </div>
+	<div class="chatbox">
+    	
+ 	</div>
 
     <div class="container">
-    	beep
+    	TEST
 	</div>
   </body>
 </html>
