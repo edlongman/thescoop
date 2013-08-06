@@ -31,6 +31,7 @@ function getJSON(){
 function setStartTime(amount, scope){
     switch (scope) {
         case 'days': start_time.setDate(today.getDate()-amount); break;
+        case 'weeks': start_time.setDate(today.getDate()-amount*7); break;
         case 'months': start_time.setMonth(today.getMonth()-amount); break;
     }
 }
