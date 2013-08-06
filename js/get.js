@@ -39,7 +39,7 @@ function ajax(){
       url: '/path/to/file',
       type: 'GET',
       dataType: 'json',
-      data: {start_time: start_time, end_time: end_time, categories: categories},
+      data: {start_time: start_time.toJSON().substring(0,10), end_time: end_time.toJSON().substring(0,10), categories: categories},
       success: function(data, textStatus, xhr) {
         return data;
       },
