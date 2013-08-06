@@ -4,7 +4,7 @@
      header("Content-type: text/json");
      $section = urlencode($section);
      $term = urlencode($term);
-     $json = get_url_output('http://content.guardianapis.com/search?q=' . $term . '&section=' . $section . 'from-date='. $start_time . '&to-date=' . $end_time . '&order-by=relevance&format=json');
+     $json = get_url_output('http://content.guardianapis.com/search?q='. $term .'&section='. $section .'&from-date='. $start_time .'&to-date='. $end_time .'&order-by=relevance&format=json');
      $json_obj = JSON_decode($json,true);
      //print_r($json_obj["response"]["results"][0]["webTitle"]);
      $titles_array = array();
