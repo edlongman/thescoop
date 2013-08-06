@@ -5,7 +5,8 @@
      $json_obj = JSON_decode($json);
      $titles_array = $json_obj->response->results->webTitle;
      $url_array = $json_obj->response->results->webUrl;
-     return($titles_array, $url_array);
+     $ret_me = [$titles_array , $url_array];
+     return($ret_me);
   }
   echo get_news($_REQUEST['start_time'],$_REQUEST['end_time'])[0,1];
 ?>
