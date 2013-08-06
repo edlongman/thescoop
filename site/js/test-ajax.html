@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="get.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function test(){
+                array = getJSON();
+                console.log(array);
+                str = '';
+                for (var i = 0; i < array.length; i++) {
+                    str += array[i].toString();
+                };
+                console.log(str);
+                $('#text').html(str);
+            }
+        </script>
+
+        <div id='text'></div>
+    </body>
+</html>
