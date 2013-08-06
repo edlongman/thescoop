@@ -2,41 +2,26 @@
 /*                        Get JSON response from PHP                         */
 /*****************************************************************************/
 
-//defining global attributes
-today = new Date(); // dates are entered relatively, today is needed
-start_time = new Date();
-end_time = today;
-categories = '';
+function getJSON(amount, scope, categories){
+    today = new Date(); // dates are entered relatively, today is needed
 
-function getJSON(){
-    // get amount of days/months user has been away
-    // amount = $('#idOfInput').val();
-    amount = 1;
-
-    // get scope (days/months)
-    // scope = $('#idOfSelect option:selected').val();
-    scope = 'days';
-
-    setStartTime(amount, scope);
-
-    // get categories
-    // categories = $('#whatever').whatever();
+    start_time = new Date();
+    end_time = today;
     categories = '';
 
-    json = ajax();
-    // place for further processing
-    return json;
-}
-
-function setStartTime(amount, scope){
+    // get correct start time
     switch (scope) {
         case 'days': start_time.setDate(today.getDate()-amount); break;
         case 'weeks': start_time.setDate(today.getDate()-amount*7); break;
         case 'months': start_time.setMonth(today.getMonth()-amount); break;
     }
+
+    json = ajax(start_time, end_time, categories);
+    // place for further processing
+    return json;
 }
 
-function ajax(){
+function ajax(start_time, end_time, categories){
     data = [];
     $.ajax({
         url: '../include.php',
