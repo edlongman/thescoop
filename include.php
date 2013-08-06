@@ -8,5 +8,5 @@
      $ret_me = array($titles_array , $url_arra);
      return($ret_me);
   }
-  echo get_news($_REQUEST['start_time'],$_REQUEST['end_time'])[0,1];
+  print_r(get_news($_REQUEST['start_time'],$_REQUEST['end_time']));
 ?>
