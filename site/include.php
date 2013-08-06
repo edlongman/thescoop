@@ -1,5 +1,5 @@
 <?php
-  include_once 'util.php';
+  include_once '../lib/util.php';
   function get_news($start_time, $end_time,$section,$term) { //returns a multidimentional array of titles and URLs of news between time frames
      header("Content-type: text/json");
      $section = urlencode($section);
