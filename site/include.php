@@ -12,8 +12,12 @@
      for($i=0;$i<count($json_obj["response"]["results"]);$i++){
      	$titles_array[] = $json_obj["response"]["results"][$i]["webTitle"];
      	$url_array[] = $json_obj["response"]["results"][$i]["webUrl"];
+	$date_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
      }
-     $ret_me = array($titles_array , $url_array);
+     $ret_me = array('');
+     for($i=0;$i<count($json_obj["response"]["results"]);$i++){
+     	$ret_me .= array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
+     }
      return($ret_me);
   }
   echo json_encode(get_news($_REQUEST['start_time'],$_REQUEST['end_time'],$_REQUEST['section'],$_REQUEST['keyword']));
