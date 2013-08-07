@@ -1,0 +1,48 @@
+#keyword-span, #date-span, #number-span {
+	display: none;
+	font: 300 4em "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+	background-color: #3498db;
+	color: #ecf0f1;
+}
+
+#form {
+	font: 300 4em "Helvetica Neue", Arial, sans-serif;
+	line-height: 1.4em;
+	margin: 0 auto;
+	max-width: 15.8125em;
+	padding: 1em;
+}
+
+#form input, #form select {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px dashed #2980b9;
+	color: #2980b9;
+	display: inline-block;
+	font-weight: inherit;
+	outline: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+#form button {
+	background-color: #2980b9;
+	border: none;
+	color: #ecf0f1;
+	font-size: 0.5em;
+	font-weight: 500;
+	margin-top: 0.5em;
+	padding: 0.5em 0.75em;
+	text-transform: uppercase;
+}
+
+@media screen and (max-width: 45em) {
+	#keyword-span, #form { font-size: 3em; }
+}
+
+@media screen and (max-width: 30em) {
+	#keyword-span, #form { font-size: 2em; }
+}
