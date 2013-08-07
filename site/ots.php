@@ -1,14 +1,17 @@
 <?php
 	include_once '../lib/simple_html_dom.php';
-	function ots( $url_to_sum , $ratio ) {
-		// Create DOM from URL or file
-		$html = file_get_html($url_to_sum);
-
-		// Find all text
+	include_once '../lib/util.php';
+	function article_parse( $article_url ) {
+		$html = file_get_html($article_url);
+		// Find all <p> text
 		$text = '';
-		foreach($html->find('p') as $element) {
-       			$text .= $element->plaintext . '\n';
-		}
+		//foreach($html->find('div[id=article-body-blocks]') as $element) {
+		//	$text .= $element->innertext;
+		$text = $html->find('div[id=article-body-blocks]',0)->innertext;
+		//}
+		return $text;
+	}
+	function ots ($text , $ratio) {
 		$file = fopen('./txt.txt', 'w');
 		fwrite( $file , $text );
 		$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
@@ -16,5 +19,5 @@
 		fclose( $file );
 		return $sum;
 	}
-	echo ots($_REQUEST['to_sum'], $_REQUEST['ratio']);
+	echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
 ?>
