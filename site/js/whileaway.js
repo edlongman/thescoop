@@ -29,30 +29,31 @@ $(document).ready(function(){
     inputWidth();
     $('#number').bind('keyup input paste', inputWidth);
 
-    // Form submit
-    $('#form').on('submit', function(e){
-        e.preventDefault();
-
-        $('#form button').html('<img src="img/loading.gif" alt="Loading…"/>');
-
-        amount = $('#number').val();
-        scope = $('#date option:selected').val();
-        keyword = $('#keyword option:selected').val();
-        if (keyword == 'news') {
-            keyword = '';
-        };
-
-        try {
-            validate(amount, scope, keyword);
-        } catch (e) {
-            alert(e);
-            return;
-        }
-
-        // make asynchronous request
-        getNews(amount, scope, keyword);
-    });
+    getNews();
+    // onchange of input fields, call getNews()
+    $('#number').change(function(){getNews();});
+    $('#date').change(function(){getNews();});
+    $('#keyword').change(function(){getNews();});
 });
+
+function getNews(){
+    amount = $('#number').val();
+    scope = $('#date option:selected').val();
+    keyword = $('#keyword option:selected').val();
+    if (keyword == 'news') {
+        keyword = '';
+    };
+
+    try {
+        validate(amount, scope, keyword);
+    } catch (e) {
+        alert(e);
+        return;
+    }
+
+    // make asynchronous request
+    getNewsFromAPI(amount, scope, keyword);
+}
 
 function handleNews(news){
     $('#form button').html('Go');

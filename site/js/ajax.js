@@ -2,7 +2,7 @@
 /*                        Get JSON response from PHP                         */
 /*****************************************************************************/
 
-function getNews(amount, scope, keyword){
+function getNewsFromAPI(amount, scope, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_time = new Date();
