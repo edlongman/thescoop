@@ -64,7 +64,7 @@ function handleNews(news){
          date = story[2];
          // summary = story[3];
 
-         str += '<li><a href="' + link + '">' + headline + '</a></li>';
+         str += '<li><a href="' + link + '">' + headline + '</a> (' + date.f('EE, d MMM yyyy HH:mm') + ')</li>';
     });
     str += '</ol>'
     $('#headlines').html(str);
