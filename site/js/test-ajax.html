@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="get.js"></script>
     </head>
     <body>
@@ -10,7 +10,7 @@
                 scope = $('#scope option:selected').val();
                 keyword = $('#keyword').val();
 
-                response = getJSON(amount, scope, keyword);
+                response = getNews(amount, scope, keyword);
                 console.log(response);
 
                 str = '<ul>';
