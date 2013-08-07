@@ -9,6 +9,9 @@ $(document).ready(function(){
         amount = $('#number').val();
         scope = $('#date option:selected').val();
         keyword = $('#keyword option:selected').val();
+        if (keyword == 'news') {
+            keyword = '';
+        };
 
         try {
             validate(amount, scope, keyword);
