@@ -14,9 +14,8 @@
      	$url_array[] = $json_obj["response"]["results"][$i]["webUrl"];
 	$date_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
      }
-     $ret_me = array('');
      for($i=0;$i<count($json_obj["response"]["results"]);$i++){
-     	$ret_me .= array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
+     	$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
      }
      return($ret_me);
   }
