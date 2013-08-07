@@ -35,11 +35,19 @@ body {
 	background-color: #2980b9;
 	border: none;
 	color: #ecf0f1;
-	font-size: 0.5em;
-	font-weight: 500;
-	margin-top: 0.5em;
+	font: 500 0.5em "Helvetica Neue", Arial, sans-serif;
+	margin: 0.75em 0 1em 0;
 	padding: 0.5em 0.75em;
 	text-transform: uppercase;
+}
+
+#headlines ul {
+	font: 300 2em "Helvetica Neue", Arial, sans-serif;
+	line-height: 2em;
+}
+
+#headlines ul li {
+	
 }
 
 @media screen and (max-width: 45em) {
