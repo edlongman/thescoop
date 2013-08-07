@@ -5,7 +5,7 @@
 
 #keyword-span, #date-span, #number-span {
 	display: none;
-	font: 300 48px Georgia, serif;
+	font: 300 36px Georgia, serif;
 }
 
 /* End */
@@ -27,7 +27,7 @@ body {
 }
 
 #form {
-	font: 400 48px Georgia, serif;
+	font: 400 36px Georgia, serif;
 	line-height: 1.4em;
 }
 
@@ -47,31 +47,17 @@ body {
 	cursor: pointer;
 }
 
-#form button {
-	background-color: #3498db;
-	border: none;
-	color: #fff;
-	font: 400 24px "Helvetica Neue", Arial, sans-serif;
-	margin: 0.75em 0 1em 0;
-	padding: 0.5em 0.75em;
-	text-transform: uppercase;
-}
-
-/*#form button:before {
-	background-color: #2980b9;
-	content: "arrow";
-	margin-right: 0.75em;
-	padding-right: 0.75em;
-}*/
-
 #headlines ol {
-	font: 300 2em Georgia, serif;
+	font: 300 24px Georgia, serif;
 	line-height: 2em;
+	margin-bottom: 0;
 }
 
-#headlines ol li:hover {
-	cursor: pointer;
+#headlines ol li a {
+	color: #444;
+	text-decoration: none;
+}
+
+#headlines ol li a:hover {
 	text-decoration: underline;
 }
-
-/* End main */
