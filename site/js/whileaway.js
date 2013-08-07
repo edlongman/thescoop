@@ -58,10 +58,14 @@ function handleNews(news){
     $('#form button').html('Go');
 
     str = '<ol>';
-    for (var i = 0; i < news[0].length; i++) {
-        // str += '<li>' + news[0][i] + ': <a href="' + news[1][i] + '">' + news[1][i] + '</a></li>';
-        str += '<li>' + news[0][i] + '</li>';
-    };
+    $.each(news, function(index, story) {
+         headline = story[0];
+         link = story[1];
+         date = story[2];
+         // summary = story[3];
+
+         str += '<li><a href="' + link + '">' + headline + '</a></li>';
+    });
     str += '</ol>'
     $('#headlines').html(str);
 }
