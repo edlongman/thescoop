@@ -8,12 +8,15 @@ body {
 	color: #ecf0f1;
 }
 
+#container {
+	margin: 0 auto;
+	max-width: 63.25em;
+	padding: 4em;
+}
+
 #form {
 	font: 300 4em "Helvetica Neue", Arial, sans-serif;
 	line-height: 1.4em;
-	margin: 0 auto;
-	max-width: 15.8125em;
-	padding: 1em;
 }
 
 #form input, #form select {
