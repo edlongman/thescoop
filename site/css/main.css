@@ -20,6 +20,12 @@ body {
 	color: #333;
 }
 
+hr {
+	/* Hack for beatiful horizontal rows */
+	border: 0;
+	border-top: 1px solid #dfdfdf;
+}
+
 #container {
 	margin: 0 auto;
 	max-width: 67.25em;
@@ -61,7 +67,7 @@ body {
 	margin-bottom: 0;
 }
 
-.headline a {
+.headline > a {
 	color: #333;
 	text-decoration: none;
 }
@@ -71,16 +77,27 @@ body {
 	text-decoration: underline;
 }
 
-.headline div {
+.headline > div {
 	border: 1px solid #dfdfdf;
 	border-radius: 3px;
 	display: none;
 	font-size: .75em;
 	padding: 5px 10px;
+	width: 85%;
 }
 
 .headline div p {
 	margin: 0;
+}
+
+.summary--footer {
+	font-size: .8em;
+}
+
+.read-more-link {
+	color: #9f9f9f;
+	text-align: right;
+	text-decoration: none;
 }
 
 @media screen and (max-width: 45em) {
