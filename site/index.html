@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Form</title>
 
-		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 
@@ -15,32 +15,34 @@
 		<span id="number-span"></span>
 		<span id="date-span"></span>
 
-		<form action="form.php" method="post" id="form">
-			Show me top
+		<div id="container">
+			<form action="form.php" method="post" id="form">
+				Show me top
 
-			<select name="keyword" id="keyword">
-				<option value="news">news</option>
-				<option value="celebrity">celebrity</option>
-				<option value="health">health</option>
-				<option value="technology">technology</option>
-			</select>
+				<select name="keyword" id="keyword">
+					<option value="news">news</option>
+					<option value="celebrity">celebrity</option>
+					<option value="health">health</option>
+					<option value="technology">technology</option>
+				</select>
 
-			stories from the past
+				stories from the past
 
-			<input type="text" value="7" name="number" id="number">
+				<input type="text" value="7" name="number" id="number">
 
-			<select name="date" id="date">
-				<option value="days">days</option>
-				<option value="weeks">weeks</option>
-				<option value="months">months</option>
-			</select>
+				<select name="date" id="date">
+					<option value="days">days</option>
+					<option value="weeks">weeks</option>
+					<option value="months">months</option>
+				</select>
 
-			<br>
+				<br>
 
-			<button>Go</button>
-		</form>
+				<button>Go</button>
+			</form>
 
-		<div id='test'></div>
+			<div id='test'></div>
+		</div>
 
 		<script src="js/jquery-2.0.3.min.js"></script>
 
