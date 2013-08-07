@@ -66,7 +66,7 @@ function handleNews(news){
          date = story[2];
          // summary = story[3];
 
-         str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
+         str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('dd/MM/yyyy HH:mm').replace(new RegExp(' ', 'g'), '&nbsp;') + ')</li>';
     });
     str += '</ol>'
     $('#headlines').html(str);
