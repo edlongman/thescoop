@@ -2,7 +2,7 @@
 /*                        Get JSON response from PHP                         */
 /*****************************************************************************/
 
-function getJSON(amount, scope, keyword){
+function getNews(amount, scope, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_time = new Date();
@@ -25,7 +25,7 @@ function ajax(start_time, end_time, keyword){
     data = [];
 
     $.ajax({
-        url: '../include.php',
+        url: 'include.php',
         type: 'GET',
         dataType: 'json',
         data: {start_time: start_time.toJSON().substring(0,10), end_time: end_time.toJSON().substring(0,10), keyword: keyword},
