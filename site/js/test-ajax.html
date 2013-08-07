@@ -1,21 +1,44 @@
 <html>
     <head>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="get.js"></script>
     </head>
     <body>
         <script type="text/javascript">
-            function test(){
-                array = getJSON();
-                console.log(array);
-                str = '';
-                for (var i = 0; i < array.length; i++) {
-                    str += array[i].toString();
+            function get() {
+                amount = $('#amount').val();
+                scope = $('#scope option:selected').val();
+                keyword = $('#keyword').val();
+
+                response = getJSON(amount, scope, keyword);
+                console.log(response);
+
+                str = '<ul>';
+                for (var i = 0; i < response[0].length; i++) {
+                    str += '<li>' + response[0][i] + ': <a href="' + response[1][i] + '">' + response[1][i] + '</a></li>';
                 };
-                console.log(str);
+                str += '</ul>'
                 $('#text').html(str);
             }
         </script>
+
+        <style>
+            #text {
+                width: 90%;
+                margin: 100px 5%;
+            }
+        </style>
+
+        <form>
+            <input id='amount' type='number' placeholder='add number'/>
+            <select id='scope'>
+                <option value='days'>Days</option>
+                <option value='weeks'>Weeks</option>
+                <option value='months'>Months</option>
+            </select>
+            <input id='keyword' type='text' placeholder='Enter ONE keyword' value=''/>
+            <input type='button' id='go' onclick='get()' value='Go'/>
+        </form>
 
         <div id='text'></div>
     </body>
