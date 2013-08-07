@@ -8,12 +8,15 @@ body {
 	color: #ecf0f1;
 }
 
+#container {
+	margin: 0 auto;
+	max-width: 63.25em;
+	padding: 4em;
+}
+
 #form {
 	font: 300 4em "Helvetica Neue", Arial, sans-serif;
 	line-height: 1.4em;
-	margin: 0 auto;
-	max-width: 15.8125em;
-	padding: 1em;
 }
 
 #form input, #form select {
@@ -32,11 +35,19 @@ body {
 	background-color: #2980b9;
 	border: none;
 	color: #ecf0f1;
-	font-size: 0.5em;
-	font-weight: 500;
-	margin-top: 0.5em;
+	font: 500 0.5em "Helvetica Neue", Arial, sans-serif;
+	margin: 0.75em 0 1em 0;
 	padding: 0.5em 0.75em;
 	text-transform: uppercase;
+}
+
+#headlines ul {
+	font: 300 2em "Helvetica Neue", Arial, sans-serif;
+	line-height: 2em;
+}
+
+#headlines ul li {
+	
 }
 
 @media screen and (max-width: 45em) {

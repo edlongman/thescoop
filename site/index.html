@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Form</title>
 
-		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 
@@ -15,67 +15,37 @@
 		<span id="number-span"></span>
 		<span id="date-span"></span>
 
-		<form action="form.php" method="post" id="form">
-			Show me top
+		<div id="container">
+			<form action="form.php" method="post" id="form">
+				Show me top
 
-			<select name="keyword" id="keyword">
-				<option value="news">news</option>
-				<option value="celebrity">celebrity</option>
-				<option value="health">health</option>
-				<option value="technology">technology</option>
-			</select>
+				<select name="keyword" id="keyword">
+					<option value="news">news</option>
+					<option value="celebrity">celebrity</option>
+					<option value="health">health</option>
+					<option value="technology">technology</option>
+				</select>
 
-			stories from the past
+				stories from the past
 
-			<input type="text" value="7" name="number" id="number">
+				<input type="text" value="7" name="number" id="number">
 
-			<select name="date" id="date">
-				<option value="days">days</option>
-				<option value="weeks">weeks</option>
-				<option value="months">months</option>
-			</select>
+				<select name="date" id="date">
+					<option value="days">days</option>
+					<option value="weeks">weeks</option>
+					<option value="months">months</option>
+				</select>
 
-			<br>
+				<br>
 
-			<button>Go</button>
-		</form>
+				<button>Go</button>
+			</form>
 
-		<div id='test'></div>
+			<div id="headlines"></div>
+		</div>
 
 		<script src="js/jquery-2.0.3.min.js"></script>
-
-		<script type="text/javascript" src='js/get.js'></script>
+		<script type="text/javascript" src='js/ajax.js'></script>
 		<script type="text/javascript" src='js/whileaway.js'></script>
-			
-		<script>
-			$(document).ready(function() {
-				// Make select element equal to width of current option
-				// 1. Create hidden span width value of current option
-				// 2. Set width of select to width of span
-				$('#keyword').change(function() {
-					option_val = $('#keyword > option:selected').val();
-					$('#keyword-span').html(option_val);
-					$('#keyword').width($('#keyword-span').width());
-				});
-				$('#keyword').change();
-
-				$('#date').change(function() {
-					option_val = $('#date > option:selected').val();
-					$('#date-span').html(option_val);
-					$('#date').width($('#date-span').width());
-				});
-				$('#date').change();
-
-
-				// Change width of input on load, keyup, input and paste
-				function inputWidth() {
-					$('#number-span').html($('#number').val());
-					$('#number').css('width', $('#number-span').width());
-				}
-				inputWidth();
-				$('#number').bind('keyup input paste', inputWidth);				
-			})
-
-		</script>
 	</body>
 </html>
