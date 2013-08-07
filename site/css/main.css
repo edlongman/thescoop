@@ -53,22 +53,34 @@ body {
 	margin-bottom: 0;
 }
 
-#headlines ol li {
+.headline {
 	margin-bottom: 0.5em;
 }
 
-#headlines ol li:last-child {
+.headline:last-child {
 	margin-bottom: 0;
 }
 
-#headlines ol li a {
+.headline a {
 	color: #333;
 	text-decoration: none;
 }
 
-#headlines ol li a:hover {
+.headline a:hover {
 	color: #3498db;
 	text-decoration: underline;
+}
+
+.headline div {
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+	display: none;
+	font-size: .75em;
+	padding: 5px 10px;
+}
+
+.headline div p {
+	margin: 0;
 }
 
 @media screen and (max-width: 45em) {
