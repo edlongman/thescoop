@@ -79,14 +79,14 @@ function handleNews(news){
 		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li class="headline">';
 		str += '<a href="#">' + headline + '</a>';
-        str += '<div><p>Insert summary here</p><span class="read-more-link"><a href="' + link + '">Read more…</a></span></div>'
+        str += '<div><p>Insert summary here</p><span class="read-more-link"><a href="' + link + '" target="_blank">Read more…</a></span></div>'
         str += '</li>  '
 	});
 	str += '</ol>';
 	$('#headlines').html(str);
 
     // display summary on headline click
-    $('.headline a').click(function(e){
+    $('.headline > a').click(function(e){
         e.preventDefault();
         $(this).next('div').toggle(300);
     });
