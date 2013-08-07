@@ -34,7 +34,7 @@ function ajax(start_time, end_time, keyword){
             data = response;
         },
         error: function(xhr, textStatus, errorThrown) {
-            console.log('ERROR: ' + errorThrown + '; ' + xhr);
+            console.log('ERROR: ' + errorThrown);
         }
     });
     return data;
