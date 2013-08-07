@@ -43,8 +43,8 @@ table {
 }
 /* Own cssCode */
 body {
-	background-color:#3498db; /* Colors are placeholders */
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	background-color:#FFF; /* Colors are placeholders */
+	font-family:Georgia, "Times New Roman", Times, serif;
 }
 .container {
 	margin: 0 auto;
@@ -54,7 +54,7 @@ body {
 .header {
 	background-image:url(../img/banner.png);  /* <-- Change this url if needed */
 	color:#FFF; /* Colors are placeholders */
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:20px;
 	font-weight:bold;
 	line-height: 50px;
