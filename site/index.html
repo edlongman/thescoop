@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Form</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
@@ -16,7 +17,7 @@
 		<span id="date-span"></span>
 
 		<div id="container">
-			<form action="form.php" method="post" id="form">
+			<form id="form">
 				Show me top
 
 				<select name="keyword" id="keyword">
@@ -35,16 +36,13 @@
 					<option value="weeks">weeks</option>
 					<option value="months">months</option>
 				</select>
-
-				<br>
-
-				<button>Go</button>
 			</form>
 
 			<div id="headlines"></div>
 		</div>
 
 		<script src="js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src='js/date.f-0.5.0-min.js'></script> <!-- http://fisforformat.sourceforge.net/#date_f -->
 		<script type="text/javascript" src='js/ajax.js'></script>
 		<script type="text/javascript" src='js/whileaway.js'></script>
 	</body>
