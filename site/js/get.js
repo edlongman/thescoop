@@ -2,12 +2,12 @@
 /*                        Get JSON response from PHP                         */
 /*****************************************************************************/
 
-function getJSON(amount, scope, categories){
+function getNews(amount, scope, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_time = new Date();
     end_time = today;
-    categories = '';
+    //keyword = keyword;
 
     // get correct start time
     switch (scope) {
@@ -16,18 +16,19 @@ function getJSON(amount, scope, categories){
         case 'months': start_time.setMonth(today.getMonth()-amount); break;
     }
 
-    json = ajax(start_time, end_time, categories);
+    news = ajax(start_time, end_time, keyword);
     // place for further processing
-    return json;
+    return news;
 }
 
-function ajax(start_time, end_time, categories){
+function ajax(start_time, end_time, keyword){
     data = [];
+
     $.ajax({
-        url: '../include.php',
+        url: 'include.php',
         type: 'GET',
         dataType: 'json',
-        data: {start_time: start_time.toJSON().substring(0,10), end_time: end_time.toJSON().substring(0,10), categories: categories},
+        data: {start_time: start_time.toJSON().substring(0,10), end_time: end_time.toJSON().substring(0,10), keyword: keyword},
         async: false,
         success: function(response, textStatus, xhr) {
             data = response;
