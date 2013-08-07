@@ -25,8 +25,13 @@ function ajax(start_time, end_time, keyword){
         url: 'include.php',
         type: 'GET',
         dataType: 'json',
-        data: {start_time: start_time.toJSON().substring(0,10), end_time: end_time.toJSON().substring(0,10), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
+        data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
         success: function(data, textStatus, xhr) {
+            // replace JSON date format with JavaScript Date Objects
+            $.each(data, function(index, story) {
+                 story[2] = new Date(story[2]);
+            });
+
             // call handleNews function of whileaway.js
             handleNews(data);
         },
