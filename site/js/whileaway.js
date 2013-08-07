@@ -87,6 +87,7 @@ function handleNews(news){
 
     // display summary on headline click
     $('.headline a').click(function(e){
+        e.preventDefault();
         $(this).next('div').toggle(300);
     });
 }
