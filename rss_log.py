@@ -1,4 +1,4 @@
-import MySQLdb, feedparser
+# import MySQLdb, feedparser
 sql = MySQLdb.connect(host="localhost", # your host, usually localhost
                             user="root", # your username
                             passwd="Refloth88", # your password
