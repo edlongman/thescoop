@@ -29,6 +29,7 @@ $(document).ready(function(){
     inputWidth();
     $('#number').bind('keyup input paste', inputWidth);
 
+    $('#form').submit(function(e){e.preventDefault();});
     getNews();
     // onchange of input fields, call getNews()
     $('#number').change(function(){getNews();});
