@@ -33,6 +33,8 @@ $(document).ready(function(){
     $('#form').on('submit', function(e){
         e.preventDefault();
 
+        $('#form button').html('<img src="img/loading.gif" alt="Loading…"/>');
+
         amount = $('#number').val();
         scope = $('#date option:selected').val();
         keyword = $('#keyword option:selected').val();
@@ -53,6 +55,8 @@ $(document).ready(function(){
 });
 
 function handleNews(news){
+    $('#form button').html('Go');
+
     str = '<ul>';
     for (var i = 0; i < news[0].length; i++) {
         // str += '<li>' + news[0][i] + ': <a href="' + news[1][i] + '">' + news[1][i] + '</a></li>';
