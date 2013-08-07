@@ -1,59 +1,77 @@
+/*
+	Hacks
+	Fix javascript - make simpler, one css style, one span
+*/
+
 #keyword-span, #date-span, #number-span {
 	display: none;
-	font: 300 4em "Helvetica Neue", Arial, sans-serif;
+	font: 300 48px Georgia, serif;
 }
 
+/* End */
+
+
+
+
+/* Main */
+
 body {
-	background-color: #3498db;
-	color: #ecf0f1;
+	background-color: #fff;
+	color: #444;
 }
 
 #container {
 	margin: 0 auto;
-	max-width: 63.25em;
-	padding: 4em;
+	padding: 64px 0;
+	width: 1140px;
 }
 
 #form {
-	font: 300 4em "Helvetica Neue", Arial, sans-serif;
+	font: 400 48px Georgia, serif;
 	line-height: 1.4em;
 }
 
 #form input, #form select {
-	background-color: transparent;
 	border: none;
-	border-bottom: 1px dashed #2980b9;
-	color: #2980b9;
+	border-bottom: 1px dashed #3498db;
+	color: #3498db;
 	display: inline-block;
-	font-weight: inherit;
+	font: inherit;
 	outline: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 }
 
+#form input:hover, #form select:hover {
+	color: #2980b9;
+	cursor: pointer;
+}
+
 #form button {
-	background-color: #2980b9;
+	background-color: #3498db;
 	border: none;
-	color: #ecf0f1;
-	font: 500 0.5em "Helvetica Neue", Arial, sans-serif;
+	color: #fff;
+	font: 400 24px "Helvetica Neue", Arial, sans-serif;
 	margin: 0.75em 0 1em 0;
 	padding: 0.5em 0.75em;
 	text-transform: uppercase;
 }
 
-#headlines ul {
-	font: 300 2em "Helvetica Neue", Arial, sans-serif;
+/*#form button:before {
+	background-color: #2980b9;
+	content: "arrow";
+	margin-right: 0.75em;
+	padding-right: 0.75em;
+}*/
+
+#headlines ol {
+	font: 300 2em Georgia, serif;
 	line-height: 2em;
 }
 
-#headlines ul li {
-	
+#headlines ol li:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
 
-@media screen and (max-width: 45em) {
-	#keyword-span, #form { font-size: 3em; }
-}
-
-@media screen and (max-width: 30em) {
-	#keyword-span, #form { font-size: 2em; }
-}
+/* End main */
