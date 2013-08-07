@@ -5,7 +5,7 @@
 
 #keyword-span, #date-span, #number-span {
 	display: none;
-	font: 300 36px Georgia, serif;
+	font: 300 2.25em Georgia, serif;
 }
 
 /* End */
@@ -17,17 +17,17 @@
 
 body {
 	background-color: #fff;
-	color: #444;
+	color: #333;
 }
 
 #container {
 	margin: 0 auto;
-	padding: 64px 0;
-	width: 1140px;
+	max-width: 67.25em;
+	padding: 4em 2em;
 }
 
 #form {
-	font: 400 36px Georgia, serif;
+	font: 400 2.25em Georgia, serif;
 	line-height: 1.4em;
 }
 
@@ -48,16 +48,32 @@ body {
 }
 
 #headlines ol {
-	font: 300 24px Georgia, serif;
-	line-height: 2em;
+	font: 300 1.5em Georgia, serif;
+	line-height: 1.4em;
+	margin-bottom: 0;
+}
+
+#headlines ol li {
+	margin-bottom: 0.5em;
+}
+
+#headlines ol li:last-child {
 	margin-bottom: 0;
 }
 
 #headlines ol li a {
-	color: #444;
+	color: #333;
 	text-decoration: none;
 }
 
 #headlines ol li a:hover {
 	text-decoration: underline;
+}
+
+@media screen and (max-width: 45em) {
+	body { font-size: 14px; }
+}
+
+@media screen and (max-width: 30em) {
+	body { font-size: 12px; }
 }
