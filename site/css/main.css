@@ -33,8 +33,8 @@ body {
 
 #form input, #form select {
 	border: none;
-	border-bottom: 1px dashed #2980b9;
-	color: #2980b9;
+	border-bottom: 1px dashed #3498db;
+	color: #3498db;
 	display: inline-block;
 	font: inherit;
 	outline: none;
@@ -44,10 +44,11 @@ body {
 
 #form input:hover, #form select:hover {
 	color: #2980b9;
+	cursor: pointer;
 }
 
 #form button {
-	background-color: #2980b9;
+	background-color: #3498db;
 	border: none;
 	color: #fff;
 	font: 400 24px "Helvetica Neue", Arial, sans-serif;
@@ -56,12 +57,19 @@ body {
 	text-transform: uppercase;
 }
 
-#headlines ul {
+/*#form button:before {
+	background-color: #2980b9;
+	content: "arrow";
+	margin-right: 0.75em;
+	padding-right: 0.75em;
+}*/
+
+#headlines ol {
 	font: 300 2em Georgia, serif;
 	line-height: 2em;
 }
 
-#headlines ul li:hover {
+#headlines ol li:hover {
 	cursor: pointer;
 	text-decoration: underline;
 }

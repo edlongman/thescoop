@@ -57,12 +57,12 @@ $(document).ready(function(){
 function handleNews(news){
     $('#form button').html('Go');
 
-    str = '<ul>';
+    str = '<ol>';
     for (var i = 0; i < news[0].length; i++) {
         // str += '<li>' + news[0][i] + ': <a href="' + news[1][i] + '">' + news[1][i] + '</a></li>';
         str += '<li>' + news[0][i] + '</li>';
     };
-    str += '</ul>'
+    str += '</ol>'
     $('#headlines').html(str);
 }
 
