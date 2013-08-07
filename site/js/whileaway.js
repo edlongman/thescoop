@@ -10,6 +10,13 @@ $(document).ready(function(){
         scope = $('#date option:selected').val();
         keyword = $('#keyword option:selected').val();
 
+        try {
+            validate(amount, scope, keyword);
+        } catch (e) {
+            alert(e);
+            return;
+        }
+
         // function getNews from get.js
         response = getNews(amount, scope, keyword);
 
@@ -25,4 +32,17 @@ function test(response){
     };
     str += '</ul>'
     $('#test').html(str);
+}
+
+function validate(amount, scope, keyword) {
+    scopes = ['days', 'weeks', 'months'];
+    if (scopes.indexOf(scope) < 0) {
+        throw 'Invalid scope';
+    }
+
+    if (isNaN(amount)) {
+        throw 'Invalid amount';
+    }
+
+    $.trim(keyword);
 }
