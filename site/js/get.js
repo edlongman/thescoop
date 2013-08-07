@@ -16,9 +16,9 @@ function getNews(amount, scope, keyword){
         case 'months': start_time.setMonth(today.getMonth()-amount); break;
     }
 
-    json = ajax(start_time, end_time, keyword);
+    news = ajax(start_time, end_time, keyword);
     // place for further processing
-    return json;
+    return news;
 }
 
 function ajax(start_time, end_time, keyword){
