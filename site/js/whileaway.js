@@ -20,13 +20,14 @@ $(document).ready(function(){
             return;
         }
 
-        // function getNews from get.js
-        response = getNews(amount, scope, keyword);
-
-        //test
-        test(response);
+        // make asynchronous request
+        getNews(amount, scope, keyword);
     });
 });
+
+function handleNews(news){
+    test(news);
+}
 
 function test(response){
     str = '<ul>';

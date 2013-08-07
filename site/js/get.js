@@ -16,26 +16,22 @@ function getNews(amount, scope, keyword){
         case 'months': start_time.setMonth(today.getMonth()-amount); break;
     }
 
-    news = ajax(start_time, end_time, keyword);
-    // place for further processing
-    return news;
+    // make asynchronous ajax request, calls handle
+    ajax(start_time, end_time, keyword);
 }
 
 function ajax(start_time, end_time, keyword){
-    data = [];
-
     $.ajax({
         url: 'include.php',
         type: 'GET',
         dataType: 'json',
         data: {start_time: start_time.toJSON().substring(0,10), end_time: end_time.toJSON().substring(0,10), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
-        async: false,
-        success: function(response, textStatus, xhr) {
-            data = response;
+        success: function(data, textStatus, xhr) {
+            // call handleNews function of whileaway.js
+            handleNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('ERROR: ' + errorThrown);
         }
     });
-    return data;
 }
