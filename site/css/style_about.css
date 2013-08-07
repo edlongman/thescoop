@@ -52,14 +52,26 @@ body {
 }
 
 .header {
-	height: 50px;
-	background-image:url(img/banner.png);  /* <-- Change this url if needed */
+	background-image:url(../img/banner.png);  /* <-- Change this url if needed */
 	color:#FFF; /* Colors are placeholders */
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size:20px;
 	font-weight:bold;
 	line-height: 50px;
 	padding: 0 20px;
+}
+.header:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+.header p, .header a {
+	float: left;
+}
+.header a {
+	margin-left: 30px;
+	color:#FFF;
+	text-decoration:none;
 }
 .words {
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -75,6 +87,6 @@ body {
 	font-size:15px;
 	font-weight:bold;
 	padding: 15px;
-	background-image:url(img/banner.png);   /* Colors are placeholders */
-	color:#FFF;
+	background-image:url(../img/banner.png);   /* <-- Change this url if needed */
+	color:#FFF;    /* Colors are placeholders */
 }
