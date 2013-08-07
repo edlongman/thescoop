@@ -53,14 +53,10 @@ $(document).ready(function(){
 });
 
 function handleNews(news){
-    test(news);
-}
-
-function test(response){
     str = '<ul>';
-    for (var i = 0; i < response[0].length; i++) {
-        // str += '<li>' + response[0][i] + ': <a href="' + response[1][i] + '">' + response[1][i] + '</a></li>';
-        str += '<li>' + response[0][i] + '</li>';
+    for (var i = 0; i < news[0].length; i++) {
+        // str += '<li>' + news[0][i] + ': <a href="' + news[1][i] + '">' + news[1][i] + '</a></li>';
+        str += '<li>' + news[0][i] + '</li>';
     };
     str += '</ul>'
     $('#headlines').html(str);
