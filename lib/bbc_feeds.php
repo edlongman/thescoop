@@ -1,7 +1,10 @@
 <?php
 date_default_timezone_set('GMT');
-include_once "../config.php";
 function get_bbc_feeds_with_range($section,$start_date,$end_date){
+	require_once "../config.php";
+	$section=preg_replace("/[`;'\"]/","",$section);
+	$start_date=preg_replace("/[`;'\"]/","",$start_date);
+	$end_date=preg_replace("/[`;'\"]/","",$end_date);
 	$db=mysqli_connect("localhost",$mysql_user,$mysql_passwd,$mysql_db);
 	$query = "SELECT `url`,`title`,`description`,`large_thumb`,`small_thumb`,SUM(`points`) AS `points_sum` 
 			FROM `bbcstories` WHERE `section`='$section' AND $start_date<=`date_added`<=$end_date 
