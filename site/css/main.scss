@@ -1,0 +1,94 @@
+@import "normalize";
+
+
+/* Variables */
+
+$background: white;
+$text: #333;
+$blue: #3498db;
+$dark-blue: #2980b9;
+
+$font-sans: "Helvetica Neue", Arial, sans-serif;
+$font-serif: Georgia, serif;
+
+
+/* Mixins */
+
+@mixin reset-form {
+	border: none;
+	border-bottom: 1px dashed $blue;
+	color: $blue;
+	display: inline-block;
+	font: inherit;
+	outline: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+
+/* Hacks */
+
+#keyword-span, #date-span, #number-span {
+	display: none;
+	font: 400 2.25em $font-serif;
+}
+
+
+/* Main */
+
+body {
+	background-color: $background;
+	color: $text;
+}
+
+#container {
+	margin: 0 auto;
+	max-width: 67.25em;
+	padding: 4em 2em;
+}
+
+#form {
+	font: 400 2.25em $font-serif;
+	line-height: 1.4em;
+
+	select, input {
+		@include reset-form;
+
+		&:hover {
+			color: $dark-blue;
+			cursor: pointer;
+		}
+	}
+
+	input:hover {
+		cursor: text;
+	}
+}
+
+#headlines ol {
+	font: 400 1.5em $font-sans;
+	line-height: 1.4em;
+	margin-top: 1.333em;
+
+	li {
+		padding-bottom: 1em;
+
+		a {
+			color: $text;
+			text-decoration: none;
+
+			&:hover {
+				color: $blue;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 45em) {
+	body { font-size: 14px; }
+}
+
+@media screen and (max-width: 30em) {
+	body { font-size: 12px; }
+}
