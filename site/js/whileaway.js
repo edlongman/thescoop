@@ -54,7 +54,7 @@ $(document).ready(function(){
     // onchange of input fields, call getNews()
     $('#number').bind('keyup input paste', function(){getNews();});
     $('#date').change(function(){getNews();});
-    $('#keyword').change(function(){getNews();});
+    $('#section').change(function(){getNews();});
 });
 
 function getNews(){
