@@ -2,6 +2,14 @@
 /*                          Main JS for whileaway                            */
 /*****************************************************************************/
 
+// global variables for currently displayed dates
+today = new Date();
+startDate = null;
+displayedStartDate = new Date();
+displayedStartDate = new Date();
+// global variable for displayed dates (changes when browser width changes)
+displayedDates = 5; 
+
 $(document).ready(function(){
     // Form UI fixes
 
@@ -57,9 +65,22 @@ $(document).ready(function(){
     $('#keyword').change(function(){getNews();});
 });
 
+function setDates(){
+    startDate = new Date();
+    amount = $('#number').val();
+    scope = $('#date option:selected').val();
+
+    // get correct start time
+    switch (scope) {
+        case 'days': startDate.setDate(today.getDate()-amount); break;
+        case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
+        case 'months': startDate.setMonth(today.getMonth()-amount); break;
+    }
+}
+
 function getNews(){
-	amount = $('#number').val();
-	scope = $('#date option:selected').val();
+    setDates();
+
 	section = $('#section option:selected').val();
     // keyword $('#keyword').val()
     keyword = '';
@@ -67,13 +88,36 @@ function getNews(){
 	try {
         keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
-
-        // make asynchronous request
-        getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
 		alert(e); // To-Do: Error handling
 		return;
 	}
+
+    // make asynchronous request
+    getGuardianNews(startDate, section, keyword);
+
+    // get news for first 5 days
+    switch (scope) {
+        case 'days': startDate.setDate(today.getDate()-amount); break;
+        case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
+        case 'months': startDate.setMonth(today.getMonth()-amount); break;
+    }
+    endDate.setDate(startDate.getDate() + displayedDates);
+    getGuardianDailyNews(startDate, endDate, section, keyword);
+}
+
+function plusDisplayedDates(amount){
+    if (displayedEndDate.getDate() + displayedDates > today.getDate()){
+        displayedEndDate = today;
+        displayedStartDate = displayedEndDate - displayedDates;
+    }
+}
+
+function minusDisplayedDays(amount) {
+    if (displayedStartDate.getDate() + displayedDates > today.getDate()){
+        displayedEndDate = today;
+        displayedStartDate = displayedEndDate - displayedDates;
+    }
 }
 
 function handleGuardianNews(news){
