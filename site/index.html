@@ -47,5 +47,16 @@
 
 		<script type="text/javascript" src="//use.typekit.net/nkw6rwp.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		<script>
+			$(document).ajaxComplete(function() {
+				var articles = $('.articles li article');
+				articles.hide();
+				$('.headline').click(function() {
+					$(this).next().toggle();
+					return false;
+				});
+			});
+		</script>
 	</body>
 </html>
