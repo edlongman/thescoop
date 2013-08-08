@@ -1,5 +1,7 @@
 <?php
+	error_reporting(E_ALL ^ E_NOTICE);
 	include_once '../lib/util.php';
+	include_once '../lib/simple_html_dom.php';
 	function get_news($start_time, $end_time,$section,$term) { //returns a multidimentional array of titles and URLs of news between time frames
 		header("Content-type: text/json");
 		$section = urlencode($section);
@@ -15,7 +17,18 @@
 			$date_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
 		}
 		for($i=0;$i<count($json_obj["response"]["results"]);$i++){
-			$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
+			
+			$html = file_get_html($url_array[$i]);
+			try {
+				$text = $html->find('div[id=article-body-blocks]',0)->innertext;
+				$error = 0;
+			}
+			catch(Exception $e) {
+				$error = 1;
+			}
+			if($error == 0) {
+				$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
+			}
 		}
 		if(isset($ret_me)) {
 			return($ret_me);

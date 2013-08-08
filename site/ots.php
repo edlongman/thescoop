@@ -8,6 +8,8 @@
 		//foreach($html->find('div[id=article-body-blocks]') as $element) {
 		//	$text .= $element->innertext;
 		$text = $html->find('div[id=article-body-blocks]',0)->innertext;
+		$text = str_replace('<p>','',$text);
+		$text = str_replace('</p>','',$text);
 		//}
 		return $text;
 	}
@@ -17,6 +19,8 @@
 		$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 		fwrite( $file , '' );
 		fclose( $file );
+		$sum = htmlspecialchars($sum);
+
 		return $sum;
 	}
 	echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
