@@ -32,12 +32,12 @@ function ajax(start_time, end_time, keyword){
         data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
         success: function(data, textStatus, xhr) {
             // replace JSON date format with JavaScript Date Objects
-            $.each(data, function(index, story) {
+            $.each(data[0], function(index, story) {
                  story[2] = new Date(story[2]);
             });
 
             // call handleNews function of whileaway.js
-            handleNews(data);
+            handleNews(data[0]);
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('ERROR: ' + errorThrown);
