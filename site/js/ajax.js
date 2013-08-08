@@ -22,7 +22,7 @@ function getNewsFromAPI(amount, scope, keyword){
 
 function ajax(start_time, end_time, keyword){
     $.ajax({
-        url: 'include.php',
+        url: 'guardian_feeds.php',
         type: 'GET',
         dataType: 'json',
         data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
