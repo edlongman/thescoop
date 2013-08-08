@@ -56,12 +56,14 @@ function getNews(){
     // keyword $('#keyword').val()
     keyword = '';
 
+    console.log(section);
+
 	try {
         keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        getGuardianNews(amount, scope, keyword);
+        getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
 		alert(e); // To-Do: Error handling
 		return;
