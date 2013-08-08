@@ -48,11 +48,13 @@ function getSummary (object) {
         dataType: 'html',
         data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 10},
         success: function(data, textStatus, xhr) {
-            if (data == null) {
+            data = $('<div/>').html(data).text();
+            if (data == 'null') {
                 data = '<strong>No summary found.</strong>'
             }
-            data = $('<div/>').html(data).text();
-            $(object).next('article').find('p').slideUp(300).html(data).slideDown(300);
+            $(object).next('article').find('p').slideUp(300, function(){
+                $(object).next('article').find('p').html(data);
+            }).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
             $(object).next('article').find('p').html('<strong>No summary found.</strong>')
