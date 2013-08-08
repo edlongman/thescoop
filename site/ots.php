@@ -6,16 +6,32 @@
 		$html = file_get_html($article_url);
 		// Find all text inside the first div with id=article-body-blocks
 		$text = '';
-		try {
+		$error = 0;
+		try { //parse articles
 			$text = $html->find('div[id=article-body-blocks]',0)->innertext;
-			$error = 0;
+			//$error = 0;
 		}
 		catch(Exception $e) {
-			$error = 1;
+			$error++;
 		}
+		try { //parse videos
+                        $text .= $html->find('p[itemprop=description]',0)->innertext;
+               	        //$error = 0;
+               	}
+               	catch(Exception $e) {
+               	        $error++;
+               	}
+                try {
+                	$text .= $html->find('div[class=flexible-content-body]',0)->innertext;
+                        //$error = 0;
+                }
+                catch(Exception $e) {
+                        $error++;
+                }
 		$text = str_replace('<p>','',$text);
 		$text = str_replace('</p>','',$text);
-		if($error == 0) {
+		$text = str_replace('Photograph:','',$text);
+		if($error <= 2) {
 			return($text);
 		}
 		else {
