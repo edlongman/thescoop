@@ -20,6 +20,12 @@ body {
 	color: #333;
 }
 
+hr {
+	/* Hack for beatiful horizontal rows */
+	border: 0;
+	border-top: 1px solid #dfdfdf;
+}
+
 #container {
 	margin: 0 auto;
 	max-width: 67.25em;
@@ -55,15 +61,20 @@ body {
 	padding: 0;
 }
 
+<<<<<<< HEAD
+.headline {
+	margin-bottom: 0.5em;
+=======
 #headlines ol li {
 	margin-bottom: 0;
+>>>>>>> 0eac1d88651034f2eae26d9035497527d7c5f8e4
 }
 
-#headlines ol li:last-child {
+.headline:last-child {
 	margin-bottom: 0;
 }
 
-#headlines ol li a {
+.headline > a {
 	color: #333;
 	display: block;
 	padding: 0.333em;
@@ -71,10 +82,33 @@ body {
 	-webkit-transition: 0.2s ease-out background-color;
 }
 
-#headlines ol li a:hover {
+.headline a:hover {
 	color: #3498db;
 	background: #f3f3f3;
 	text-decoration: underline;
+}
+
+.headline > div {
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+	display: none;
+	font-size: .75em;
+	padding: 5px 10px;
+	width: 85%;
+}
+
+.headline div p {
+	margin: 0;
+}
+
+.summary--footer {
+	font-size: .8em;
+}
+
+.read-more-link {
+	color: #9f9f9f;
+	text-align: right;
+	text-decoration: none;
 }
 
 @media screen and (max-width: 45em) {
