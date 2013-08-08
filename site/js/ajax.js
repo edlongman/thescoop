@@ -47,7 +47,7 @@ function getSummary (link) {
         type: 'GET',
         dataType: 'text',
         data: {to_sum: link, ratio: 10},
-        async: false:
+        async: false,
         success: function(data, textStatus, xhr) {
             return data;
         },
