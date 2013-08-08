@@ -69,8 +69,6 @@ function getNews(){
 }
 
 function handleNews(news){
-	$('#form button').html('Go');
-
 	str = '<ol>';
 	$.each(news, function(index, story) {
 		headline = story[0];
