@@ -40,3 +40,26 @@ function ajaxGuardian(start_time, end_time, section, keyword){
         }
     });
 }
+
+function getSummary (object) {
+    $.ajax({
+        url: 'ots.php',
+        type: 'GET',
+        dataType: 'html',
+        data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 10},
+        success: function(data, textStatus, xhr) {
+            data = $('<div/>').html(data).text();
+            if (data == 'null') {
+                data = '<strong>No summary found.</strong>'
+            }
+            $(object).next('article').find('p').slideUp(300, function(){
+                $(object).next('article').find('p').html(data);
+            }).slideDown(300);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $(object).next('article').find('p').html('<strong>No summary found.</strong>')
+            console.log('ERROR: ' + xhr);
+        }
+    });
+    
+}

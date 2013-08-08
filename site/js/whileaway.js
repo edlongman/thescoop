@@ -87,7 +87,7 @@ function handleGuardianNews(news){
 		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li>';
 		str += '<a href="#" class="headline">' + headline + '</a>';
-        str += '<article><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+        str += '<article><p><img src="img/loading.gif"/> Loading summary…</p>';
         str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
         str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
         str += '</article></li>';
@@ -98,17 +98,26 @@ function handleGuardianNews(news){
     initializeLinkListeners();
 }
 
-function initializeLinkListeners() {
+function initializeLinkListeners () {
     var articles = $('.articles li article');
     articles.hide();
-    
+
     // display summary on headline click
     $('.headline').click(function(e){
         e.preventDefault();
-        $('article').slideUp(300);
-        $('.headline').removeClass('inactive');
-        $(this).next('article').slideDown(300);
-        $('.headline').not(this).addClass('inactive');
+
+        $(this).next('article').slideToggle(300);
+
+        if ($('.headline').hasClass('inactive')){
+            $('.headline').removeClass('inactive');
+        } else {
+            $('.headline').not(this).addClass('inactive');
+        }
+        
+        if (! $(this).next('article').hasClass('summary--loaded')){
+            getSummary($(this));
+            $(this).next('article').addClass('summary--loaded');
+        }
     });
 }
 
