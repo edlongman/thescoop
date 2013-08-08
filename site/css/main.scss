@@ -30,7 +30,7 @@ $font-serif: Georgia, serif;
 
 #section-span, #date-span, #number-span {
 	display: none;
-	font: 400 2.25em $font-serif;
+	font: 400 2.4em $font-serif;
 }
 
 
@@ -71,7 +71,7 @@ body {
 	margin-top: 1.333em;
 
 	li {
-		padding-bottom: 1em;
+		padding-bottom: 0.75em;
 
 		a {
 			color: $text;
