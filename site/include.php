@@ -68,8 +68,10 @@
 			return($number);
 		}
 	}
-	$result=array(get_news($_REQUEST['start_time'],$_REQUEST['end_time'],$_REQUEST['section'],$_REQUEST['keyword']),daily_news($_REQUEST['start_time'],$_REQUEST['end_time']));
-	echo json_encode($result);
+	$result = array();
+	$result[] = get_news($_REQUEST['start_time'],$_REQUEST['end_time'],$_REQUEST['section'],$_REQUEST['keyword']);
+	$result[] = daily_news($_REQUEST['start_time'],$_REQUEST['end_time']);
 	//echo json_encode(get_news($_REQUEST['start_time'],$_REQUEST['end_time'],$_REQUEST['section'],$_REQUEST['keyword']));
 	//echo json_encode(daily_news($_REQUEST['start_time'],$_REQUEST['end_time']));
+	echo json_encode($result);
 ?>

@@ -4,13 +4,14 @@
 
 $(document).ready(function(){
     // Form UI fixes
-    $('#keyword').change(function() {
-    	option_val = $('#keyword > option:selected').val();
-    	$('#keyword-span').html(option_val);
-    	$('#keyword').width($('#keyword-span').width());
-    });
-    $('#keyword').change();
 
+    $('#section').change(function() {
+    	option_val = $('#section > option:selected').text();
+    	$('#section-span').html(option_val);
+    	$('#section').width($('#section-span').width());
+    });
+
+    $('#section').change();
 
     $('#date').change(function() {
     	option_val = $('#date > option:selected').val();
@@ -20,6 +21,12 @@ $(document).ready(function(){
 
     $('#date').change();
 
+
+    window.onresize = function() {
+    	$('#section').change();
+    	$('#date').change();
+    	inputWidth();
+    }
 
     function inputWidth() {
     	$('#number-span').html($('#number').val());
@@ -36,6 +43,11 @@ $(document).ready(function(){
     	inputWidth();
     }
 
+    // prevent page reload on enter
+    $('#form').submit(function(event) {
+        event.preventDefault();
+    });
+
     // Fetching and displaying stories
     getNews();
 
@@ -48,17 +60,18 @@ $(document).ready(function(){
 function getNews(){
 	amount = $('#number').val();
 	scope = $('#date option:selected').val();
-	keyword = $('#keyword option:selected').val();
-	if (keyword == 'news') {
-		keyword = '';
-	};
+	section = $('#section option:selected').val();
+    // keyword $('#keyword').val()
+    keyword = '';
+
+    console.log(section);
 
 	try {
         keyword = $.trim(keyword);
-		validate(amount, scope, keyword);
+		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        getGuardianNews(amount, scope, keyword);
+        getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
 		alert(e); // To-Do: Error handling
 		return;
@@ -89,7 +102,7 @@ function handleGuardianNews(news){
     });
 }
 
-function validate(amount, scope, keyword) {
+function validate(amount, scope, section, keyword) {
 	scopes = ['days', 'weeks', 'months'];
 	if (scopes.indexOf(scope) < 0) {
 		throw 'Invalid scope';
@@ -98,4 +111,9 @@ function validate(amount, scope, keyword) {
 	if (isNaN(amount)) {
 		throw 'Invalid amount';
 	}
+
+    sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics'];
+    if (sections.indexOf(section) < 0) {
+        throw 'Invalid section';
+    }
 }
