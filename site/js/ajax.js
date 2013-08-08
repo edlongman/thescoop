@@ -45,10 +45,11 @@ function getSummary (link) {
     $.ajax({
         url: 'ots.php',
         type: 'GET',
-        dataType: 'text',
+        dataType: 'html',
         data: {to_sum: link, ratio: 10},
         async: false,
         success: function(data, textStatus, xhr) {
+            console.log(data);
             return data;
         },
         error: function(xhr, textStatus, errorThrown) {
