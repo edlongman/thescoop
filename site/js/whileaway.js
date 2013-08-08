@@ -105,7 +105,10 @@ function initializeLinkListeners() {
     // display summary on headline click
     $('.headline').click(function(e){
         e.preventDefault();
-        $(this).next('article').toggle(300);
+        $('article').slideUp(300);
+        $('.headline').removeClass('inactive');
+        $(this).next('article').slideDown(300);
+        $('.headline').not(this).addClass('inactive');
     });
 }
 
