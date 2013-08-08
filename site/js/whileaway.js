@@ -87,7 +87,7 @@ function handleGuardianNews(news){
 		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li>';
 		str += '<a href="#" class="headline">' + headline + '</a>';
-        str += '<article><p><strong>No summary found.</strong></p>';
+        str += '<article><p><img src="img/loading.gif"/> Loading summary…</p>';
         str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
         str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
         str += '</article></li>';
@@ -105,7 +105,10 @@ function initializeLinkListeners () {
     // display summary on headline click
     $('.headline').click(function(e){
         e.preventDefault();
-        getSummary($(this));
+        if (! $(this).next('article').hasClass('summary--loaded')){
+            getSummary($(this));
+            $(this).next('article').addClass('summary--loaded');
+        }
         $(this).next('article').toggle(300);
     });
 }

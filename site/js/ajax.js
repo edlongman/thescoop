@@ -52,6 +52,7 @@ function getSummary (object) {
             $(object).next('article').find('p').html(data);
         },
         error: function(xhr, textStatus, errorThrown) {
+            $(object).next('article').find('p').html('<strong>No summary found.</strong>')
             console.log('ERROR: ' + xhr);
         }
     });
