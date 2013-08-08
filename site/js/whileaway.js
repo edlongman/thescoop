@@ -95,10 +95,17 @@ function handleGuardianNews(news){
 	str += '</ol>';
 	$('#headlines').html(str);
 
+    initializeLinkListeners();
+}
+
+function initializeLinkListeners() {
+    var articles = $('.articles li article');
+    articles.hide();
+    
     // display summary on headline click
-    $('.headline > a').click(function(e){
+    $('.headline').click(function(e){
         e.preventDefault();
-        $(this).next('div').toggle(300);
+        $(this).next('article').toggle(300);
     });
 }
 
