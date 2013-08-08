@@ -27,7 +27,7 @@ body {
 }
 
 #form {
-	font: 400 2.25em Georgia, serif;
+	font: 400 2.25em calluna, serif;
 	line-height: 1.4em;
 }
 
@@ -48,13 +48,15 @@ body {
 }
 
 #headlines ol {
-	font: 300 1.5em Georgia, serif;
+	font: 400 1.5em calluna, serif;
 	line-height: 1.4em;
-	margin-bottom: 0;
+	list-style-position: inside;
+	margin: 1.333em 0 0;
+	padding: 0;
 }
 
 #headlines ol li {
-	margin-bottom: 0.5em;
+	margin-bottom: 0;
 }
 
 #headlines ol li:last-child {
@@ -63,11 +65,15 @@ body {
 
 #headlines ol li a {
 	color: #333;
+	display: block;
+	padding: 0.333em;
 	text-decoration: none;
+	-webkit-transition: 0.2s ease-out background-color;
 }
 
 #headlines ol li a:hover {
 	color: #3498db;
+	background: #f3f3f3;
 	text-decoration: underline;
 }
 

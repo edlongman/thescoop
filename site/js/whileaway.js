@@ -57,17 +57,18 @@ function getNews(){
     keyword = '';
 
 	try {
+        keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
+
+        // make asynchronous request
+        getGuardianNews(amount, scope, keyword);
 	} catch (e) {
-		alert(e);
+		alert(e); // To-Do: Error handling
 		return;
 	}
-
-	// make asynchronous request
-	getNewsFromAPI(amount, scope, section, keyword);
 }
 
-function handleNews(news){
+function handleGuardianNews(news){
 	str = '<ol>';
 	$.each(news, function(index, story) {
 		headline = story[0];
@@ -91,8 +92,4 @@ function validate(amount, scope, section, keyword) {
 	if (isNaN(amount)) {
 		throw 'Invalid amount';
 	}
-
-	$.trim(section);
-
-    $.trim(keyword);
 }
