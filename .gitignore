@@ -1,2 +1,5 @@
 config.py
 config.php
+output.txt
+site/txt.txt
+*.pyc
