@@ -61,13 +61,8 @@ hr {
 	padding: 0;
 }
 
-<<<<<<< HEAD
 .headline {
 	margin-bottom: 0.5em;
-=======
-#headlines ol li {
-	margin-bottom: 0;
->>>>>>> 0eac1d88651034f2eae26d9035497527d7c5f8e4
 }
 
 .headline:last-child {
