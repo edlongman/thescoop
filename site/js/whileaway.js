@@ -62,14 +62,14 @@ function getNews(){
 		validate(amount, scope, keyword);
 
         // make asynchronous request
-        getNewsFromAPI(amount, scope, keyword);
+        getGuardianNews(amount, scope, keyword);
 	} catch (e) {
 		alert(e); // To-Do: Error handling
 		return;
 	}
 }
 
-function handleNews(news){
+function handleGuardianNews(news){
 	str = '<ol>';
 	$.each(news, function(index, story) {
 		headline = story[0];

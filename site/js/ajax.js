@@ -2,7 +2,7 @@
 /*                        Get JSON response from PHP                         */
 /*****************************************************************************/
 
-function getNewsFromAPI(amount, scope, keyword){
+function getGuardianNews(amount, scope, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_time = new Date();
@@ -17,23 +17,23 @@ function getNewsFromAPI(amount, scope, keyword){
     }
 
     // make asynchronous ajax request, calls handle
-    ajax(start_time, end_time, keyword);
+    ajaxGuardian(start_time, end_time, keyword);
 }
 
-function ajax(start_time, end_time, keyword){
+function ajaxGuardian(start_time, end_time, keyword){
     $.ajax({
-        url: 'guardian_feeds.php',
+        url: 'include.php',
         type: 'GET',
         dataType: 'json',
         data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
         success: function(data, textStatus, xhr) {
             // replace JSON date format with JavaScript Date Objects
-            $.each(data, function(index, story) {
+            $.each(data[0], function(index, story) {
                  story[2] = new Date(story[2]);
             });
 
             // call handleNews function of whileaway.js
-            handleNews(data);
+            handleGuardianNews(data[0]);
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('ERROR: ' + errorThrown);
