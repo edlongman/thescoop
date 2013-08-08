@@ -5,7 +5,7 @@
 // Form UI fixes
 
 $('#keyword').change(function() {
-	option_val = $('#keyword > option:selected').val();
+	option_val = $('#keyword > option:selected').text();
 	$('#keyword-span').html(option_val);
 	$('#keyword').width($('#keyword-span').width());
 });
@@ -14,7 +14,7 @@ $('#keyword').change();
 
 
 $('#date').change(function() {
-	option_val = $('#date > option:selected').val();
+	option_val = $('#date > option:selected').text();
 	$('#date-span').html(option_val);
 	$('#date').width($('#date-span').width());
 });
