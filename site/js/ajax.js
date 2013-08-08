@@ -21,6 +21,10 @@ function getNewsFromAPI(amount, scope, keyword){
 }
 
 function ajax(start_time, end_time, keyword){
+    console.log(start_time.f('yyyy-MM-dd'));
+    console.log(end_time.f('yyyy-MM-dd'));
+    console.log(keyword);
+    //console.log(section);
     $.ajax({
         url: 'include.php',
         type: 'GET',
