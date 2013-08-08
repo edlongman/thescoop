@@ -17,18 +17,7 @@
 			$date_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
 		}
 		for($i=0;$i<count($json_obj["response"]["results"]);$i++){
-			
-			$html = file_get_html($url_array[$i]);
-			try {
-				$text = $html->find('div[id=article-body-blocks]',0)->innertext;
-				$error = 0;
-			}
-			catch(Exception $e) {
-				$error = 1;
-			}
-			if($error == 0) {
-				$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
-			}
+			$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
 		}
 		if(isset($ret_me)) {
 			return($ret_me);
