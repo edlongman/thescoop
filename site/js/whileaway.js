@@ -4,12 +4,6 @@
 
 $(document).ready(function(){
     // Form UI fixes
-/*    $('#keyword').change(function() {
-    	option_val = $('#keyword > option:selected').val();
-    	$('#keyword-span').html(option_val);
-    	$('#keyword').width($('#keyword-span').width());
-    });
-    $('#keyword').change();*/
 
     $('#section').change(function() {
     	option_val = $('#section > option:selected').text();
