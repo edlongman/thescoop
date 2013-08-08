@@ -111,4 +111,9 @@ function validate(amount, scope, section, keyword) {
 	if (isNaN(amount)) {
 		throw 'Invalid amount';
 	}
+
+    sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics'];
+    if (sections.indexOf(section) < 0) {
+        throw 'Invalid section';
+    }
 }
