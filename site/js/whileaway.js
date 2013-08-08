@@ -103,9 +103,9 @@ function initializeLinkListeners () {
     articles.hide();
 
     // display summary on headline click
-    $('.headline > a').click(function(e){
+    $('.headline').click(function(e){
         e.preventDefault();
-        $(this).next('article').next('p').html(getSummary($(this).find('a.read-more')));
+        $(this).next('article').find('p').html(getSummary($(this).find('a.read-more')));
         $(this).next('article').toggle(300);
     });
 }
