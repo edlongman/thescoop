@@ -4,13 +4,13 @@
 
 // Form UI fixes
 
-$('#keyword').change(function() {
-	option_val = $('#keyword > option:selected').text();
-	$('#keyword-span').html(option_val);
-	$('#keyword').width($('#keyword-span').width());
+$('#section').change(function() {
+	option_val = $('#section > option:selected').text();
+	$('#section-span').html(option_val);
+	$('#section').width($('#section-span').width());
 });
 
-$('#keyword').change();
+$('#section').change();
 
 
 $('#date').change(function() {
@@ -32,7 +32,7 @@ inputWidth();
 $('#number').bind('keyup input paste', inputWidth);
 
 window.onresize = function() {
-	$('#keyword').change();
+	$('#section').change();
 	$('#date').change();
 	inputWidth();
 }
@@ -47,25 +47,24 @@ getNews();
 // onchange of input fields, call getNews()
 $('#number').bind('keyup input paste', function(){getNews();});
 $('#date').change(function(){getNews();});
-$('#keyword').change(function(){getNews();});
+$('#section').change(function(){getNews();});
 
 function getNews(){
 	amount = $('#number').val();
 	scope = $('#date option:selected').val();
-	keyword = $('#keyword option:selected').val();
-	if (keyword == 'news') {
-		keyword = '';
-	};
+	section = $('#section option:selected').val();
+    // keyword $('#keyword').val()
+    keyword = '';
 
 	try {
-		validate(amount, scope, keyword);
+		validate(amount, scope, section, keyword);
 	} catch (e) {
 		alert(e);
 		return;
 	}
 
 	// make asynchronous request
-	getNewsFromAPI(amount, scope, keyword);
+	getNewsFromAPI(amount, scope, section, keyword);
 }
 
 function handleNews(news){
@@ -83,7 +82,7 @@ function handleNews(news){
 	$('#headlines').html(str);
 }
 
-function validate(amount, scope, keyword) {
+function validate(amount, scope, section, keyword) {
 	scopes = ['days', 'weeks', 'months'];
 	if (scopes.indexOf(scope) < 0) {
 		throw 'Invalid scope';
@@ -93,5 +92,7 @@ function validate(amount, scope, keyword) {
 		throw 'Invalid amount';
 	}
 
-	$.trim(keyword);
+	$.trim(section);
+
+    $.trim(keyword);
 }

@@ -3,7 +3,7 @@
 	Fix javascript - make simpler, one css style, one span
 */
 
-#keyword-span, #date-span, #number-span {
+#section-span, #date-span, #number-span {
 	display: none;
 	font: 300 2.25em Georgia, serif;
 }

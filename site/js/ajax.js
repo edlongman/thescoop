@@ -2,12 +2,12 @@
 /*                        Get JSON response from PHP                         */
 /*****************************************************************************/
 
-function getNewsFromAPI(amount, scope, keyword){
+function getNewsFromAPI(amount, scope, section, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_time = new Date();
     end_time = today;
-    //keyword = keyword;
+    //section = section;
 
     // get correct start time
     switch (scope) {
@@ -17,15 +17,15 @@ function getNewsFromAPI(amount, scope, keyword){
     }
 
     // make asynchronous ajax request, calls handle
-    ajax(start_time, end_time, keyword);
+    ajax(start_time, end_time, section, keyword);
 }
 
-function ajax(start_time, end_time, keyword){
+function ajax(start_time, end_time, section, keyword){
     $.ajax({
         url: 'include.php',
         type: 'GET',
         dataType: 'json',
-        data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), keyword: keyword, section: ''}, // HOTFIX: ", section: ''", remove if fixed
+        data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), section: section, keyword: keyword},
         success: function(data, textStatus, xhr) {
             // replace JSON date format with JavaScript Date Objects
             $.each(data, function(index, story) {
