@@ -58,14 +58,15 @@ function getNews(){
 	};
 
 	try {
+        keyword = $.trim(keyword);
 		validate(amount, scope, keyword);
+
+        // make asynchronous request
+        getNewsFromAPI(amount, scope, keyword);
 	} catch (e) {
-		alert(e);
+		alert(e); // To-Do: Error handling
 		return;
 	}
-
-	// make asynchronous request
-	getNewsFromAPI(amount, scope, keyword);
 }
 
 function handleNews(news){
@@ -92,6 +93,4 @@ function validate(amount, scope, keyword) {
 	if (isNaN(amount)) {
 		throw 'Invalid amount';
 	}
-
-	$.trim(keyword);
 }
