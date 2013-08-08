@@ -54,7 +54,7 @@ $(document).ready(function(){
     // onchange of input fields, call getNews()
     $('#number').bind('keyup input paste', function(){getNews();});
     $('#date').change(function(){getNews();});
-    $('#keyword').change(function(){getNews();});
+    $('#section').change(function(){getNews();});
 });
 
 function getNews(){
@@ -87,10 +87,10 @@ function handleGuardianNews(news){
 		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li>';
 		str += '<a href="#" class="headline">' + headline + '</a>';
-        str += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+        str += '<article><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
         str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
         str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
-        str += '</li>';
+        str += '</article></li>';
 	});
 	str += '</ol>';
 	$('#headlines').html(str);

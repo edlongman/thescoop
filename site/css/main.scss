@@ -55,7 +55,7 @@ body {
 		@include reset-form;
 
 		&:hover {
-			color: $dark-blue;
+			// color: $dark-blue;
 			cursor: pointer;
 		}
 	}
