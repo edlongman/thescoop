@@ -33,7 +33,7 @@ hr {
 }
 
 #form {
-	font: 400 2.25em Georgia, serif;
+	font: 400 2.25em calluna, serif;
 	line-height: 1.4em;
 }
 
@@ -54,13 +54,20 @@ hr {
 }
 
 #headlines ol {
-	font: 300 1.5em Georgia, serif;
+	font: 400 1.5em calluna, serif;
 	line-height: 1.4em;
-	margin-bottom: 0;
+	list-style-position: inside;
+	margin: 1.333em 0 0;
+	padding: 0;
 }
 
+<<<<<<< HEAD
 .headline {
 	margin-bottom: 0.5em;
+=======
+#headlines ol li {
+	margin-bottom: 0;
+>>>>>>> 0eac1d88651034f2eae26d9035497527d7c5f8e4
 }
 
 .headline:last-child {
@@ -69,11 +76,15 @@ hr {
 
 .headline > a {
 	color: #333;
+	display: block;
+	padding: 0.333em;
 	text-decoration: none;
+	-webkit-transition: 0.2s ease-out background-color;
 }
 
 .headline a:hover {
 	color: #3498db;
+	background: #f3f3f3;
 	text-decoration: underline;
 }
 
