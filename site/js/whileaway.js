@@ -64,8 +64,6 @@ function getNews(){
     // keyword $('#keyword').val()
     keyword = '';
 
-    console.log(section);
-
 	try {
         keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);

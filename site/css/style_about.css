@@ -46,3 +46,6 @@ body {
 	background-color:ecf0f1;
 	color:#000;    /* Colors are placeholders */
 }
+.words a {
+	text-decoration:none;
+	color:#c0392b;}
