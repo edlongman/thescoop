@@ -5,7 +5,7 @@
 
 #keyword-span, #date-span, #number-span {
 	display: none;
-	font: 300 48px Georgia, serif;
+	font: 300 2.25em Georgia, serif;
 }
 
 /* End */
@@ -17,17 +17,23 @@
 
 body {
 	background-color: #fff;
-	color: #444;
+	color: #333;
+}
+
+hr {
+	/* Hack for beatiful horizontal rows */
+	border: 0;
+	border-top: 1px solid #dfdfdf;
 }
 
 #container {
 	margin: 0 auto;
-	padding: 64px 0;
-	width: 1140px;
+	max-width: 67.25em;
+	padding: 4em 2em;
 }
 
 #form {
-	font: 400 48px Georgia, serif;
+	font: 400 2.25em Georgia, serif;
 	line-height: 1.4em;
 }
 
@@ -47,31 +53,57 @@ body {
 	cursor: pointer;
 }
 
-#form button {
-	background-color: #3498db;
-	border: none;
-	color: #fff;
-	font: 400 24px "Helvetica Neue", Arial, sans-serif;
-	margin: 0.75em 0 1em 0;
-	padding: 0.5em 0.75em;
-	text-transform: uppercase;
-}
-
-/*#form button:before {
-	background-color: #2980b9;
-	content: "arrow";
-	margin-right: 0.75em;
-	padding-right: 0.75em;
-}*/
-
 #headlines ol {
-	font: 300 2em Georgia, serif;
-	line-height: 2em;
+	font: 300 1.5em Georgia, serif;
+	line-height: 1.4em;
+	margin-bottom: 0;
 }
 
-#headlines ol li:hover {
-	cursor: pointer;
+.headline {
+	margin-bottom: 0.5em;
+}
+
+.headline:last-child {
+	margin-bottom: 0;
+}
+
+.headline > a {
+	color: #333;
+	text-decoration: none;
+}
+
+.headline a:hover {
+	color: #3498db;
 	text-decoration: underline;
 }
 
-/* End main */
+.headline > div {
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+	display: none;
+	font-size: .75em;
+	padding: 5px 10px;
+	width: 85%;
+}
+
+.headline div p {
+	margin: 0;
+}
+
+.summary--footer {
+	font-size: .8em;
+}
+
+.read-more-link {
+	color: #9f9f9f;
+	text-align: right;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 45em) {
+	body { font-size: 14px; }
+}
+
+@media screen and (max-width: 30em) {
+	body { font-size: 12px; }
+}

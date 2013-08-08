@@ -17,7 +17,12 @@
 		for($i=0;$i<count($json_obj["response"]["results"]);$i++){
 			$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
 		}
-		return($ret_me);
+		if(isset($ret_me)) {
+			return($ret_me);
+		}
+		else {
+			return(null);
+		}
 	}
 	function daily_news2($start_time, $end_time) {//This function doesn't work. Don't use it.
 		//echo strtotime($end_time) - strtotime($start_time) / 86400;
