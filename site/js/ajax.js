@@ -41,16 +41,15 @@ function ajaxGuardian(start_time, end_time, section, keyword){
     });
 }
 
-function getSummary (link) {
+function getSummary (object) {
     $.ajax({
         url: 'ots.php',
         type: 'GET',
         dataType: 'html',
-        data: {to_sum: link, ratio: 10},
-        async: false,
+        data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 10},
         success: function(data, textStatus, xhr) {
             console.log(data);
-            return data;
+            $(object).next('article').find('p').html(data);
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('ERROR: ' + xhr);
