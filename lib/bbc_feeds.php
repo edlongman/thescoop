@@ -7,7 +7,7 @@ function get_bbc_feeds_with_range($section,$start_date,$end_date){
 	$end_date=preg_replace("/[`;'\"]/","",$end_date);
 	$db=mysqli_connect("localhost",$mysql_user,$mysql_passwd,$mysql_db);
 	$query = "SELECT `url`,`title`,`description`,`large_thumb`,`small_thumb`,SUM(`points`) AS `points_sum` 
-			FROM `bbcstories` WHERE `section`='$section' AND $start_date<=`date_added`<=$end_date 
+			FROM `bbcstories` WHERE `section`='$section' AND '$start_date'<=date_added AND date_added<='$end_date' 
 			GROUP BY `url` ORDER BY `points_sum` DESC LIMIT 0,10";
 	$results=$db->query($query);
 	$num_articles=mysqli_num_rows($results);
