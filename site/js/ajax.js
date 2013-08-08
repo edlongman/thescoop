@@ -40,3 +40,20 @@ function ajaxGuardian(start_time, end_time, section, keyword){
         }
     });
 }
+
+function getSummary (link) {
+    $.ajax({
+        url: 'ots.php',
+        type: 'GET',
+        dataType: 'text',
+        data: {to_sum: link, ratio: 10},
+        async: false:
+        success: function(data, textStatus, xhr) {
+            return data;
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log('ERROR: ' + xhr);
+        }
+    });
+    
+}
