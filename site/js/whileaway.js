@@ -106,15 +106,22 @@ function initializeLinkListeners () {
     $('.headline').click(function(e){
         e.preventDefault();
 
-        $(this).next('article').slideToggle(300);
-
-        if ($('.headline').hasClass('inactive')){
-            $('.headline').removeClass('inactive');
+        if ($(this).hasClass('active')){
+            $('.inactive').removeClass('inactive');
+            $('.active').removeClass('active');
+            $(this).next('article').slideUp(300);
+        } else if ($(this).hasClass('inactive')){
+            $('.active').next('article').slideUp(300);
+            $('.inactive').removeClass('inactive');
+            $('.active').removeClass('active');
+            $(this).addClass('active');
+            $('.headline').not($(this)).addClass('inactive');
+            $(this).next('article').slideDown(300);
         } else {
             $('.headline').not(this).addClass('inactive');
             $(this).addClass('active');
-            initializeInactiveLinkListeners();
-            initializeActiveLinkListeners();
+
+            $(this).next('article').slideDown(300);
         }
         
         if (! $(this).next('article').hasClass('summary--loaded')){
@@ -122,38 +129,6 @@ function initializeLinkListeners () {
             $(this).next('article').addClass('summary--loaded');
         }
     });
-
-    function initializeInactiveLinkListeners () {
-        $('.inactive').unbind();
-
-        $('.inactive').click(function(e){
-            e.preventDefault();
-
-            $('.headline').next('article').slideUp(300);
-            $('.headline').removeClass('inactive');
-            $(this).addClass('active');
-            $('.headline').not($(this)).addClass('inactive');
-            initializeInactiveLinkListeners();
-            initializeActiveLinkListeners();
-            $(this).next('article').slideToggle(300);
-
-            if (! $(this).next('article').hasClass('summary--loaded')){
-                getSummary($(this));
-                $(this).next('article').addClass('summary--loaded');
-            }
-        });
-    }
-
-    function initializeActiveLinkListeners() {
-        $('.active').unbind();
-
-        $('.active').click(function(e){
-            e.preventDefault();
-
-        $('.headline').removeClass('inactive').removeClass('active');
-        $(this).next('article').slideUp(300);
-        });
-    }
 }
 
 function validate(amount, scope, section, keyword) {
