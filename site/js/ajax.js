@@ -48,6 +48,9 @@ function getSummary (object) {
         dataType: 'html',
         data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 10},
         success: function(data, textStatus, xhr) {
+            if (data == null) {
+                data = '<strong>No summary found.</strong>'
+            }
             data = $('<div/>').html(data).text();
             $(object).next('article').find('p').html(data);
         },
