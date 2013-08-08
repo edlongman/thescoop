@@ -52,7 +52,7 @@ function getSummary (object) {
                 data = '<strong>No summary found.</strong>'
             }
             data = $('<div/>').html(data).text();
-            $(object).next('article').find('p').html(data);
+            $(object).next('article').find('p').slideUp(300).html(data).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
             $(object).next('article').find('p').html('<strong>No summary found.</strong>')
