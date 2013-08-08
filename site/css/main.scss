@@ -39,6 +39,7 @@ $font-serif: Georgia, serif;
 body {
 	background-color: $background;
 	color: $text;
+	-webkit-transition: color 0.2s;
 }
 
 #container {
@@ -53,6 +54,7 @@ body {
 
 	select, input {
 		@include reset-form;
+		text-align: center;
 
 		&:hover {
 			// color: $dark-blue;
@@ -73,9 +75,17 @@ body {
 	li {
 		padding-bottom: 0.75em;
 
+		.headline {
+
+		}
+
 		a {
 			color: $text;
 			text-decoration: none;
+
+			&.inactive {
+				color: #999;
+			}
 
 			&:hover {
 				color: $blue;

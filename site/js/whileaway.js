@@ -105,11 +105,15 @@ function initializeLinkListeners () {
     // display summary on headline click
     $('.headline').click(function(e){
         e.preventDefault();
+        $('article').slideUp(300);
+        $('.headline').removeClass('inactive');
+        $(this).next('article').slideDown(300);
+        $('.headline').not(this).addClass('inactive');
+        
         if (! $(this).next('article').hasClass('summary--loaded')){
             getSummary($(this));
             $(this).next('article').addClass('summary--loaded');
         }
-        $(this).next('article').toggle(300);
     });
 }
 
