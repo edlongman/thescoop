@@ -77,7 +77,7 @@ function getNews(){
 }
 
 function handleGuardianNews(news){
-	str = '<ol>';
+	str = '<ol class="articles">';
 	$.each(news, function(index, story) {
 		headline = story[0];
 		link = story[1];
@@ -85,10 +85,12 @@ function handleGuardianNews(news){
 		// summary = story[3];
 
 		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
-        str += '<li class="headline">';
-		str += '<a href="#">' + headline + '</a>';
-        str += '<div class="summary"><div class="summary--content"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div><hr/><div class="summary--footer"><time datetime="' + date.toJSON() + '"> ' + date.f('d MMM yyyy HH:mm') + '</time> | <span><a href="' + link + '" class="read-more-link" target="_blank">Read more…</a></span></div></div>'
-        str += '</li>  '
+        str += '<li>';
+		str += '<a href="#" class="headline">' + headline + '</a>';
+        str += '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+        str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+        str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
+        str += '</li>';
 	});
 	str += '</ol>';
 	$('#headlines').html(str);
