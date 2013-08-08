@@ -43,6 +43,11 @@ $(document).ready(function(){
     	inputWidth();
     }
 
+    // prevent page reload on enter
+    $('#form').submit(function(event) {
+        event.preventDefault();
+    });
+
     // Fetching and displaying stories
     getNews();
 
