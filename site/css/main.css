@@ -3,7 +3,7 @@
 	Fix javascript - make simpler, one css style, one span
 */
 
-#keyword-span, #date-span, #number-span {
+#section-span, #date-span, #number-span {
 	display: none;
 	font: 300 2.25em Georgia, serif;
 }
@@ -33,7 +33,7 @@ hr {
 }
 
 #form {
-	font: 400 2.25em Georgia, serif;
+	font: 400 2.25em calluna, serif;
 	line-height: 1.4em;
 }
 
@@ -54,9 +54,11 @@ hr {
 }
 
 #headlines ol {
-	font: 300 1.5em Georgia, serif;
+	font: 400 1.5em calluna, serif;
 	line-height: 1.4em;
-	margin-bottom: 0;
+	list-style-position: inside;
+	margin: 1.333em 0 0;
+	padding: 0;
 }
 
 .headline {
@@ -69,11 +71,15 @@ hr {
 
 .headline > a {
 	color: #333;
+	display: block;
+	padding: 0.333em;
 	text-decoration: none;
+	-webkit-transition: 0.2s ease-out background-color;
 }
 
 .headline a:hover {
 	color: #3498db;
+	background: #f3f3f3;
 	text-decoration: underline;
 }
 

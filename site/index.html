@@ -14,16 +14,19 @@
 			<form id="form">
 				Show me top
 
-				<select name="keyword" id="keyword">
-					<option value="uk-news">news</option>
-					<option value="celebrity">celebrity</option>
-					<option value="health">health</option>
-					<option value="technology">technology</option>
+				<select name="section" id="section">
+					<option value="world">news</option>
+					<option value="uk-news">UK</option>
+					<option value="football">football</option>
+					<option value="film">film</option>
+					<option value="business">business</option>
+					<option value="politics">politics</option>
+
 				</select>
 
-				stories from the past
+				articles from the past
 
-				<input type="text" value="7" name="number" id="number">
+				<input type="text" value="10" name="number" id="number" autocomplete="off">
 
 				<select name="date" id="date">
 					<option value="days">days</option>
@@ -35,7 +38,7 @@
 			<div id="headlines"></div>
 		</div>
 
-		<span id="keyword-span"></span>
+		<span id="section-span"></span>
 		<span id="number-span"></span>
 		<span id="date-span"></span>
 
@@ -43,5 +46,8 @@
 		<script type="text/javascript" src='js/date.f-0.5.0-min.js'></script> <!-- http://fisforformat.sourceforge.net/#date_f -->
 		<script type="text/javascript" src='js/ajax.js'></script>
 		<script type="text/javascript" src='js/whileaway.js'></script>
+
+		<script type="text/javascript" src="//use.typekit.net/nkw6rwp.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	</body>
 </html>
