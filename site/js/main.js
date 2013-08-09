@@ -38,11 +38,6 @@ $(document).ready(function() {
     	inputWidth();
     }
 
-    // prevent page reload on enter
-    $('#form').submit(function(event) {
-        event.preventDefault();
-    });
-
     // Fetching and displaying stories
     getNews();
 
@@ -77,15 +72,13 @@ function handleGuardianNews(news){
 		headline = story[0];
 		link = story[1];
 		date = story[2];
-		// summary = story[3];
 
-		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li>';
         str += '<h2 class="headline">' + headline + '</h2>';
 		str += '<article>';
         str += '<p><img src="img/loading.gif"/> Loading summary…</p>';
-        str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-        str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
+        // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+        str += '<a href="' + link + '" class="read-more" target="_blank">Full article</a>';
         str += '</article>';
         str += '</li>';
 	});
@@ -100,9 +93,7 @@ function initializeLinkListeners () {
     articles.hide();
 
     // display summary on headline click
-    $('.headline').click(function(e){
-        e.preventDefault();
-
+    $('.headline').click(function() {
         if ($(this).hasClass('active')){
             $('.inactive').removeClass('inactive');
             $('.active').removeClass('active');
