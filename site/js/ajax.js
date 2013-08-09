@@ -32,7 +32,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
                  story[2] = new Date(story[2]);
             });
 
-            // call handleGuardianNews function of whileaway.js
+            // call handleGuardianNews function of main.js
             handleGuardianNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
