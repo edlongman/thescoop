@@ -77,7 +77,7 @@ function getNews(){
 }
 
 function handleGuardianNews(news){
-	str = '<ol class="articles">';
+	str = '<ol>';
 	$.each(news, function(index, story) {
 		headline = story[0];
 		link = story[1];
@@ -86,20 +86,22 @@ function handleGuardianNews(news){
 
 		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li>';
-		str += '<a href="#" class="headline">' + headline + '</a>';
-        str += '<article><p><img src="img/loading.gif"/> Loading summary…</p>';
+        str += '<h2 class="headline">' + headline + '</h2>';
+		str += '<article>';
+        str += '<p><img src="img/loading.gif"/> Loading summary…</p>';
         str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
         str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
-        str += '</article></li>';
+        str += '</article>';
+        str += '</li>';
 	});
 	str += '</ol>';
-	$('#headlines').html(str);
+	$('.news').html(str);
 
     initializeLinkListeners();
 }
 
 function initializeLinkListeners () {
-    var articles = $('.articles li article');
+    var articles = $('.news > ol > li > article');
     articles.hide();
 
     // display summary on headline click
