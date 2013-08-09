@@ -73,12 +73,13 @@ header {
 	article {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
-	}
 
-	p {
-		font: 400 20px $font;
-		line-height: 1.4em;
-		margin-bottom: 0.25em;
+		.summary--content p {
+			font: 400 20px $font;
+			line-height: 1.4em;
+			margin-bottom: 0.25em;
+			text-indent: 2em;
+		}
 	}
 
 	a {

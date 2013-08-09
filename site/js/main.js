@@ -80,7 +80,7 @@ function handleGuardianNews(news){
         str += '<li>';
         str += '<h2 class="headline">' + headline + '</h2>';
 		str += '<article>';
-        str += '<p><img src="img/loading.gif"></p>';
+        str += '<div class="summary--content"><img src="img/loading.gif"></div>';
         // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
         str += '<a href="' + link + '" class="read-more" target="_blank">Full article</a>';
         str += '</article>';
