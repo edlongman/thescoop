@@ -126,17 +126,17 @@ function initializeLinkListeners () {
 }
 
 function validate(amount, scope, section, keyword) {
-	scopes = ['days', 'weeks', 'months'];
-	if (scopes.indexOf(scope) < 0) {
-		throw 'Invalid scope';
-	}
+	// scopes = ['days', 'weeks', 'months'];
+	// if (scopes.indexOf(scope) < 0) {
+	// 	throw 'Invalid scope';
+	// }
 
 	if (isNaN(amount)) {
 		throw 'Invalid amount';
 	}
 
-    sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics'];
-    if (sections.indexOf(section) < 0) {
-        throw 'Invalid section';
-    }
+    // sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics', 'technology'];
+    // if (sections.indexOf(section) < 0) {
+    //     throw 'Invalid section';
+    // }
 }
