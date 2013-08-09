@@ -14,24 +14,27 @@ $font: "Helvetica Neue", Arial, sans-serif;
 
 .form-fix {
 	display: none;
-	font: 700 36px $font;
+	font: 700 2.4em $font;
 }
 
 
 body {
 	background-color: white;
 	color: $text;
+	font-size: 16px;
 }
 
 .container {
 	margin: 0 auto;
-	max-width: 67.25em;
+	max-width: 1076px;
 	padding: 4em 2em;
 }
 
 header {
-	font: 700 36px $font;
-	line-height: 1.2em;
+	h1 {
+		font: 700 2.25em $font;
+		line-height: 1.2em;
+	}
 
 	select, input {
 		background-color: white;
@@ -46,19 +49,18 @@ header {
 		-webkit-appearance: none;
 	}
 
-	select { cursor: pointer; }
-	input { cursor: text; }
+	#section, #date { cursor: pointer; }
+	#number {
+		cursor: text;
+		min-width: 0.6em;
+	}
 }
 
 .news {
 	ol {
-		font: 400 20px $font;
+		font: 400 1.25em $font;
 		list-style: none;
 		margin-top: 1em;
-
-		li {
-			margin-bottom: 0.5em;
-		}
 	}
 
 	.loading {
@@ -76,8 +78,10 @@ header {
 
 	.headline {
 		cursor: pointer;
-		font: 400 28px $font;
+		display: block;
+		font: 400 1.4em $font;
 		line-height: 1.3em;
+		padding: 0.2em 0;
 
 		&:hover {
 			color: $blue;
@@ -87,16 +91,32 @@ header {
 	article {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
+	}
 
-		.summary--content p {
-			font: 400 20px $font;
-			line-height: 1.4em;
-			margin-bottom: 0.25em;
-			text-indent: 2em;
-		}
+	p {
+		color: #777;
+		line-height: 1.4em;
+		margin-bottom: 0.25em;
 	}
 
 	a {
 		color: $blue;
+
+		&:focus {
+			color: #2980b9;
+			outline: none;
+		}
+	}
+}
+
+@media screen and (max-width: 720px) {
+	body {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	body {
+		font-size: 12px;
 	}
 }

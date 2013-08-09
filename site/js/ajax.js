@@ -50,14 +50,18 @@ function getSummary (object) {
         success: function(data, textStatus, xhr) {
             data = $('<div/>').html(data).text();
             if (data == 'null') {
-                data = '<strong>No summary found.</strong>'
+                data = 'No summary found.'
             }
             $(object).next('article').find('.summary--content').slideUp(300, function(){
                 $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
             }).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
+<<<<<<< HEAD
             $(object).next('article').find('.summary--content').html('<strong>No summary found.</strong>')
+=======
+            $(object).next('article').find('p').html('No summary found.')
+>>>>>>> mobile
             console.log('ERROR: ' + xhr);
         }
     });

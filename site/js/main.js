@@ -84,7 +84,7 @@ function handleGuardianNews(news){
 		str += '<article>';
         str += '<div class="summary--content"><img src="img/loading.gif"></div>';
         // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-        str += '<a href="' + link + '" class="read-more" target="_blank">Full article</a>';
+        str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
         str += '</article>';
         str += '</li>';
 	});
