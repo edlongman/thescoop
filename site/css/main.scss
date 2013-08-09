@@ -1,0 +1,134 @@
+@import "reset";
+
+$text: #333;
+$blue: #3498db;
+$font: "pragmatica-web", sans-serif;
+
+
+.chromeframe {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+
+.form-fix {
+	display: none;
+	font: 700 2.25em $font;
+}
+
+
+body {
+	background-color: white;
+	color: $text;
+	font-size: 16px;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1076px;
+	padding: 4em 2em;
+}
+
+header {
+	h1 {
+		font: 700 2.25em $font;
+		line-height: 1.2em;
+	}
+
+	select, input {
+		background-color: white;
+		border: none;
+		// border-bottom: 1px dashed $blue;
+		color: $blue;
+		display: inline-block;
+		font: inherit;
+		outline: none;
+		vertical-align: baseline;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+	}
+
+	#section, #date { cursor: pointer; }
+	#number {
+		cursor: text;
+		min-width: 0.6em;
+	}
+}
+
+.news {
+	margin-top: 1em;
+	
+	ol {
+		font: 400 1.25em $font;
+		list-style: none;
+	}
+
+	.headline {
+		cursor: pointer;
+		display: block;
+		font: 400 1.4em $font;
+		line-height: 1.3em;
+		padding: 0.2em 0;
+
+		&:hover {
+			// color: $blue;
+		}
+	}
+
+	article {
+		line-height: 1.5em;
+		margin: 0.5em 0 1em 0;
+
+		p {
+			color: #777;
+			line-height: 1.4em;
+			margin-bottom: 0.25em;
+			text-indent: 1em;
+		}
+	}
+
+	a {
+		color: $blue;
+
+		&:focus {
+			color: #2980b9;
+			outline: none;
+		}
+	}
+}
+
+#bugs {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 8px 5px 5px 8px;
+	border-bottom: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+	margin-top: -3px;
+	margin-left: -3px;
+	border-radius: 3px;
+
+	a, a:visited, a:link {
+		color: black;
+		text-decoration: none;
+		font: 600 14px $font;
+	}
+
+	a:active, a:hover {
+		text-decoration: underline;
+		color: $blue;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	body {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	body {
+		font-size: 12px;
+	}
+}
