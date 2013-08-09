@@ -39,7 +39,7 @@ header {
 	select, input {
 		background-color: white;
 		border: none;
-		// border-bottom: 1px dashed $blue;
+		border-bottom: 1px dashed white;
 		color: $blue;
 		display: inline-block;
 		font: inherit;
@@ -47,9 +47,17 @@ header {
 		vertical-align: baseline;
 		-moz-appearance: none;
 		-webkit-appearance: none;
+
+		&:focus {
+			// outline: 1px solid red;
+			border-bottom: 1px dashed $blue;
+		}
 	}
 
-	#section, #date { cursor: pointer; }
+	#section, #date {
+		cursor: pointer;
+	}
+
 	#number {
 		cursor: text;
 		min-width: 0.6em;
