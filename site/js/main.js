@@ -101,7 +101,7 @@ function initializeLinkListeners () {
         if ($(this).hasClass('active')){
             $('.inactive').removeClass('inactive');
             $('.active').removeClass('active');
-            slideUp(300);
+            $(this).slideUp(300);
         } else if ($(this).hasClass('inactive')){
             $('.active').next('article').slideUp(300);
             $('.inactive').removeClass('inactive');
