@@ -21,6 +21,10 @@ $(document).ready(function(){
 
     $('#date').change();
 
+    $('.overlay').click(function() {
+        $('.overlay').fadeOut(200);
+        $('.news-content').fadeOut(200);
+    });
 
     window.onresize = function() {
     	$('#section').change();
@@ -88,7 +92,7 @@ function handleGuardianNews(news){
         str += '<li>';
         str += '<h2 class="headline">' + headline + '</h2>';
 		str += '<article>';
-        str += '<p><img src="img/loading.gif"/> Loading summary…</p>';
+        str += '<div class="news-content"><img src="img/loading.gif"/> Loading summary…</div>';
         str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
         str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
         str += '</article>';
@@ -106,12 +110,12 @@ function initializeLinkListeners () {
 
     // display summary on headline click
     $('.headline').click(function(e){
-        e.preventDefault();
+        $(this).next('article').show();
 
-        if ($(this).hasClass('active')){
+        /*if ($(this).hasClass('active')){
             $('.inactive').removeClass('inactive');
             $('.active').removeClass('active');
-            $(this).next('article').slideUp(300);
+            slideUp(300);
         } else if ($(this).hasClass('inactive')){
             $('.active').next('article').slideUp(300);
             $('.inactive').removeClass('inactive');
@@ -124,7 +128,7 @@ function initializeLinkListeners () {
             $(this).addClass('active');
 
             $(this).next('article').slideDown(300);
-        }
+        }*/
         
         if (! $(this).next('article').hasClass('summary--loaded')){
             getSummary($(this));
