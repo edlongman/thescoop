@@ -59,6 +59,19 @@ header {
 		}
 	}
 
+	.loading {
+		$size: 1em;
+
+		width: $size;
+		position: absolute;
+
+		top: 50%;
+		margin-top: -($size / 2);
+
+		left: 50%;
+		margin-left: -($size / 2);
+	}
+
 	.headline {
 		font: 400 28px $font;
 		line-height: 1.3em;

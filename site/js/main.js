@@ -52,6 +52,8 @@ $(document).ready(function(){
 });
 
 function getNews(){
+    $('.news').html('<img src="img/loading.gif" alt="Loading…" class="loading"/>');
+
 	amount = $('#number').val();
 	scope = $('#date option:selected').val();
 	section = $('#section option:selected').val();
