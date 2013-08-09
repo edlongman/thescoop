@@ -3,7 +3,7 @@ sql = MySQLdb.connect(host="localhost",
                             user=config.username, 
                             passwd=config.passwd,
                             db=config.db)
-rss_urls = (('news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') , ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml'))
+rss_urls = (('uk-news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') , ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml'))
 table_name = "bbcstories"
 for rss_url_data in rss_urls:
 	feed = feedparser.parse(rss_url_data[1])
