@@ -40,6 +40,7 @@ function getNews(){
 	try {
         keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
+        console.log(amount, scope, section, keyword);
 
         // make asynchronous request
         getGuardianNews(amount, scope, section, keyword);
