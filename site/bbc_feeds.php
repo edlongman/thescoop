@@ -10,4 +10,4 @@ if(!array_key_exists("end_date",$_GET)||date("Y-m-d",strtotime($_GET["end_date"]
 if(!array_key_exists("section",$_GET)){
 	$_GET["section"]="uk-news";
 }
-echo get_bbc_feeds_with_range($_GET["section"],$_GET["start_date"],$_GET["end_date"]);
+echo json_encode()get_bbc_feeds_with_range($_GET["section"],$_GET["start_date"],$_GET["end_date"]));
