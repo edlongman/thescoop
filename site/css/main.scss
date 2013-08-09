@@ -52,6 +52,7 @@ header {
 .news {
 	ol {
 		font: 400 20px $font;
+		list-style: none;
 		margin-top: 1em;
 
 		li {
@@ -59,20 +60,39 @@ header {
 		}
 	}
 
+	.loading {
+		$size: 1em;
+
+		width: $size;
+		// position: absolute;
+
+		// top: 50%;
+		// margin-top: -($size / 2);
+
+		// left: 50%;
+		// margin-left: -($size / 2);
+	}
+
 	.headline {
+		cursor: pointer;
 		font: 400 28px $font;
 		line-height: 1.3em;
+
+		&:hover {
+			color: $blue;
+		}
 	}
 
 	article {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
-	}
 
-	p {
-		font: 400 20px $font;
-		line-height: 1.4em;
-		margin-bottom: 0.25em;
+		.summary--content p {
+			font: 400 20px $font;
+			line-height: 1.4em;
+			margin-bottom: 0.25em;
+			text-indent: 2em;
+		}
 	}
 
 	a {
