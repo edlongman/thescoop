@@ -1,18 +1,12 @@
-@import "normalize";
+@import "reset";
 
-
-/* Variables */
-
-$background: white;
 $text: #333;
 $blue: #3498db;
 $dark-blue: #2980b9;
 
-$font-sans: "Helvetica Neue", Arial, sans-serif;
-$font-serif: Georgia, serif;
+$font-sans: adelle-sans, Arial, sans-serif;
+$font-serif: adelle-sans, serif;
 
-
-/* Mixins */
 
 @mixin reset-form {
 	border: none;
@@ -21,92 +15,87 @@ $font-serif: Georgia, serif;
 	display: inline-block;
 	font: inherit;
 	outline: none;
+	vertical-align: baseline;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 }
 
 
-/* Hacks */
+.chromeframe {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
 
 #section-span, #date-span, #number-span {
 	display: none;
-	font: 400 2.4em $font-serif;
+	// font: 400 2.4em $font-serif;
 }
 
-
-/* Main */
 
 body {
-	background-color: $background;
+	background-color: white;
 	color: $text;
-	-webkit-transition: color 0.2s;
 }
 
-#container {
+.container {
 	margin: 0 auto;
 	max-width: 67.25em;
 	padding: 4em 2em;
 }
 
-#form {
-	font: 400 2.25em $font-serif;
-	line-height: 1.4em;
+header {
+	font: 700 36px "pragmatica-web", sans-serif;
 
-	select, input {
-		@include reset-form;
-		text-align: center;
+	select, input { @include reset-form; }
+	select:hover { cursor: pointer; }
+	input:hover { cursor: text; }
+}
+
+.news ol {
+	.headline {
+		font: 400 24px "pragmatica-web", sans-serif;
 
 		&:hover {
-			// color: $dark-blue;
+			color: $blue;
 			cursor: pointer;
+			text-decoration: underline;
 		}
 	}
 
-	input:hover {
-		cursor: text;
-	}
-}
-
-#headlines ol {
-	font: 400 1.5em $font-sans;
-	line-height: 1.4em;
-	margin-top: 1.333em;
-
-	li {
-		padding-bottom: 0.75em;
-
-		.headline {
-
-		}
-
-		a {
-			color: $text;
-			text-decoration: none;
-
-			&.inactive {
-				color: #999;
-			}
-
-			&:hover {
-				color: $blue;
-				text-decoration: underline;
-			}
+	article {
+		p + a {
+			font-size: .7em;
+			width: 85%;
+			-webkit-column-count: 2;
+			line-height: 1.3;
 		}
 	}
 }
 
-article p {
-	font-size: .7em;
-	width: 85%;
-	-webkit-column-count: 2;
-	line-height: 1.3;
-	-webkit-column-gap: 3.5em;
+.overlay {
+	background: rgba(0,0,0,0.1);
+	cursor: pointer;
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
-@media screen and (max-width: 45em) {
-	body { font-size: 14px; }
-}
+article {
+	background: #fff;
+	bottom: 0;
+	font-size: 18px;
+	line-height: 1.333em;
+	padding: 4em 6em;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30em;
+	z-index: 999;
 
-@media screen and (max-width: 30em) {
-	body { font-size: 12px; }
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
