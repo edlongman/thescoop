@@ -57,6 +57,7 @@ header {
 }
 
 .news {
+	color: #777;
 	margin-top: 1em;
 	
 	ol {
@@ -65,6 +66,7 @@ header {
 	}
 
 	.headline {
+		color: $text;
 		cursor: pointer;
 		display: block;
 		font: 400 1.4em $font;
@@ -88,7 +90,7 @@ header {
 	}
 
 	a {
-		color: $text;
+		color: #777;
 
 		&:hover {
 			color: $blue;
@@ -111,7 +113,7 @@ footer {
 	}
 
 	a {
-		color: $text;
+		color: #777;
 		font: 400 1.25em $font;
 
 		&:hover {
