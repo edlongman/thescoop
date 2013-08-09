@@ -91,12 +91,13 @@ header {
 	article {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
-	}
 
-	p {
-		color: #777;
-		line-height: 1.4em;
-		margin-bottom: 0.25em;
+		p {
+			color: #777;
+			line-height: 1.4em;
+			margin-bottom: 0.25em;
+			text-indent: 1em;
+		}
 	}
 
 	a {
