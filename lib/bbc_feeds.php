@@ -18,5 +18,5 @@ function get_bbc_feeds_with_range($section,$start_date,$end_date){
 		$article_array["description"]=urldecode($article_array["description"]);
 		$articles[]=$article_array;
 	}
-	return json_encode($articles,JSON_PRETTY_PRINT);
+	return json_encode($articles);
 }
