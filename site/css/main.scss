@@ -64,19 +64,6 @@ header {
 		list-style: none;
 	}
 
-	.loading {
-		$size: 1em;
-
-		width: $size;
-		// position: absolute;
-
-		// top: 50%;
-		// margin-top: -($size / 2);
-
-		// left: 50%;
-		// margin-left: -($size / 2);
-	}
-
 	.headline {
 		cursor: pointer;
 		display: block;
