@@ -89,7 +89,11 @@ header {
 	}
 
 	a {
-		color: $blue;
+		color: $text;
+
+		&:hover {
+			color: $blue;
+		}
 
 		&:focus {
 			color: #2980b9;
@@ -98,26 +102,22 @@ header {
 	}
 }
 
-#bugs {
-	position: fixed;
-	top: 0;
-	left: 0;
-	padding: 8px 5px 5px 8px;
-	border-bottom: 1px solid #dfdfdf;
-	border-right: 1px solid #dfdfdf;
-	margin-top: -3px;
-	margin-left: -3px;
-	border-radius: 3px;
+footer {
+	background-color: #eee;
+	padding: 1em 2em;
 
-	a, a:visited, a:link {
-		color: black;
-		text-decoration: none;
-		font: 600 14px $font;
+	.inner {
+		margin: 0 auto;
+		max-width: 1076px;
 	}
 
-	a:active, a:hover {
-		text-decoration: underline;
-		color: $blue;
+	a {
+		color: $text;
+		font: 400 1.25em $font;
+
+		&:hover {
+			color: $blue;
+		}
 	}
 }
 
