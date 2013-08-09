@@ -8,21 +8,21 @@
 		$text = '';
 		$error = 0;
 		try { //parse articles
-			$text = $html->find('div[id=article-body-blocks]',0)->innertext;
+			$text .= $html->find('div[id=article-body-blocks]',0)->innertext;
 			//$error = 0;
 		}
 		catch(Exception $e) {
 			$error++;
 		}
 		try { //parse videos
-                        $text = $html->find('p[itemprop=description]',0)->innertext;
+                        $text .= $html->find('p[itemprop=description]',0)->innertext;
                	        //$error = 0;
                	}
                	catch(Exception $e) {
                	        $error++;
                	}
                 try {
-                	$text = $html->find('div[class=flexible-content-body]',0)->innertext;
+                	$text .= $html->find('div[class=flexible-content-body]',0)->innertext;
                         //$error = 0;
                 }
                 catch(Exception $e) {
