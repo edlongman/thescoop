@@ -1,54 +1,31 @@
 $(document).ready(function(){
     // Resize select and input
-    $('#section').change(function() {
-    	option_val = $('#section > option:selected').text();
-    	$('#section-span').html(option_val);
-    	$('#section').width($('#section-span').width());
+    resizeSection();
+    resizeNumber();
+    resizeDate();
+
+    $(window).resize(function() {
+        resizeSection();
+        resizeNumber();
+        resizeDate();
     });
-
-    $('#section').change();
-
-    $('#date').change(function() {
-    	option_val = $('#date > option:selected').val();
-    	$('#date-span').html(option_val);
-    	$('#date').width($('#date-span').width());
-    });
-
-    $('#date').change();
-
-    $('.overlay').click(function() {
-        $('.overlay').fadeOut(200);
-        $('.news-content').fadeOut(200);
-    });
-
-    window.onresize = function() {
-    	$('#section').change();
-    	$('#date').change();
-    	inputWidth();
-    }
-
-    function numberWidth() {
-    	$('#number-span').html($('#number').val());
-    	$('#number').css('width', $('#number-span').width());
-    }
-
-    numberWidth();
-
-    $('#number').bind('keyup input paste', numberWidth);
-
-    window.onresize = function() {
-    	$('#keyword').change();
-    	$('#date').change();
-    	numberWidth();
-    }
 
     // Fetching and displaying stories
     getNews();
 
-    // onchange of input fields, call getNews()
-    $('#number').bind('keyup input paste', function(){getNews();});
-    $('#date').change(function(){getNews();});
-    $('#section').change(function(){getNews();});
+    // onchange of input fields
+    $('#section').change(function(){
+        resizeSection();
+        getNews();
+    });
+    $('#number').bind('keyup input paste', function(){
+        resizeNumber();
+        getNews();
+    });
+    $('#date').change(function(){
+        resizeDate();
+        getNews();
+    });
 });
 
 function getNews(){
@@ -123,6 +100,23 @@ function initializeLinkListeners () {
             $(this).next('article').addClass('summary--loaded');
         }
     });
+}
+
+function resizeSection () {
+    option_val = $('#section > option:selected').text();
+    $('#section-span').html(option_val);
+    $('#section').width($('#section-span').width());
+}
+
+function resizeNumber () {
+    $('#number-span').html($('#number').val());
+    $('#number').css('width', $('#number-span').width());
+}
+
+function resizeDate () {
+    option_val = $('#date > option:selected').val();
+    $('#date-span').html(option_val);
+    $('#date').width($('#date-span').width());
 }
 
 function validate(amount, scope, section, keyword) {
