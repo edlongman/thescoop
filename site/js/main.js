@@ -1,3 +1,11 @@
+// global variables for currently displayed dates
+today = new Date();
+startDate = null;
+displayedStartDate = new Date();
+displayedEndDate = new Date();
+// global variable for displayed dates (changes when browser width changes)
+displayedDates = 2; 
+
 $(document).ready(function(){
     // Resize select and input
     resizeSection();
@@ -40,14 +48,38 @@ function getNews(){
 	try {
         keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
-        console.log(amount, scope, section, keyword);
-
-        // make asynchronous request
-        getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
 		alert(e); // To-Do: Error handling
 		return;
 	}
+
+    startDate = new Date();
+    switch (scope) {
+        case 'days': startDate.setDate(today.getDate()-amount); break;
+        case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
+        case 'months': startDate.setMonth(today.getMonth()-amount); break;
+    }
+    // make asynchronous request
+    getGuardianNews(startDate, today, section, keyword);
+
+    // get news for first days
+    displayedStartDate = new Date(startDate);
+    displayedEndDate.setDate(startDate.getDate() + displayedDates);
+    getGuardianDailyNews(displayedStartDate, displayedEndDate, section, keyword);
+}
+
+function plusDisplayedDates(amount){
+    if (displayedEndDate.getDate() + displayedDates > today.getDate()){
+        displayedEndDate = today;
+        displayedStartDate = displayedEndDate - displayedDates;
+    }
+}
+
+function minusDisplayedDays(amount) {
+    if (displayedStartDate.getDate() + displayedDates > today.getDate()){
+        displayedEndDate = today;
+        displayedStartDate = displayedEndDate - displayedDates;
+    }
 }
 
 function handleGuardianNews(news){
