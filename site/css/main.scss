@@ -2,23 +2,7 @@
 
 $text: #333;
 $blue: #3498db;
-$dark-blue: #2980b9;
-
-$font-sans: adelle-sans, sans-serif;
-$font-serif: adelle-sans, serif;
-
-
-@mixin reset-form {
-	border: none;
-	border-bottom: 1px dashed $blue;
-	color: $blue;
-	display: inline-block;
-	font: inherit;
-	outline: none;
-	vertical-align: baseline;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-}
+$font: "Helvetica Neue", Arial, sans-serif;
 
 
 .chromeframe {
@@ -28,9 +12,9 @@ $font-serif: adelle-sans, serif;
 	padding: 0.2em 0;
 }
 
-#section-span, #date-span, #number-span {
+.form-fix {
 	display: none;
-	font: 600 36px "jaf-facitweb", sans-serif;
+	font: 700 36px $font;
 }
 
 
@@ -46,33 +30,53 @@ body {
 }
 
 header {
-	font: 600 36px "jaf-facitweb", sans-serif;
+	font: 700 36px $font;
+	line-height: 1.2em;
 
-	select, input { @include reset-form; }
-	select:hover { cursor: pointer; }
-	input:hover { cursor: text; }
+	select, input {
+		border: none;
+		border-bottom: 1px dashed $blue;
+		color: $blue;
+		display: inline-block;
+		font: inherit;
+		outline: none;
+		vertical-align: baseline;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+	}
+
+	select { cursor: pointer; }
+	input { cursor: text; }
 }
 
-.news ol {
-	font: 400 28px "jaf-facitweb", sans-serif;
-	
-	.headline {
-		font-weight: 400;
+.news {
+	ol {
+		font: 400 20px $font;
+		margin-top: 1em;
 
-		&:hover {
-			color: $blue;
-			cursor: pointer;
-			text-decoration: underline;
+		li {
+			margin-bottom: 0.5em;
 		}
 	}
 
+	.headline {
+		font: 400 28px $font;
+		line-height: 1.3em;
+	}
+
 	article {
-		p + a {
-			font-size: .7em;
-			width: 85%;
-			-webkit-column-count: 2;
-			line-height: 1.3;
-		}
+		line-height: 1.5em;
+		margin: 0.5em 0 1em 0;
+	}
+
+	p {
+		font: 400 20px $font;
+		line-height: 1.4em;
+		margin-bottom: 0.25em;
+	}
+
+	a {
+		color: $blue;
 	}
 }
 
