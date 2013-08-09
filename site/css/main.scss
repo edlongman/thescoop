@@ -2,7 +2,7 @@
 
 $text: #333;
 $blue: #3498db;
-$font: "Helvetica Neue", Arial, sans-serif;
+$font: "pragmatica-web", sans-serif;
 
 
 .chromeframe {
@@ -39,7 +39,7 @@ header {
 	select, input {
 		background-color: white;
 		border: none;
-		border-bottom: 1px dashed $blue;
+		// border-bottom: 1px dashed $blue;
 		color: $blue;
 		display: inline-block;
 		font: inherit;
@@ -85,7 +85,7 @@ header {
 		padding: 0.2em 0;
 
 		&:hover {
-			color: $blue;
+			// color: $blue;
 		}
 	}
 
