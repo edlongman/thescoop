@@ -111,6 +111,29 @@ header {
 	}
 }
 
+#bugs {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 8px 5px 5px 8px;
+	border-bottom: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+	margin-top: -3px;
+	margin-left: -3px;
+	border-radius: 3px;
+
+	a, a:visited, a:link {
+		color: black;
+		text-decoration: none;
+		font: 600 14px $font;
+	}
+
+	a:active, a:hover {
+		text-decoration: underline;
+		color: $blue;
+	}
+}
+
 @media screen and (max-width: 720px) {
 	body {
 		font-size: 14px;
