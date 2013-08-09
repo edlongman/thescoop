@@ -21,6 +21,22 @@ $(document).ready(function(){
     $('#number').bind('keyup input paste', function(){
         resizeNumber();
         getNews();
+
+        var first_option = $('#date option:first-child').text();
+        var last_letter = first_option.substr(first_option.length - 1);
+
+        if (last_letter == 's' && $(this).val() == 1) {
+            $('#date option').each(function() {
+                var removed_s = $(this).text().slice(0, -1);
+                $(this).text($(this).text().slice(0, -1));
+            })
+        }
+        else if (last_letter != 's' && $(this).val() != 1) {
+            $('#date option').each(function() {
+                old_text = $(this).text();
+                $(this).text(old_text + 's');
+            })
+        }
     });
     $('#date').change(function(){
         resizeDate();
