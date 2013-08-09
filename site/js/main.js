@@ -1,10 +1,5 @@
-/*****************************************************************************/
-/*                          Main JS for whileaway                            */
-/*****************************************************************************/
-
-$(document).ready(function(){
-    // Form UI fixes
-
+$(document).ready(function() {
+    // Fix width of select/input
     $('#section').change(function() {
     	option_val = $('#section > option:selected').text();
     	$('#section-span').html(option_val);
