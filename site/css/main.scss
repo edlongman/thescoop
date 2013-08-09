@@ -52,6 +52,7 @@ header {
 .news {
 	ol {
 		font: 400 20px $font;
+		list-style: none;
 		margin-top: 1em;
 
 		li {
@@ -60,8 +61,13 @@ header {
 	}
 
 	.headline {
+		cursor: pointer;
 		font: 400 28px $font;
 		line-height: 1.3em;
+
+		&:hover {
+			color: $blue;
+		}
 	}
 
 	article {
