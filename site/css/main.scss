@@ -37,6 +37,7 @@ header {
 	}
 
 	select, input {
+		background-color: white;
 		border: none;
 		// border-bottom: 1px dashed $blue;
 		color: $blue;
@@ -63,6 +64,19 @@ header {
 		list-style: none;
 	}
 
+	.loading {
+		$size: 1em;
+
+		width: $size;
+		// position: absolute;
+
+		// top: 50%;
+		// margin-top: -($size / 2);
+
+		// left: 50%;
+		// margin-left: -($size / 2);
+	}
+
 	.headline {
 		cursor: pointer;
 		display: block;
@@ -78,12 +92,13 @@ header {
 	article {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
-	}
 
-	p {
-		color: #777;
-		line-height: 1.4em;
-		margin-bottom: 0.25em;
+		p {
+			color: #777;
+			line-height: 1.4em;
+			margin-bottom: 0.25em;
+			text-indent: 1em;
+		}
 	}
 
 	a {

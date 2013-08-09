@@ -52,12 +52,12 @@ function getSummary (object) {
             if (data == 'null') {
                 data = 'No summary found.'
             }
-            $(object).next('article').find('p').slideUp(300, function(){
-                $(object).next('article').find('p').html(data);
+            $(object).next('article').find('.summary--content').slideUp(300, function(){
+                $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
             }).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
-            $(object).next('article').find('p').html('No summary found.')
+            $(object).next('article').find('.summary--content').html('No summary found.');
             console.log('ERROR: ' + xhr);
         }
     });
