@@ -57,11 +57,7 @@ function getSummary (object) {
             }).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
-<<<<<<< HEAD
-            $(object).next('article').find('.summary--content').html('<strong>No summary found.</strong>')
-=======
-            $(object).next('article').find('p').html('No summary found.')
->>>>>>> mobile
+            $(object).next('article').find('.summary--content').html('No summary found.');
             console.log('ERROR: ' + xhr);
         }
     });
