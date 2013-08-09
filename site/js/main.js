@@ -1,10 +1,5 @@
-/*****************************************************************************/
-/*                          Main JS for whileaway                            */
-/*****************************************************************************/
-
 $(document).ready(function(){
-    // Form UI fixes
-
+    // Resize select and input
     $('#section').change(function() {
     	option_val = $('#section > option:selected').text();
     	$('#section-span').html(option_val);
@@ -46,11 +41,6 @@ $(document).ready(function(){
     	$('#date').change();
     	inputWidth();
     }
-
-    // prevent page reload on enter
-    $('#form').submit(function(event) {
-        event.preventDefault();
-    });
 
     // Fetching and displaying stories
     getNews();
