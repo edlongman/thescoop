@@ -17,12 +17,11 @@ while i < len(items):
 	points_result=sql.store_result();
 	item['title']=urllib.quote(item['title'].encode('utf-8'))
 	item['summary']=urllib.quote(item['summary'].encode('utf-8'))
+	if len(item['media_thumbnail'])==1:
+		item['media_thumbnail'].append(item['media_thumbnail'][0])
 	if points_result.num_rows()==0:#if the url has not been logged today
 		query='INSERT INTO '+ table_name +' (`url`,`title`,`description`,`points`,`date_added`,`small_thumb`,`large_thumb`) VALUES("' + item['id'] + '","' + item['title'] + '","' + item['summary'] + '",' + str(algo(1,i)) + ',CURDATE(),"'
-		if len(item['media_thumbnail'])==1:
-			query+=''+'","'+item['media_thumbnail'][0]['url']+'")'
-		else:
-			query+=item['media_thumbnail'][0]['url']+'","'+item['media_thumbnail'][1]['url']+'")'
+		query+=item['media_thumbnail'][0]['url']+'","'+item['media_thumbnail'][1]['url']+'")'
 		sql.query(query)#then add it to the db, setting points to 1 * (1.02/list_postition)
 		insert_result=sql.store_result()
 	else:
