@@ -5,7 +5,7 @@
 	function article_parse( $article_url ) {
 		$html = file_get_html($article_url);
 		// Find all text inside the first div with id=article-body-blocks
-		$text = 'null';
+		$text = '';
 		$error = 0;
 		try { //parse articles
 			$text .= $html->find('div[id=article-body-blocks]',0)->innertext;
