@@ -52,12 +52,9 @@ function getSummary (object) {
             if (data == 'null') {
                 data = '<strong>No summary found.</strong>'
             }
-
-            $('.overlay').fadeIn(200);
-
-            $(object).next('article').find('div').fadeOut(300, function(){
-                $(object).next('article').find('div').html(data);
-            }).fadeIn(300);
+            $(object).next('article').find('p').slideUp(300, function(){
+                $(object).next('article').find('p').html(data);
+            }).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
             $(object).next('article').find('p').html('<strong>No summary found.</strong>')
