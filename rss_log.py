@@ -5,7 +5,8 @@ sql = MySQLdb.connect(host="localhost",
                             db=config.db)
 rss_urls = (('news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') , ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml'))
 table_name = "bbcstories"
-feed = feedparser.parse(rss_urls)
+for rss_url_data in rss_urls:
+	feed = feedparser.parse(rss_url_data[1])
 items = feed [ 'items' ]
 i = 0
 def algo(pts,pos):
