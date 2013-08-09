@@ -93,7 +93,7 @@ function handleGuardianNews(news){
         str += '</article></li>';
 	});
 	str += '</ol>';
-	$('#headlines').html(str);
+	$('.news').html(str);
 
     initializeLinkListeners();
 }

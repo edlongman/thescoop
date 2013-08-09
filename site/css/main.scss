@@ -1,7 +1,5 @@
-@import "normalize";
+// @import "normalize";
 
-
-/* Variables */
 
 $background: white;
 $text: #333;
@@ -11,8 +9,6 @@ $dark-blue: #2980b9;
 $font-sans: "Helvetica Neue", Arial, sans-serif;
 $font-serif: Georgia, serif;
 
-
-/* Mixins */
 
 @mixin reset-form {
 	border: none;
@@ -26,15 +22,11 @@ $font-serif: Georgia, serif;
 }
 
 
-/* Hacks */
-
 #section-span, #date-span, #number-span {
 	display: none;
 	font: 400 2.4em $font-serif;
 }
 
-
-/* Main */
 
 body {
 	background-color: $background;
@@ -42,13 +34,13 @@ body {
 	-webkit-transition: color 0.2s;
 }
 
-#container {
+.container {
 	margin: 0 auto;
 	max-width: 67.25em;
 	padding: 4em 2em;
 }
 
-#form {
+header {
 	font: 400 2.25em $font-serif;
 	line-height: 1.4em;
 
@@ -67,7 +59,7 @@ body {
 	}
 }
 
-#headlines ol {
+.news ol {
 	font: 400 1.5em $font-sans;
 	line-height: 1.4em;
 	margin-top: 1.333em;
