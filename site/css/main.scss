@@ -14,7 +14,7 @@ $font: "Helvetica Neue", Arial, sans-serif;
 
 .form-fix {
 	display: none;
-	font: 700 2.4em $font;
+	font: 700 2.25em $font;
 }
 
 
@@ -56,10 +56,11 @@ header {
 }
 
 .news {
+	margin-top: 1em;
+	
 	ol {
 		font: 400 1.25em $font;
 		list-style: none;
-		margin-top: 1em;
 	}
 
 	.headline {
