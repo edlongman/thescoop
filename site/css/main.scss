@@ -4,7 +4,7 @@ $text: #333;
 $blue: #3498db;
 $dark-blue: #2980b9;
 
-$font-sans: adelle-sans, Arial, sans-serif;
+$font-sans: adelle-sans, sans-serif;
 $font-serif: adelle-sans, serif;
 
 
@@ -30,7 +30,7 @@ $font-serif: adelle-sans, serif;
 
 #section-span, #date-span, #number-span {
 	display: none;
-	// font: 400 2.4em $font-serif;
+	font: 600 36px "jaf-facitweb", sans-serif;
 }
 
 
@@ -46,7 +46,7 @@ body {
 }
 
 header {
-	font: 700 36px "pragmatica-web", sans-serif;
+	font: 600 36px "jaf-facitweb", sans-serif;
 
 	select, input { @include reset-form; }
 	select:hover { cursor: pointer; }
@@ -54,8 +54,10 @@ header {
 }
 
 .news ol {
+	font: 400 28px "jaf-facitweb", sans-serif;
+	
 	.headline {
-		font: 400 24px "pragmatica-web", sans-serif;
+		font-weight: 400;
 
 		&:hover {
 			color: $blue;
@@ -88,6 +90,7 @@ header {
 article {
 	background: #fff;
 	bottom: 0;
+	font-family: "jaf-facitweb", sans-serif;
 	font-size: 18px;
 	line-height: 1.333em;
 	padding: 4em 6em;

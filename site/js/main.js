@@ -27,19 +27,19 @@ $(document).ready(function(){
     	inputWidth();
     }
 
-    function inputWidth() {
+    function numberWidth() {
     	$('#number-span').html($('#number').val());
     	$('#number').css('width', $('#number-span').width());
     }
 
-    inputWidth();
+    numberWidth();
 
-    $('#number').bind('keyup input paste', inputWidth);
+    $('#number').bind('keyup input paste', numberWidth);
 
     window.onresize = function() {
     	$('#keyword').change();
     	$('#date').change();
-    	inputWidth();
+    	numberWidth();
     }
 
     // Fetching and displaying stories
