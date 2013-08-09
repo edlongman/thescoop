@@ -1,21 +1,21 @@
 body {
-	background-color:#FFF; /* Colors are placeholders */
 	font-family:Georgia, "Times New Roman", Times, serif;
 }
 .container {
-	margin: 0 auto;
-	width: 900px;
+	background-color:#ecf0f1;
 }
 
 .header {
 	height: 50px;
-	background-color:ecf0f1; 
+	background-color:#ecf0f1; 
 	color:#000; /* Colors are placeholders */
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:20px;
 	font-weight:bold;
 	line-height: 50px;
 	padding: 0 20px;
+	border-bottom-style:solid;
+	border-width: 2px;
 }
 .header:after {
 	clear: both;
@@ -38,6 +38,7 @@ body {
 	color: #000; /* Colors are placeholders */
 	padding: 10px;
 	height: 600px;
+	background-color:#FFF;
 }
 .footer {
 	font-size:15px;
