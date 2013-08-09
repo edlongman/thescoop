@@ -15,14 +15,14 @@
 			$error++;
 		}
 		try { //parse videos
-                        $text .= $html->find('p[itemprop=description]',0)->innertext;
+                        $text = $html->find('p[itemprop=description]',0)->innertext;
                	        //$error = 0;
                	}
                	catch(Exception $e) {
                	        $error++;
                	}
                 try {
-                	$text .= $html->find('div[class=flexible-content-body]',0)->innertext;
+                	$text = $html->find('div[class=flexible-content-body]',0)->innertext;
                         //$error = 0;
                 }
                 catch(Exception $e) {
@@ -45,6 +45,7 @@
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
+			$sum = str_replace('.','. ',$sum);
 			$sum = htmlspecialchars($sum);
 		}
 		else {
