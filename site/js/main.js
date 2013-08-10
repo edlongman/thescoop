@@ -1,3 +1,5 @@
+// global variable containing the current AJAX request, needed if it must be aborted
+ajax = $.ajax();
 // global variables for currently displayed dates
 today = new Date();
 startDate = null;
@@ -215,9 +217,6 @@ function validate(amount, scope, section, keyword) {
 }
 
 /**********************************AJAX***************************************/
-// global variable containing the current AJAX request, needed if it must be aborted
-ajax = null;
-
 function getGuardianNews(amount, scope, section, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
@@ -282,6 +281,5 @@ function getSummary (object) {
             console.log('ERROR in getSummary');
             console.log(xhr);
         }
-    });
-    
+    });   
 }
