@@ -105,7 +105,6 @@ header {
 	}
 
 	a {
-		border-bottom: 1px solid #777;
 		color: #777;
 
 		&:hover {
@@ -114,16 +113,8 @@ header {
 	}
 
 	.read-more {
-		border: 0;
-		color: #777;
 		display: block;
 		margin-top: 0.75em;
-		text-decoration: none;
-
-		&:hover {
-			border-color: $blue;
-			color: $blue;
-		}
 
 		&:focus {
 			color: #2980b9;
