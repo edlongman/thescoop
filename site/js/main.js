@@ -20,7 +20,9 @@ $(document).ready(function(){
 	});
 	$('#number').bind('keyup input paste', function(){
 		resizeNumber();
-		getNews();
+        if ($(this).val() != ''){
+            getNews();
+        }
 
 		var first_option = $('#date option:first-child').text();
 		var last_letter = first_option.substr(first_option.length - 1);
