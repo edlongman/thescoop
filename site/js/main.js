@@ -115,6 +115,18 @@ function initializeLinkListeners() {
 	})
 }
 
+function initializeTryAgain () {
+    $('.try-again').click(function(event) {
+        event.preventDefault();
+
+        if ($(this).hasClass('try-again--news')) {
+            getNews();
+        } else if ($(this).hasClass('try-again--summary')) {
+            getSummary($(this).parent().parent().parent().prev('h2'));
+        }
+    });
+}
+
 function resizeSection() {
 	option_val = $('#section > option:selected').text();
 	$('#section-span').html(option_val);
