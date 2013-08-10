@@ -62,7 +62,8 @@ function getSummary (object) {
 		error: function(xhr, textStatus, errorThrown) {
 			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again try-again--summary">Try again</a></p>');
             initializeTryAgain();
-			console.log('ERROR: ' + xhr);
+			console.log('ERROR in getSummary');
+            console.log(xhr);
 		}
 	});
 	
