@@ -28,7 +28,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 		success: function(data, textStatus, xhr) {
 			// replace JSON date format with JavaScript Date Objects
 			$.each(data, function(index, story) {
-				 story[2] = new Date(story[2]);
+				story[2] = new Date(story[2]);
 			});
 
 			// call handleGuardianNews function of main.js
@@ -55,6 +55,7 @@ function getSummary (object) {
 			}
 			$(object).next('article').find('.summary--content').slideUp(200, function(){
 				$(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
+                $(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
 				object.addClass('loaded');
 			}).slideDown(300);
 		},

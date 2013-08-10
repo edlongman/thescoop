@@ -130,18 +130,18 @@ function initializeTryAgain () {
 function resizeSection() {
 	option_val = $('#section > option:selected').text();
 	$('#section-span').html(option_val);
-	$('#section').width($('#section-span').width());
+	$('#section').width($('#section-span').width() + 3);
 }
 
 function resizeNumber() {
 	$('#number-span').html($('#number').val());
-	$('#number').css('width', $('#number-span').width());
+	$('#number').css('width', $('#number-span').width() + 3);
 }
 
 function resizeDate() {
 	option_val = $('#date > option:selected').val();
 	$('#date-span').html(option_val);
-	$('#date').width($('#date-span').width());
+	$('#date').width($('#date-span').width() + 3);
 }
 
 function validate(amount, scope, section, keyword) {

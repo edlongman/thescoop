@@ -19,16 +19,19 @@ $font: "pragmatica-web", sans-serif;
 
 
 body {
-	background-color: white;
+	background-color: #eee;
 	color: $text;
 	font-size: 16px;
 }
 
 .container {
-	margin: 0 auto;
-	max-width: 896px;
-	min-height: 480px;
-	padding: 4em 2em;
+	background-color: white;
+
+	.inner {
+		margin: 0 auto;
+		max-width: 896px;
+		padding: 4em 2em;
+	}
 }
 
 header {
