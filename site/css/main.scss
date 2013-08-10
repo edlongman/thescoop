@@ -25,15 +25,14 @@ body {
 }
 
 .container {
-	margin: 0 auto;
-	max-width: 1076px;
+	max-width: 768px;
 	padding: 4em 2em;
 }
 
 header {
 	h1 {
 		font: 700 2.25em $font;
-		line-height: 1.2em;
+		line-height: 1em;
 	}
 
 	select, input {
@@ -71,6 +70,10 @@ header {
 	ol {
 		font: 400 1.25em $font;
 		list-style: none;
+
+		li {
+			margin-bottom: 0.5em;
+		}
 	}
 
 	.headline {
@@ -78,7 +81,7 @@ header {
 		cursor: pointer;
 		display: block;
 		font: 400 1.4em $font;
-		line-height: 1.3em;
+		line-height: 1.2em;
 		padding: 0.2em 0;
 
 		&:hover {
