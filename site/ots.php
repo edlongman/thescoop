@@ -71,5 +71,6 @@
 		}
 		return($sum);
 	}
-	echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
+	//echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
+	echo article_parse($_REQUEST['to_sum']);
 ?>
