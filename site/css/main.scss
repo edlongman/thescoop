@@ -2,7 +2,7 @@
 
 $text: #333;
 $blue: #3498db;
-$font: "pragmatica-web", sans-serif;
+$font: "pragmatica-web", "Helvetica Neue", Arial, sans-serif;
 
 
 .chromeframe {
@@ -43,7 +43,7 @@ header {
 	select, input {
 		background-color: white;
 		border: none;
-		border-bottom: 1px dashed white;
+		border-bottom: 1px dashed $blue;
 		color: $blue;
 		display: inline-block;
 		font: inherit;
@@ -54,7 +54,7 @@ header {
 
 		&:focus {
 			// outline: 1px solid red;
-			border-bottom: 1px dashed $blue;
+			border-bottom: 1px dashed #333;
 		}
 	}
 
@@ -70,7 +70,7 @@ header {
 
 .news {
 	color: #777;
-	margin-top: 1em;
+	margin-top: 1.5em;
 	
 	ol {
 		font: 400 1.25em $font;
@@ -90,7 +90,7 @@ header {
 		padding: 0.2em 0;
 
 		&:hover {
-			// color: $blue;
+			color: $blue;
 		}
 	}
 
@@ -114,11 +114,19 @@ header {
 		&:hover {
 			color: $blue;
 		}
+
+		&:visited {
+			color: #777;
+		}
 	}
 
 	.read-more {
 		display: block;
 		margin-top: 0.75em;
+
+		&:hover {
+			color: $blue;
+		}
 
 		&:focus {
 			color: #2980b9;
