@@ -35,7 +35,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 			handleGuardianNews(data);
 		},
 		error: function(xhr, textStatus, errorThrown) {
-            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip;</p>');
+            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again--news">Try again</a></p>');
 			console.log('ERROR: ' + errorThrown);
 		}
 	});
@@ -58,7 +58,7 @@ function getSummary (object) {
             object.addClass('loaded');
 		},
 		error: function(xhr, textStatus, errorThrown) {
-			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary.</p>');
+			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again--summary">Try again</a></p>');
 			console.log('ERROR: ' + xhr);
 		}
 	});
