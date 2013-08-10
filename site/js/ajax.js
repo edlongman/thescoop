@@ -55,9 +55,10 @@ function getSummary (object) {
 			$(object).next('article').find('.summary--content').slideUp(300, function(){
 				$(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
 			}).slideDown(300);
+            object.addClass('loaded');
 		},
 		error: function(xhr, textStatus, errorThrown) {
-			$(object).next('article').find('.summary--content').html('No summary found.');
+			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary.</p>');
 			console.log('ERROR: ' + xhr);
 		}
 	});
