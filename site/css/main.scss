@@ -26,7 +26,8 @@ body {
 
 .container {
 	margin: 0 auto;
-	max-width: 768px;
+	max-width: 896px;
+	min-height: 480px;
 	padding: 4em 2em;
 }
 
@@ -104,11 +105,23 @@ header {
 	}
 
 	a {
+		border-bottom: 1px solid #777;
+		color: #777;
+
+		&:hover {
+			color: $blue;
+		}
+	}
+
+	.read-more {
+		border: 0;
 		color: #777;
 		display: block;
 		margin-top: 0.75em;
+		text-decoration: none;
 
 		&:hover {
+			border-color: $blue;
 			color: $blue;
 		}
 
@@ -121,11 +134,11 @@ header {
 
 footer {
 	background-color: #eee;
-	padding: 1em 2em;
 
 	.inner {
 		margin: 0 auto;
-		max-width: 768px;
+		max-width: 896px;
+		padding: 1em 2em;
 	}
 
 	a {

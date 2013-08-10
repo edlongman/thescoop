@@ -52,10 +52,10 @@ function getSummary (object) {
 			if (data == 'null') {
 				data = 'No summary found.'
 			}
-			$(object).next('article').find('.summary--content').slideUp(300, function(){
+			$(object).next('article').find('.summary--content').slideUp(200, function(){
 				$(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
+				object.addClass('loaded');
 			}).slideDown(300);
-            object.addClass('loaded');
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again--summary">Try again</a></p>');
