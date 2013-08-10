@@ -47,7 +47,7 @@ $(document).ready(function(){
 });
 
 function getNews(){
-	$('.news').html('<img src="img/loading.gif" alt="Loading…" class="loading"/>');
+	$('.news').html('<img src="img/loading.gif">');
 
 	amount = $('#number').val();
 	scope = $('#date option:selected').val();
@@ -90,40 +90,7 @@ function handleGuardianNews(news){
 	initializeLinkListeners();
 }
 
-function initializeLinkListeners () {
-	// var articles = $('.news > ol > li > article');
-	// articles.hide();
-
-	// // display summary on headline click
-	// $('.headline').click(function() {
-	// 	if ($(this).hasClass('active')){
-	// 		$('.inactive').removeClass('inactive');
-	// 		$('.active').removeClass('active');
-	// 		$(this).next('article').slideUp(300);
-	// 	}
-	// 	else if ($(this).hasClass('inactive')){
-	// 		$('.active').next('article').slideUp(300);
-	// 		$('.inactive').removeClass('inactive');
-	// 		$('.active').removeClass('active');
-	// 		$(this).addClass('active');
-	// 		$('.headline').not($(this)).addClass('inactive');
-	// 		$(this).next('article').slideDown(300);
-	// 	}
-	// 	else {
-	// 		$('.headline').not(this).addClass('inactive');
-	// 		$(this).addClass('active');
-
-	// 		$(this).next('article').slideDown(300);
-	// 	}
-		
-	// 	if (! $(this).next('article').hasClass('summary--loaded')) {
-	// 		getSummary($(this));
-	// 		$(this).next('article').addClass('summary--loaded');
-	// 	}
-	// });
-
-	// add loaded class + use getSummary($(this))
-
+function initializeLinkListeners() {
 	var articles = $('.headline').next('article');
 	articles.hide();
 
@@ -132,33 +99,34 @@ function initializeLinkListeners () {
 		var article = headline.next('article');
 
 		article.slideToggle({
-			duration: 600,
-			easing: 'easeInOutBack'
+			duration: 400,
+			easing: 'easeInOutCirc'
 		});
+
 		articles.not(article).slideUp({
-			duration: 600,
-			easing: 'easeInOutBack'
+			duration: 400,
+			easing: 'easeInOutCirc'
 		});
 
 		if (! headline.hasClass('loaded')) {
 			getSummary(headline);
 			headline.addClass('loaded');
 		}
-	});
+	})
 }
 
-function resizeSection () {
+function resizeSection() {
 	option_val = $('#section > option:selected').text();
 	$('#section-span').html(option_val);
 	$('#section').width($('#section-span').width());
 }
 
-function resizeNumber () {
+function resizeNumber() {
 	$('#number-span').html($('#number').val());
 	$('#number').css('width', $('#number-span').width());
 }
 
-function resizeDate () {
+function resizeDate() {
 	option_val = $('#date > option:selected').val();
 	$('#date-span').html(option_val);
 	$('#date').width($('#date-span').width());
