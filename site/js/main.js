@@ -56,7 +56,7 @@ $(document).ready(function(){
 });
 
 function getNews(){
-	$('.news').html('<img src="img/loading.gif">');
+	$('#news').html('<img src="img/loading.gif" alt="Loading" class="loading">');
 
 	amount = $('#number').val();
 	scope = $('#date option:selected').val();
@@ -65,7 +65,7 @@ function getNews(){
 	keyword = '';
 
 	try {
-		keyword = $.trim(keyword);
+		//keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
 
 		// make asynchronous request
