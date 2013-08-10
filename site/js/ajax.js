@@ -75,6 +75,7 @@ function ajaxBBC(start_time, end_time, section, keyword){
             handleBBCNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
+            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip;</p>');
             console.log('ERROR: ' + errorThrown);
         }
     });
