@@ -81,7 +81,7 @@ header {
 		width: 100%;
 
 		li {
-			background-color: #f7f7f7;
+			background: #eee;
 
 			.li-margin {
 				margin: 0 auto;
@@ -89,7 +89,7 @@ header {
 			}
 		}
 		li:nth-child(even) {
-			background: #eee;
+			background-color: #f7f7f7;
 		}
 	}
 
