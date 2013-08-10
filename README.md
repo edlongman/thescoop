@@ -1,8 +1,11 @@
 The Scoop
 =========
-A news catch-up website.
-If you go on holiday for two weeks, and miss all the news from your country, no worries.
-With The Scoop, you can easily get all the latest headlines, with a short paragraph and a link to the full story
+The fastest way to catch up on recent news <http://thescoop.io>
+With The Scoop, you can easily get all the top headlines for a time with a short paragraph and a link to the full story. 
+This is a hack from the YRS 2013 competition <http://hacks.youngrewiredstate.org/events/YRS2013/the-scoop>
+Using the guardian open platform <http://www.theguardian.com/open-platform>
+and
+BBC RSS news feeds <http://www.bbc.co.uk/news/10628494>
 
 Pre-requisites
 ---------------
