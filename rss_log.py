@@ -5,18 +5,17 @@ sql = MySQLdb.connect(host="localhost",
                             db=config.db)
 rss_urls = (('uk-news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') , ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml'))
 table_name = "bbcstories"
-for rss_url_data in rss_urls:
-	feed = feedparser.parse(rss_url_data[1])
-items = feed [ 'items' ]
-i = 0
 def algo(pts,pos):
 	return pts * (1+0.02/(pos+1))
 for rss_url_data in rss_urls:
+	i = 0
+	feed = feedparser.parse(rss_url_data[1])
+	items = feed [ 'items' ]
+	section_name = rss_url_data[0]
+	rss_url = rss_url_data[1]
 	while i < len(items):
-		section_name = rss_url_data[0]
-		rss_url = rss_url_data[1]
 		item=items[i];
-		conditions=' WHERE url="' + item['id'] + '" AND  date_added=CURDATE()'
+		conditions=' WHERE url="' + item['id'] + '" AND  date_added=CURDATE() AND section="'+ section_name +'"'
 		sql.query('SELECT points FROM '+ table_name + conditions)
 		points_result=sql.store_result();
 		item['title']=urllib.quote(item['title'].encode('utf-8'))
