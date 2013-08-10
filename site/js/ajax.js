@@ -54,9 +54,8 @@ function getSummary (object) {
 			}
 			$(object).next('article').find('.summary--content').slideUp(200, function(){
 				$(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
-      	      object.addClass('loaded');
+				object.addClass('loaded');
 			}).slideDown(300);
->>>>>>> Removing unused code. Changing duration of toggle on load
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary.</p>');
