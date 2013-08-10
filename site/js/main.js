@@ -60,8 +60,11 @@ function getNews(){
 		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        //getGuardianNews(amount, scope, section, keyword);
-        getBBCNews(amount, scope, section, keyword);
+        if (window.location.href.split('/').pop() == 'bbc.html'){
+            getBBCNews(amount, scope, section, keyword);
+        } else {
+            getGuardianNews(amount, scope, section, keyword);
+        }
 	} catch (e) {
         ajax.abort(); // using global variable containing current ajax request
 		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
