@@ -7,18 +7,18 @@ With The Scoop, you can easily get all the latest headlines, with a short paragr
 Pre-requisites
 ---------------
 - OTS (Open Text Summarizer) command line tool: 
--   http://libots.sourceforge.net/
--   ots.php must be able to call this 
--   This requires libxml2 and glib2
+- - http://libots.sourceforge.net/
+- - ots.php must be able to call this 
+- - This requires libxml2 and glib2
 - Apache2
 - PHP 5.3.3+
--   This is what we have developed on so it is most likely to work
--   php_curl must be installed for out api's
+- - This is what we have developed on so it is most likely to work
+- - php_curl must be installed for out api's
 - MySQL 5.1
--   Again what it has been developed on so is most likely to work
+- - Again what it has been developed on so is most likely to work
 - crond (cronjobs)
 - Python 2.7.5
--   python-MySQL also required
+- - python-MySQL also required
 
 Setup
 -----
