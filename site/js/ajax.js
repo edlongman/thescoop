@@ -35,7 +35,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 			handleGuardianNews(data);
 		},
 		error: function(xhr, textStatus, errorThrown) {
-            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again--news">Try again</a></p>');
+            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
 			console.log('ERROR: ' + errorThrown);
 		}
 	});
@@ -43,7 +43,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 
 function getSummary (object) {
 	ajax = $.ajax({
-		url: 'ots.php',
+		url: 'ot.php',
 		type: 'GET',
 		dataType: 'html',
 		data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 10},
@@ -58,7 +58,7 @@ function getSummary (object) {
 			}).slideDown(300);
 		},
 		error: function(xhr, textStatus, errorThrown) {
-			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again--summary">Try again</a></p>');
+			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again try-again--summary">Try again</a></p>');
 			console.log('ERROR: ' + xhr);
 		}
 	});
