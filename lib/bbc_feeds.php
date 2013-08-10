@@ -16,6 +16,7 @@ function get_bbc_feeds_with_range($section,$start_date,$end_date){
 		$article_array=$row;
 		unset($article_array["points_sum"]);
 		$article_array["description"]=urldecode($article_array["description"]);
+		$article_array["title"]=urldecode($article_array["title"]);
 		$articles[]=$article_array;
 	}
 	return $articles;
