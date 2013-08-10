@@ -1,6 +1,7 @@
 <?php
 	include_once '../lib/simple_html_dom.php';
 	include_once '../lib/util.php';
+	include_once '../config.php';
 	error_reporting(E_ALL ^ E_NOTICE);
 	function strip_tag($html_dom,$tag) {
 		$elements = $html_dom->find($tag);
@@ -9,11 +10,11 @@
 		}
 	}
 	function article_parse( $article_url ) {
-			$url = 'http://www.readability.com/api/content/v1/parser?token='. readability_api_key .'&url=';
-			$output = get_url_output($url . $article_url);
+			$url = 'http://www.readability.com/api/content/v1/parser?token='. $GLOBALS["readability_api_key"] .'&url=';
+			//$output = get_url_output($url . urlencode($article_url));
+			$output = file_get_html($url . $article_url)->save();
 			$json = json_decode($output);
 			$output = $json->content;
-			echo $output;
 			$html_parse = str_get_html($output);
 			strip_tag($html_parse,'img');
 			strip_tag($html_parse,'script');
@@ -64,6 +65,7 @@
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
+			echo $sum;
 			$sum = str_replace('.','. ',$sum);
 			$sum = htmlspecialchars($sum);
 		}
@@ -72,6 +74,6 @@
 		}
 		return($sum);
 	}
-	//echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
-	echo article_parse($_REQUEST['to_sum']);
+	echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
+	//echo article_parse($_REQUEST['to_sum']);
 ?>
