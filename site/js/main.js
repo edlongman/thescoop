@@ -239,7 +239,6 @@ function validate(amount, scope, section, keyword) {
 }
 
 /**********************************AJAX***************************************/
-
 function getGuardianNews(amount, scope, section, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
