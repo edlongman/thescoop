@@ -138,7 +138,6 @@ function resizeNumber() {
 	$('#number').css('width', $('#number-span').width() + 3);
 
 	var font_size = $('body').css('font-size');
-	console.log(font_size);
 
 	if (font_size == '16px') {
 		$('#number').css('height', '42px');
