@@ -165,17 +165,16 @@ function handleGuardianDailyNews(news){
             str += '</li>';
         });
         str += '</ol>';
-        $('.news').slideUp(300, function(){
-            $('.news').html(str);
-            $('.news article').hide();
-            $('.news').slideDown(300, function(){
-                initializeLinkListeners();
-            });
-        });
-    }; 
+        str += '</div>'
+        $('#breakdown').append(str);
+
+        initializeLinkListeners();
+    };
 }
 
 function initializeLinkListeners() {
+    $('.headline').unbind();
+
 	var articles = $('.headline').next('article');
 	articles.hide();
 
