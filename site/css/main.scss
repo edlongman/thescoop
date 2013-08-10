@@ -37,7 +37,7 @@ body {
 header {
 	h1 {
 		font: 700 2.25em $font;
-		line-height: 1em;
+		line-height: 1.2em;
 	}
 
 	select, input {
@@ -47,6 +47,7 @@ header {
 		color: $blue;
 		display: inline-block;
 		font: inherit;
+		line-height: inherit;
 		outline: none;
 		vertical-align: baseline;
 		-moz-appearance: none;

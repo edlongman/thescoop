@@ -94,13 +94,11 @@ function handleGuardianNews(news){
 		str += '</li>';
 	});
 	str += '</ol>';
-	$('.news').slideUp(300, function(){
-		$('.news').html(str);
-		$('.news article').hide();
-		$('.news').slideDown(300, function(){
-			initializeLinkListeners();
-		});
+	$('.news').html(str).hide();
+	$('.news').slideDown(400, function() {
+		initializeLinkListeners();
 	});
+	$('.news article').hide();
 }
 
 
@@ -243,16 +241,9 @@ function getSummary (object) {
 			if (data == 'null') {
 				data = 'No summary found.'
 			}
-			$(object).next('article').find('.summary--content').slideUp(300, function(){
-				$(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
-				$(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
-				object.addClass('loaded');
-			}).slideDown(400);
-			// $(object).next('article').find('.summary--content').slideUp(300, function(){
-			//     $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
-			//     $(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
-			//     object.addClass('loaded');
-			// }).slideDown(400);
+			$(object).next('article').find('.summary--content').html('<p>' + data + '</p>').hide().slideDown(400);
+			$(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
+			object.addClass('loaded');
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			$(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again try-again--summary">Try again</a></p>');
