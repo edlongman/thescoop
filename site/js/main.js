@@ -87,6 +87,33 @@ function handleGuardianNews(news){
     initializeLinkListeners();
 }
 
+function handleBBCNews(news){
+    str = '<ol>';
+    $.each(news, function(index, story) {
+        link = story[0];
+        headline = story[1];
+        summary = story[2];
+        largeThumbnail = story[3];
+        smallThumbnail = story[4];
+
+        str += '<li>';
+        str += '<h2 class="headline">' + headline + '</h2>';
+        str += '<article>';
+        str += '<div class="summary--content">';
+        str += '<img class="thumbnail--small" src="' + smallThumbnail + '" alt="Thumbnail"/>';
+        str += '<p>' + summary + '</p>';
+        str += '</div>';
+        // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+        str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
+        str += '</article>';
+        str += '</li>';
+    });
+    str += '</ol>';
+    $('.news').html(str);
+
+    //initializeLinkListeners();
+}
+
 function initializeLinkListeners () {
     var articles = $('.news > ol > li > article');
     articles.hide();
