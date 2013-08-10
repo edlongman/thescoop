@@ -56,7 +56,7 @@ function getBBCNews(amount, scope, section, keyword){
     }
 
     // make asynchronous ajax request, calls handle
-    ajaxGuardian(start_time, end_time, section, keyword);
+    ajaxBBC(start_time, end_time, section, keyword);
 }
 
 function ajaxBBC(start_time, end_time, section, keyword){

@@ -58,7 +58,8 @@ function getNews(){
 		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        getGuardianNews(amount, scope, section, keyword);
+        //getGuardianNews(amount, scope, section, keyword);
+        getBBCNews(amount, scope, section, keyword);
 	} catch (e) {
 		alert(e); // To-Do: Error handling
 		return;
