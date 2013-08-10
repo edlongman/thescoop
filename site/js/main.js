@@ -85,9 +85,13 @@ function handleGuardianNews(news){
 		str += '</li>';
 	});
 	str += '</ol>';
-	$('.news').html(str);
-
-	initializeLinkListeners();
+	$('.news').slideUp(300, function(){
+        $('.news').html(str);
+        $('.news article').hide();
+        $('.news').slideDown(300, function(){
+            initializeLinkListeners();
+        });
+    });
 }
 
 function initializeLinkListeners() {
