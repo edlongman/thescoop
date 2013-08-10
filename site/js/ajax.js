@@ -32,7 +32,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
                  story[2] = new Date(story[2]);
             });
 
-            // call handleGuardianNews function of whileaway.js
+            // call handleGuardianNews function of main.js
             handleGuardianNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
@@ -50,17 +50,14 @@ function getSummary (object) {
         success: function(data, textStatus, xhr) {
             data = $('<div/>').html(data).text();
             if (data == 'null') {
-                data = '<strong>No summary found.</strong>'
+                data = 'No summary found.'
             }
-
-            $('.overlay').fadeIn(200);
-
-            $(object).next('article').find('div').fadeOut(300, function(){
-                $(object).next('article').find('div').html(data);
-            }).fadeIn(300);
+            $(object).next('article').find('.summary--content').slideUp(300, function(){
+                $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
+            }).slideDown(300);
         },
         error: function(xhr, textStatus, errorThrown) {
-            $(object).next('article').find('p').html('<strong>No summary found.</strong>')
+            $(object).next('article').find('.summary--content').html('No summary found.');
             console.log('ERROR: ' + xhr);
         }
     });

@@ -1,57 +1,52 @@
 $(document).ready(function(){
     // Resize select and input
-    $('#section').change(function() {
-    	option_val = $('#section > option:selected').text();
-    	$('#section-span').html(option_val);
-    	$('#section').width($('#section-span').width());
+    resizeSection();
+    resizeNumber();
+    resizeDate();
+
+    $(window).resize(function() {
+        resizeSection();
+        resizeNumber();
+        resizeDate();
     });
-
-    $('#section').change();
-
-    $('#date').change(function() {
-    	option_val = $('#date > option:selected').val();
-    	$('#date-span').html(option_val);
-    	$('#date').width($('#date-span').width());
-    });
-
-    $('#date').change();
-
-    $('.overlay').click(function() {
-        $('.overlay').fadeOut(200);
-        $('.news-content').fadeOut(200);
-    });
-
-    window.onresize = function() {
-    	$('#section').change();
-    	$('#date').change();
-    	inputWidth();
-    }
-
-    function numberWidth() {
-    	$('#number-span').html($('#number').val());
-    	$('#number').css('width', $('#number-span').width());
-    }
-
-    numberWidth();
-
-    $('#number').bind('keyup input paste', numberWidth);
-
-    window.onresize = function() {
-    	$('#keyword').change();
-    	$('#date').change();
-    	numberWidth();
-    }
 
     // Fetching and displaying stories
     getNews();
 
-    // onchange of input fields, call getNews()
-    $('#number').bind('keyup input paste', function(){getNews();});
-    $('#date').change(function(){getNews();});
-    $('#section').change(function(){getNews();});
+    // onchange of input fields
+    $('#section').change(function(){
+        resizeSection();
+        getNews();
+    });
+    $('#number').bind('keyup input paste', function(){
+        resizeNumber();
+        getNews();
+
+        var first_option = $('#date option:first-child').text();
+        var last_letter = first_option.substr(first_option.length - 1);
+
+        if (last_letter == 's' && $(this).val() == 1) {
+            $('#date option').each(function() {
+                var removed_s = $(this).text().slice(0, -1);
+                $(this).text($(this).text().slice(0, -1));
+            })
+        }
+        else if (last_letter != 's' && $(this).val() != 1) {
+            $('#date option').each(function() {
+                old_text = $(this).text();
+                $(this).text(old_text + 's');
+            })
+        }
+    });
+    $('#date').change(function(){
+        resizeDate();
+        getNews();
+    });
 });
 
 function getNews(){
+    $('.news').html('<img src="img/loading.gif" alt="Loading…" class="loading"/>');
+
 	amount = $('#number').val();
 	scope = $('#date option:selected').val();
 	section = $('#section option:selected').val();
@@ -76,15 +71,13 @@ function handleGuardianNews(news){
 		headline = story[0];
 		link = story[1];
 		date = story[2];
-		// summary = story[3];
 
-		// str += '<li>' + headline + ' (<a href="' + link + '">more…</a>, ' + date.f('d MMM yyyy HH:mm') + ')</li>';
         str += '<li>';
         str += '<h2 class="headline">' + headline + '</h2>';
 		str += '<article>';
-        str += '<div class="news-content"><img src="img/loading.gif"/> Loading summary…</div>';
-        str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-        str += '<a href="' + link + '" class="read-more" target="_blank">Read more</a>';
+        str += '<div class="summary--content"><img src="img/loading.gif"></div>';
+        // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+        str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
         str += '</article>';
         str += '</li>';
 	});
@@ -99,13 +92,11 @@ function initializeLinkListeners () {
     articles.hide();
 
     // display summary on headline click
-    $('.headline').click(function(e){
-        $(this).next('article').show();
-
-        /*if ($(this).hasClass('active')){
+    $('.headline').click(function() {
+        if ($(this).hasClass('active')){
             $('.inactive').removeClass('inactive');
             $('.active').removeClass('active');
-            slideUp(300);
+            $(this).next('article').slideUp(300);
         } else if ($(this).hasClass('inactive')){
             $('.active').next('article').slideUp(300);
             $('.inactive').removeClass('inactive');
@@ -118,7 +109,7 @@ function initializeLinkListeners () {
             $(this).addClass('active');
 
             $(this).next('article').slideDown(300);
-        }*/
+        }
         
         if (! $(this).next('article').hasClass('summary--loaded')){
             getSummary($(this));
@@ -127,18 +118,35 @@ function initializeLinkListeners () {
     });
 }
 
+function resizeSection () {
+    option_val = $('#section > option:selected').text();
+    $('#section-span').html(option_val);
+    $('#section').width($('#section-span').width());
+}
+
+function resizeNumber () {
+    $('#number-span').html($('#number').val());
+    $('#number').css('width', $('#number-span').width());
+}
+
+function resizeDate () {
+    option_val = $('#date > option:selected').val();
+    $('#date-span').html(option_val);
+    $('#date').width($('#date-span').width());
+}
+
 function validate(amount, scope, section, keyword) {
-	scopes = ['days', 'weeks', 'months'];
-	if (scopes.indexOf(scope) < 0) {
-		throw 'Invalid scope';
-	}
+	// scopes = ['days', 'weeks', 'months'];
+	// if (scopes.indexOf(scope) < 0) {
+	// 	throw 'Invalid scope';
+	// }
 
 	if (isNaN(amount)) {
 		throw 'Invalid amount';
 	}
 
-    sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics'];
-    if (sections.indexOf(section) < 0) {
-        throw 'Invalid section';
-    }
+    // sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics', 'technology'];
+    // if (sections.indexOf(section) < 0) {
+    //     throw 'Invalid section';
+    // }
 }
