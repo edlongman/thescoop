@@ -19,11 +19,6 @@ $(document).ready(function(){
 		getNews();
 	});
 	$('#number').bind('keyup input paste', function(){
-		resizeNumber();
-        if ($(this).val() != ''){
-            getNews();
-        }
-
 		var first_option = $('#date option:first-child').text();
 		var last_letter = first_option.substr(first_option.length - 1);
 
@@ -39,6 +34,11 @@ $(document).ready(function(){
 				$(this).text(old_text + 's');
 			})
 		}
+
+		resizeNumber();
+        if ($(this).val() != ''){
+            getNews();
+        }
 	});
 	$('#date').change(function(){
 		resizeDate();
