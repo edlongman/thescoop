@@ -101,7 +101,7 @@ function handleBBCNews(news){
         str += '<h2 class="headline">' + headline + '</h2>';
         str += '<article>';
         str += '<div class="summary--content">';
-        str += '<img class="thumbnail--small" src="' + smallThumbnail + '" alt="Thumbnail"/>';
+        str += '<img class="thumbnail--small" src="' + largeThumbnail + '" alt="Thumbnail"/>';
         str += '<p>' + summary + '</p>';
         str += '</div>';
         // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
