@@ -125,6 +125,8 @@ header {
 
 footer {
 	background-color: #eee;
+	color: #777;
+	font: 400 1.25em $font;
 
 	.inner {
 		margin: 0 auto;
@@ -134,11 +136,14 @@ footer {
 
 	a {
 		color: #777;
-		font: 400 1.25em $font;
 
 		&:hover {
 			color: $blue;
 		}
+	}
+
+	.share-links {
+		display: inline;
 	}
 }
 
