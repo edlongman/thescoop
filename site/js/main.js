@@ -1,3 +1,6 @@
+// global variable containing the current AJAX request, needed if it must be aborted
+ajax = $.ajax();
+
 $(document).ready(function(){
 	// Resize select and input
 	resizeSection();
@@ -179,9 +182,6 @@ function validate(amount, scope, section, keyword) {
 }
 
 /**********************************AJAX***************************************/
-// global variable containing the current AJAX request, needed if it must be aborted
-ajax = null;
-
 function getGuardianNews(amount, scope, section, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
