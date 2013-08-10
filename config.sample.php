@@ -1,5 +1,5 @@
 <?php
-mysql_user="username"
-mysql_passwd="password"
-mysql_db="database name"
+$GLOBALS["mysql_user"]="username";
+$GLOBALS["mysql_passwd"]="password";
+$GLOBALS["mysql_db"]="database";
 ?>
