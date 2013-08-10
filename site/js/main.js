@@ -132,6 +132,35 @@ function handleGuardianNews(news){
     });
 }
 
+function handleGuardianDailyNews(news){
+    for (var i = 0; i < displayedDates; i++) {
+        str = 'Date: ' + new Date(displayedStartDate.getDate() + i).f('d MMM');
+        str += '<ol>';
+        $.each(news[i], function(index, story) {
+            headline = story[0];
+            link = story[1];
+            date = story[2];
+
+            str += '<li>';
+            str += '<h2 class="headline">' + headline + '</h2>';
+            str += '<article>';
+            str += '<div class="summary--content"><img src="img/loading.gif"></div>';
+            // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+            str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
+            str += '</article>';
+            str += '</li>';
+        });
+        str += '</ol>';
+        $('.news').slideUp(300, function(){
+            $('.news').html(str);
+            $('.news article').hide();
+            $('.news').slideDown(300, function(){
+                initializeLinkListeners();
+            });
+        });
+    }; 
+}
+
 function initializeLinkListeners() {
 	var articles = $('.headline').next('article');
 	articles.hide();
