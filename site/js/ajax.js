@@ -1,6 +1,5 @@
-/*****************************************************************************/
-/*                        Get JSON response from PHP                         */
-/*****************************************************************************/
+// global variable containing the current AJAX request, needed if it must be aborted
+ajax = null;
 
 function getGuardianNews(amount, scope, section, keyword){
 	today = new Date(); // dates are entered relatively, today is needed
@@ -21,7 +20,7 @@ function getGuardianNews(amount, scope, section, keyword){
 }
 
 function ajaxGuardian(start_time, end_time, section, keyword){
-	$.ajax({
+	ajax = $.ajax({
 		url: 'guardian_feeds.php',
 		type: 'GET',
 		dataType: 'json',
@@ -36,13 +35,14 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 			handleGuardianNews(data);
 		},
 		error: function(xhr, textStatus, errorThrown) {
+            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip;</p>');
 			console.log('ERROR: ' + errorThrown);
 		}
 	});
 }
 
 function getSummary (object) {
-	$.ajax({
+	ajax = $.ajax({
 		url: 'ots.php',
 		type: 'GET',
 		dataType: 'html',

@@ -60,7 +60,8 @@ function getNews(){
 		// make asynchronous request
 		getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
-		alert(e); // To-Do: Error handling
+        ajax.abort(); // using global variable containing current ajax request
+		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
 		return;
 	}
 }
