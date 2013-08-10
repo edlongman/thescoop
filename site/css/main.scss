@@ -25,6 +25,7 @@ body {
 }
 
 .container {
+	margin: 0 auto;
 	max-width: 768px;
 	padding: 4em 2em;
 }
@@ -93,6 +94,8 @@ header {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
 
+		div { margin-bottom: 0.25em; }
+
 		p {
 			color: #777;
 			line-height: 1.4em;
@@ -102,6 +105,8 @@ header {
 
 	a {
 		color: #777;
+		display: block;
+		margin-top: 0.75em;
 
 		&:hover {
 			color: $blue;
@@ -116,6 +121,7 @@ header {
 
 footer {
 	background-color: #eee;
+	max-width: 768px;
 	padding: 1em 2em;
 
 	.inner {
