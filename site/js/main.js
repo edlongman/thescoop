@@ -171,7 +171,7 @@ function validate(amount, scope, section, keyword) {
 	// }
 
 	if (isNaN(amount)) {
-		throw 'Invalid amount';
+		throw 'Invalid amount of ' + $('#date option:selected').val();
 	}
 
 	// sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics', 'technology'];
