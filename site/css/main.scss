@@ -88,9 +88,6 @@ header {
 				max-width: 1140px;
 			}
 		}
-		li:nth-child(even) {
-			background-color: #f7f7f7;
-		}
 	}
 
 	.headline {
@@ -102,13 +99,13 @@ header {
 		padding: 0.6em 1.143em;
 
 		&:hover {
-			color: #777;
+			color: $blue;
 		}
 	}
 
 	article {
 		line-height: 1.5em;
-		padding: 0.5em 1.6em 1em 1.6em;
+		padding: 0 1.6em 1em 1.6em;
 
 		div { margin-bottom: 0.25em; }
 

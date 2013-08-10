@@ -49,6 +49,10 @@ $(document).ready(function() {
 	});
 });
 
+$(document).ajaxComplete(function() {
+	$('.news ol li:odd').css('background-color', '#f7f7f7');
+})
+
 
 // Get headlines
 
