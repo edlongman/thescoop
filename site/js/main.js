@@ -91,11 +91,11 @@ function handleGuardianNews(news){
 function handleBBCNews(news){
     str = '<ol>';
     $.each(news, function(index, story) {
-        link = story[0];
-        headline = story[1];
-        summary = story[2];
-        largeThumbnail = story[3];
-        smallThumbnail = story[4];
+        link = story['url'];
+        headline = story['title'];
+        summary = story['description'];
+        largeThumbnail = story['large_thumb'];
+        smallThumbnail = story['small_thumb'];
 
         str += '<li>';
         str += '<h2 class="headline">' + headline + '</h2>';
