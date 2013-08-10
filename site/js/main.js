@@ -85,7 +85,12 @@ function handleGuardianNews(news){
 		str += '</li>';
 	});
 	str += '</ol>';
-	$('.news').html(str);
+	$('.news').slideUp(300, function(){
+        $('.news').html(str);
+        $('.news article').slideUp(1, function(){
+            $('.news').slideDown(300);
+        });
+    });
 
 	initializeLinkListeners();
 }
@@ -220,7 +225,8 @@ function getSummary (object) {
                 $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
                 $(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
                 object.addClass('loaded');
-            }).slideDown(300);
+                $(object).next('article').find('.summary--content').slideDown(300);
+            });
         },
         error: function(xhr, textStatus, errorThrown) {
             $(object).next('article').find('.summary--content').html('<p class="error">Couldn’t get summary&hellip;<a href="#" title="Try again" class="try-again try-again--summary">Try again</a></p>');
