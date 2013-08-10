@@ -26,14 +26,14 @@ body {
 
 .container {
 	margin: 0 auto;
-	max-width: 1076px;
+	max-width: 768px;
 	padding: 4em 2em;
 }
 
 header {
 	h1 {
 		font: 700 2.25em $font;
-		line-height: 1.2em;
+		line-height: 1em;
 	}
 
 	select, input {
@@ -71,6 +71,10 @@ header {
 	ol {
 		font: 400 1.25em $font;
 		list-style: none;
+
+		li {
+			margin-bottom: 0.5em;
+		}
 	}
 
 	.headline {
@@ -78,7 +82,7 @@ header {
 		cursor: pointer;
 		display: block;
 		font: 400 1.4em $font;
-		line-height: 1.3em;
+		line-height: 1.2em;
 		padding: 0.2em 0;
 
 		&:hover {
@@ -90,6 +94,8 @@ header {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
 
+		div { margin-bottom: 0.25em; }
+
 		p {
 			color: #777;
 			line-height: 1.4em;
@@ -99,6 +105,8 @@ header {
 
 	a {
 		color: #777;
+		display: block;
+		margin-top: 0.75em;
 
 		&:hover {
 			color: $blue;
@@ -117,7 +125,7 @@ footer {
 
 	.inner {
 		margin: 0 auto;
-		max-width: 1076px;
+		max-width: 768px;
 	}
 
 	a {
