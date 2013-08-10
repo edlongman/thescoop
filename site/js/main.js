@@ -155,15 +155,15 @@ function resizeNumber() {
 
 	var font_size = $('body').css('font-size');
 
-	// if (font_size == '16px') {
-	// 	$('input[name="number"]').css('height', '45px');
-	// }
-	// else if (font_size == '14px') {
-	// 	$('input[name="number"]').css('height', '39.25px');
-	// }
-	// else if (font_size == '12px') {
-	// 	$('input[name="number"]').css('height', '33.5px');
-	// }
+	if (font_size == '16px') {
+		$('input[name="number"]').css('height', '51px');
+	}
+	else if (font_size == '14px') {
+		$('input[name="number"]').css('height', '45.5px');
+	}
+	else if (font_size == '12px') {
+		$('input[name="number"]').css('height', '39px');
+	}
 }
 
 function resizeDate() {
