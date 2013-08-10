@@ -104,11 +104,13 @@ header {
 	}
 
 	a {
+		border-bottom: 1px solid #777;
 		color: #777;
-		display: block;
 		margin-top: 0.75em;
+		text-decoration: none;
 
 		&:hover {
+			border-color: $blue;
 			color: $blue;
 		}
 
