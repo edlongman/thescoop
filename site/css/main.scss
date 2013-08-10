@@ -43,7 +43,7 @@ header {
 	select, input {
 		background-color: white;
 		border: none;
-		border-bottom: 1px dashed white;
+		border-bottom: 1px dashed $blue;
 		color: $blue;
 		display: inline-block;
 		font: inherit;
@@ -54,7 +54,7 @@ header {
 
 		&:focus {
 			// outline: 1px solid red;
-			border-bottom: 1px dashed $blue;
+			// border-bottom: 1px dashed $blue;
 		}
 	}
 
@@ -90,7 +90,7 @@ header {
 		padding: 0.2em 0;
 
 		&:hover {
-			// color: $blue;
+			color: $blue;
 		}
 	}
 
