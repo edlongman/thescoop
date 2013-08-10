@@ -20,7 +20,9 @@ $(document).ready(function(){
 	});
 	$('#number').bind('keyup input paste', function(){
 		resizeNumber();
-		getNews();
+        if ($(this).val() != ''){
+            getNews();
+        }
 
 		var first_option = $('#date option:first-child').text();
 		var last_letter = first_option.substr(first_option.length - 1);
@@ -60,7 +62,8 @@ function getNews(){
 		// make asynchronous request
 		getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
-		alert(e); // To-Do: Error handling
+        ajax.abort(); // using global variable containing current ajax request
+		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
 		return;
 	}
 }
@@ -168,7 +171,7 @@ function validate(amount, scope, section, keyword) {
 	// }
 
 	if (isNaN(amount)) {
-		throw 'Invalid amount';
+		throw 'Invalid amount of ' + $('#date option:selected').val();
 	}
 
 	// sections = ['world', 'uk-news', 'football', 'film', 'business', 'politics', 'technology'];
