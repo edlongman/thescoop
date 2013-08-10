@@ -19,4 +19,4 @@ for($i=0;$i<$date_difference;$i++){
 	$selection_date=date("Y-m-d",$start_date+$i*$seconds_in_a_day);
 	$per_date_array[]=get_bbc_feeds_with_range($_GET["section"],$selection_date,$selection_date);
 }
-echo json_encode($per_date_array,JSON_PRETTY_PRINT);
+echo json_encode($per_date_array);
