@@ -3,7 +3,11 @@ sql = MySQLdb.connect(host="localhost",
                             user=config.username, 
                             passwd=config.passwd,
                             db=config.db)
-rss_urls = (('uk-news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') , ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml'))
+rss_urls = (('uk-news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') ,
+('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml') ,
+('news' , 'http://feeds.bbci.co.uk/news/rss.xml') ,
+('world' , 'http://feeds.bbci.co.uk/news/world/rss.xml') ,
+('science' , 'http://feeds.bbci.co.uk/news/science_and_environment/rss.xml'))
 table_name = "bbcstories"
 def algo(pts,pos):
 	return pts * (1+0.02/(pos+1))
