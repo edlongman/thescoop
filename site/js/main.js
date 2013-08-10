@@ -39,6 +39,7 @@ $(document).ready(function(){
 		}
 
 		resizeNumber();
+		resizeDate();
         if ($(this).val() != ''){
             getNews();
         }
