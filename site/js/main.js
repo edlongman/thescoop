@@ -85,9 +85,13 @@ function handleGuardianNews(news){
 		str += '</li>';
 	});
 	str += '</ol>';
-	$('.news').html(str);
-
-	initializeLinkListeners();
+	$('.news').slideUp(300, function(){
+        $('.news').html(str);
+        $('.news article').hide();
+        $('.news').slideDown(300, function(){
+            initializeLinkListeners();
+        });
+    });
 }
 
 function initializeLinkListeners() {
@@ -136,6 +140,20 @@ function resizeSection() {
 function resizeNumber() {
 	$('#number-span').html($('#number').val());
 	$('#number').css('width', $('#number-span').width() + 3);
+
+	var font_size = $('body').css('font-size');
+
+	if (font_size == '16px') {
+		$('#number').css('height', '42px');
+	}
+
+	else if (font_size == '14px') {
+		$('#number').css('height', '36px');
+	}
+
+	else if (font_size == '12px') {
+		$('#number').css('height', '30px');
+	}
 }
 
 function resizeDate() {
