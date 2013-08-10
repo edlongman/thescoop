@@ -3,10 +3,9 @@ ajax = $.ajax();
 // global variables for currently displayed dates
 today = new Date();
 startDate = null;
-displayedStartDate = new Date();
-displayedEndDate = new Date();
+lastDisplayedDate = null;
 // global variable for displayed dates (changes when browser width changes)
-displayedDates = 2; 
+amountAddDates = 2; 
 
 $(document).ready(function(){
 	// Resize select and input
@@ -73,36 +72,45 @@ function getNews(){
 		getGuardianNews(amount, scope, section, keyword);
 	} catch (e) {
         ajax.abort(); // using global variable containing current ajax request
-		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
+		$('#news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
 		return;
 	}
-
-    startDate = new Date();
-    switch (scope) {
-        case 'days': startDate.setDate(today.getDate()-amount); break;
-        case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
-        case 'months': startDate.setMonth(today.getMonth()-amount); break;
-    }
-    // make asynchronous request
-    getGuardianNews(startDate, today, section, keyword);
-
-    // get news for first days
-    displayedStartDate = new Date(startDate);
-    displayedEndDate.setDate(startDate.getDate() + displayedDates);
-    getGuardianDailyNews(displayedStartDate, displayedEndDate, section, keyword);
 }
 
-function plusDisplayedDates(amount){
-    if (displayedEndDate.getDate() + displayedDates > today.getDate()){
-        displayedEndDate = today;
-        displayedStartDate = displayedEndDate - displayedDates;
-    }
-}
+function getDailyNews() {
+    $('.breakdown').append('<img src="img/loading.gif" alt="Loading" class="loading">')
 
-function minusDisplayedDays(amount) {
-    if (displayedStartDate.getDate() + displayedDates > today.getDate()){
-        displayedEndDate = today;
-        displayedStartDate = displayedEndDate - displayedDates;
+    section = $('#section option:selected').val();
+    // keyword $('#keyword').val()
+    keyword = '';
+
+    if (startDate == null){
+        startDate = new Date();
+        // get correct start date
+        switch ($('#date option:selected').val()) {
+            case 'days': startDate.setDate(today.getDate()-amount); break;
+            case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
+            case 'months': startDate.setDate(today.getMonth()-amount); break;
+        }
+    }
+
+    if (lastDisplayedDate == null){
+        lastDisplayedDate = new Date(startDate);
+    }
+
+    callAndEncreaseDailyGuardian(section, keyword);
+} 
+
+function callAndEncreaseDailyGuardian(section, keyword){
+    if (lastDisplayedDate.getDate() + amountAddDates <= today.getDate()){
+        increasedDate = new Date(); increasedDate.setDate(lastDisplayedDate.getDate() + amountAddDates);
+        getGuardianDailyNews(lastDisplayedDate, increasedDate, section, keyword);
+        lastDisplayedDate.setDate(increasedDate.getDate());
+    } else if (lastDisplayedDate.getDate() < today.getDate()){
+        getGuardianDailyNews(lastDisplayedDate, today, section, keyword);
+        lastDisplayedDate = today;
+    } else {
+        return null;
     }
 }
 
@@ -123,18 +131,24 @@ function handleGuardianNews(news){
 		str += '</li>';
 	});
 	str += '</ol>';
-	$('.news').slideUp(300, function(){
-        $('.news').html(str);
-        $('.news article').hide();
-        $('.news').slideDown(300, function(){
+
+	$('#news').slideUp(300, function(){
+        $('#news').html(str);
+        $('#news article').hide();
+        $('#news').slideDown(300, function(){
             initializeLinkListeners();
         });
     });
+
+    getDailyNews();
 }
 
 function handleGuardianDailyNews(news){
-    for (var i = 0; i < displayedDates; i++) {
-        str = 'Date: ' + new Date(displayedStartDate.getDate() + i).f('d MMM');
+    for (var i = 0; i < amountAddDates; i++) {
+        str = '<div class="news">'
+        day = new Date();
+        day.setDate(lastDisplayedDate.getDate() + i);
+        str += 'Date: ' + day.f('d MMM');
         str += '<ol>';
         $.each(news[i], function(index, story) {
             headline = story[0];
@@ -280,7 +294,7 @@ function ajaxGuardian(start_time, end_time, section, keyword){
             handleGuardianNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
-            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
+            $('#news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
             initializeTryAgain();
             console.log('ERROR: ' + errorThrown);
         }
@@ -301,11 +315,11 @@ function getGuardianDailyNews(start_time, end_time, section, keyword){
                  });
             });
 
-            // call handleGuardianNews function of main.js
+            // call handleGuardianDailyNews function of main.js
             handleGuardianDailyNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
-            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
+            $('#breakdown').append('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
             initializeTryAgain();
             console.log('ERROR: ' + errorThrown);
         }
