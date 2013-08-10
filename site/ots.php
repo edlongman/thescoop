@@ -13,6 +13,7 @@
 			$output = get_url_output($url . $article_url);
 			$json = json_decode($output);
 			$output = $json->content;
+			echo $output;
 			$html_parse = str_get_html($output);
 			strip_tag($html_parse,'img');
 			strip_tag($html_parse,'script');
