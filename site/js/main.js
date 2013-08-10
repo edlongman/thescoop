@@ -287,6 +287,31 @@ function ajaxGuardian(start_time, end_time, section, keyword){
     });
 }
 
+function getGuardianDailyNews(start_time, end_time, section, keyword){
+    ajax = $.ajax({
+        url: 'guardian_feeds_daily_news.php',
+        type: 'GET',
+        dataType: 'json',
+        data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), section: section, keyword: keyword},
+        success: function(data, textStatus, xhr) {
+            // replace JSON date format with JavaScript Date Objects
+            $.each(data, function(index, day) {
+                 $.each(day, function(index, story) {
+                     story[2] = new Date(story[2]);
+                 });
+            });
+
+            // call handleGuardianNews function of main.js
+            handleGuardianDailyNews(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
+            initializeTryAgain();
+            console.log('ERROR: ' + errorThrown);
+        }
+    });
+}
+
 function getSummary (object) {
     ajax = $.ajax({
         url: 'ots.php',
