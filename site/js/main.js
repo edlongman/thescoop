@@ -1,6 +1,3 @@
-// global variable containing the current AJAX request, needed if it must be aborted
-ajax = $.ajax();
-
 $(document).ready(function(){
 	// Resize select and input
 	resizeSection();
@@ -22,6 +19,11 @@ $(document).ready(function(){
 		getNews();
 	});
 	$('#number').bind('keyup input paste', function(){
+		resizeNumber();
+        if ($(this).val() != ''){
+            getNews();
+        }
+
 		var first_option = $('#date option:first-child').text();
 		var last_letter = first_option.substr(first_option.length - 1);
 
@@ -38,17 +40,34 @@ $(document).ready(function(){
 			})
 		}
 
-		resizeNumber();
-		resizeDate();
-        if ($(this).val() != ''){
-            getNews();
-        }
 	});
 	$('#date').change(function(){
 		resizeDate();
 		getNews();
 	});
 });
+
+function getNews(){
+	$('.news').html('<img src="img/loading.gif">');
+
+	amount = $('#number').val();
+	scope = $('#date option:selected').val();
+	section = $('#section option:selected').val();
+	// keyword $('#keyword').val()
+	keyword = '';
+
+	try {
+		keyword = $.trim(keyword);
+		validate(amount, scope, section, keyword);
+
+		// make asynchronous request
+		getGuardianNews(amount, scope, section, keyword);
+	} catch (e) {
+        ajax.abort(); // using global variable containing current ajax request
+		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
+		return;
+	}
+}
 
 function handleGuardianNews(news){
 	str = '<ol>';
@@ -76,66 +95,7 @@ function handleGuardianNews(news){
     });
 }
 
-function handleBBCNews(news){
-    str = '<ol>';
-    $.each(news, function(index, story) {
-        link = story['url'];
-        headline = story['title'];
-        summary = story['description'];
-        largeThumbnail = story['large_thumb'];
-        smallThumbnail = story['small_thumb'];
-
-        str += '<li>';
-        str += '<h2 class="headline">' + headline + '</h2>';
-        str += '<article>';
-        str += '<div class="summary--content">';
-        str += '<img class="thumbnail--small" src="' + largeThumbnail + '" alt="Thumbnail"/>';
-        str += '<p>' + summary + '</p>';
-        str += '</div>';
-        // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-        str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
-        str += '</article>';
-        str += '</li>';
-    });
-    str += '</ol>';
-    $('.news').html(str);
-
-    initializeLinkListenersBBC();
-}
-
-function initializeLinkListeners () {
-	// var articles = $('.news > ol > li > article');
-	// articles.hide();
-
-	// // display summary on headline click
-	// $('.headline').click(function() {
-	// 	if ($(this).hasClass('active')){
-	// 		$('.inactive').removeClass('inactive');
-	// 		$('.active').removeClass('active');
-	// 		$(this).next('article').slideUp(300);
-	// 	}
-	// 	else if ($(this).hasClass('inactive')){
-	// 		$('.active').next('article').slideUp(300);
-	// 		$('.inactive').removeClass('inactive');
-	// 		$('.active').removeClass('active');
-	// 		$(this).addClass('active');
-	// 		$('.headline').not($(this)).addClass('inactive');
-	// 		$(this).next('article').slideDown(300);
-	// 	}
-	// 	else {
-	// 		$('.headline').not(this).addClass('inactive');
-	// 		$(this).addClass('active');
-
-	// 		$(this).next('article').slideDown(300);
-	// 	}
-		
-	// 	if (! $(this).next('article').hasClass('summary--loaded')) {
-	// 		getSummary($(this));
-	// 		$(this).next('article').addClass('summary--loaded');
-	// 	}
-	// });
-
-	// add loaded class + use getSummary($(this))
+function initializeLinkListeners() {
 	var articles = $('.headline').next('article');
 	articles.hide();
 
@@ -157,27 +117,7 @@ function initializeLinkListeners () {
 			getSummary(headline);
 			headline.addClass('loaded');
 		}
-	});
-}
-
-function initializeLinkListenersBBC(){
-    var articles = $('.headline').next('article');
-    articles.hide();
-
-    $('.headline').click(function() {
-        var headline = $(this);
-        var article = headline.next('article');
-
-        article.slideToggle({
-            duration: 400,
-            easing: 'easeInOutCirc'
-        });
-
-        articles.not(article).slideUp({
-            duration: 400,
-            easing: 'easeInOutCirc'
-        });
-    });
+	})
 }
 
 function initializeTryAgain () {
@@ -240,6 +180,9 @@ function validate(amount, scope, section, keyword) {
 }
 
 /**********************************AJAX***************************************/
+// global variable containing the current AJAX request, needed if it must be aborted
+ajax = null;
+
 function getGuardianNews(amount, scope, section, keyword){
     today = new Date(); // dates are entered relatively, today is needed
 
@@ -281,42 +224,6 @@ function ajaxGuardian(start_time, end_time, section, keyword){
     });
 }
 
-function getBBCNews(amount, scope, section){
-    today = new Date(); // dates are entered relatively, today is needed
-
-    start_date = new Date();
-    end_date = today;
-    //section = section;
-
-    // get correct start time
-    switch (scope) {
-        case 'days': start_date.setDate(today.getDate()-amount); break;
-        case 'weeks': start_date.setDate(today.getDate()-amount*7); break;
-        case 'months': start_date.setMonth(today.getMonth()-amount); break;
-    }
-
-    // make asynchronous ajax request, calls handle
-    ajaxBBC(start_date, end_date, section);
-}
-
-function ajaxBBC(start_date, end_time, section){
-    ajax = $.ajax({
-        url: 'bbc_feeds.php',
-        type: 'GET',
-        dataType: 'json',
-        data: {start_date: start_date.f('yyyy-MM-dd'), end_date: end_date.f('yyyy-MM-dd'), section: section},
-        success: function(data, textStatus, xhr) {
-            // call handleBBCNews function
-            handleBBCNews(data);
-        },
-        error: function(xhr, textStatus, errorThrown) {
-            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
-            initializeTryAgain();
-            console.log('ERROR: ' + errorThrown);
-        }
-    });
-}
-
 function getSummary (object) {
     ajax = $.ajax({
         url: 'ots.php',
@@ -342,30 +249,4 @@ function getSummary (object) {
         }
     });
     
-}
-
-function getNews(){
-    $('.news').html('<img src="img/loading.gif">');
-
-    amount = $('#number').val();
-    scope = $('#date option:selected').val();
-    section = $('#section option:selected').val();
-    // keyword $('#keyword').val()
-    keyword = '';
-
-    try {
-        keyword = $.trim(keyword);
-        validate(amount, scope, section, keyword);
-
-        // make asynchronous request
-        if (window.location.href.split('/').pop().match('^bbc.html')){
-            getBBCNews(amount, scope, section, keyword);
-        } else {
-            getGuardianNews(amount, scope, section, keyword);
-        }
-    } catch (e) {
-        ajax.abort(); // using global variable containing current ajax request
-        $('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
-        return;
-    }
 }
