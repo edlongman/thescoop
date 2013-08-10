@@ -2,7 +2,7 @@
 
 $text: #333;
 $blue: #3498db;
-$font: "pragmatica-web", sans-serif;
+$font: "pragmatica-web", "Helvetica Neue", Arial, sans-serif;
 
 
 .chromeframe {
@@ -19,27 +19,31 @@ $font: "pragmatica-web", sans-serif;
 
 
 body {
-	background-color: white;
+	background-color: #eee;
 	color: $text;
 	font-size: 16px;
 }
 
 .container {
-	margin: 0 auto;
-	max-width: 1076px;
-	padding: 4em 2em;
+	background-color: white;
+
+	.inner {
+		margin: 0 auto;
+		max-width: 896px;
+		padding: 4em 2em;
+	}
 }
 
 header {
 	h1 {
 		font: 700 2.25em $font;
-		line-height: 1.2em;
+		line-height: 1em;
 	}
 
 	select, input {
 		background-color: white;
 		border: none;
-		// border-bottom: 1px dashed $blue;
+		border-bottom: 1px dashed $blue;
 		color: $blue;
 		display: inline-block;
 		font: inherit;
@@ -47,9 +51,17 @@ header {
 		vertical-align: baseline;
 		-moz-appearance: none;
 		-webkit-appearance: none;
+
+		&:focus {
+			// outline: 1px solid red;
+			border-bottom: 1px dashed #333;
+		}
 	}
 
-	#section, #date { cursor: pointer; }
+	#section, #date {
+		cursor: pointer;
+	}
+
 	#number {
 		cursor: text;
 		min-width: 0.6em;
@@ -57,22 +69,28 @@ header {
 }
 
 .news {
-	margin-top: 1em;
+	color: #777;
+	margin-top: 1.5em;
 	
 	ol {
 		font: 400 1.25em $font;
 		list-style: none;
+
+		li {
+			margin-bottom: 0.5em;
+		}
 	}
 
 	.headline {
+		color: $text;
 		cursor: pointer;
 		display: block;
 		font: 400 1.4em $font;
-		line-height: 1.3em;
+		line-height: 1.2em;
 		padding: 0.2em 0;
 
 		&:hover {
-			// color: $blue;
+			color: $blue;
 		}
 	}
 
@@ -80,16 +98,35 @@ header {
 		line-height: 1.5em;
 		margin: 0.5em 0 1em 0;
 
+		div { margin-bottom: 0.25em; }
+
 		p {
 			color: #777;
 			line-height: 1.4em;
 			margin-bottom: 0.25em;
-			text-indent: 1em;
 		}
 	}
 
 	a {
-		color: $blue;
+		color: #777;
+		text-decoration: underline;
+
+		&:hover {
+			color: $blue;
+		}
+
+		&:visited {
+			color: #777;
+		}
+	}
+
+	.read-more {
+		display: block;
+		margin-top: 0.75em;
+
+		&:hover {
+			color: $blue;
+		}
 
 		&:focus {
 			color: #2980b9;
@@ -98,26 +135,27 @@ header {
 	}
 }
 
-#bugs {
-	position: fixed;
-	top: 0;
-	left: 0;
-	padding: 8px 5px 5px 8px;
-	border-bottom: 1px solid #dfdfdf;
-	border-right: 1px solid #dfdfdf;
-	margin-top: -3px;
-	margin-left: -3px;
-	border-radius: 3px;
+footer {
+	background-color: #eee;
+	color: #777;
+	font: 400 1.25em $font;
 
-	a, a:visited, a:link {
-		color: black;
-		text-decoration: none;
-		font: 600 14px $font;
+	.inner {
+		margin: 0 auto;
+		max-width: 896px;
+		padding: 1em 2em;
 	}
 
-	a:active, a:hover {
-		text-decoration: underline;
-		color: $blue;
+	a {
+		color: #777;
+
+		&:hover {
+			color: $blue;
+		}
+	}
+
+	.share-links {
+		display: inline;
 	}
 }
 

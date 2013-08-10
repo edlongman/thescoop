@@ -3,15 +3,30 @@
 	<head>
 		<meta charset="utf-8">
 		<title>The Scoop</title>
-		<meta name="description" content="">
+		<meta name="description" content="The fastest way to catch up on recent news.">
 		<meta name="viewport" content="width=device-width">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/animate.min.css">
+
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<![endif]-->
 
 		<script src="//use.typekit.net/crl6ttj.js"></script>
 		<script>try{Typekit.load();}catch(e){}</script>
+
+		<script>
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-43063083-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
 	</head>
 
 	<body>
@@ -20,52 +35,63 @@
 		<![endif]-->
 
 		<div class="container">
-			<header>
-				<h1>
-					Show me top
+			<div class="inner">
+				<header>
+					<h1>
+						Scoop the top
 
-					<select name="section" id="section">
-						<option value="world">news</option>
-						<option value="business">business</option>
-						<option value="film">film</option>
-						<option value="football">football</option>
-						<option value="politics">politics</option>
-						<option value="technology">technology</option>
-						<option value="uk-news">UK</option>
-					</select>
+						<select name="section" id="section" tabindex="1">
+							<option value="business">business</option>
+							<option value="education">education</option>
+							<option value="environment">environment</option>
+							<option value="film">film</option>
+							<option value="football">football</option>
+							<option value="media">media</option>
+							<option value="world" selected>news</option>
+							<option value="politics">politics</option>
+							<option value="science">science</option>
+							<option value="sport">sport</option>
+							<option value="technology">technology</option>
+							<option value="uk-news">UK</option>
+						</select>
 
-					articles from the past
+						articles from the past
 
-					<input type="text" value="10" name="number" id="number" autocomplete="off">
+						<input type="text" value="5" name="number" id="number" autocomplete="off" tabindex="2">
 
-					<select name="date" id="date">
-						<option value="days">days</option>
-						<option value="weeks">weeks</option>
-						<option value="months">months</option>
-					</select>
-				</h1>
-			</header>
+						<select name="date" id="date" tabindex="3">
+							<option value="days" selected>days</option>
+							<option value="weeks">weeks</option>
+							<option value="months">months</option>
+						</select>
+					</h1>
+				</header>
 
-			<div class="news"></div>
+				<div class="news"></div>
+			</div>
 		</div>
+
+		<footer>
+			<div class="inner">
+				Share on
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fthescoop.io" target="_blank">Facebook</a>
+				or
+				<a href="http://twitter.com/home?status=I+just+used+http%3A%2F%2Fthescoop.io+to+catch+up+on+the+latest+news.+Check+it+out&#33;" target="_blank">Twitter</a>
+				&#8226;
+				<a href="https://github.com/edlongman/thescoop" target="_blank">Github</a>
+				&#8226;
+				<a href="https://github.com/edlongman/thescoop/issues/new" target="_blank">Report bug</a>
+			</div>
+		</footer>
 
 		<span class="form-fix" id="section-span"></span>
 		<span class="form-fix" id="number-span"></span>
 		<span class="form-fix" id="date-span"></span>
 
-		<div id='bugs'><a href='http://github.com/edlongman/thescoop/issues/new' target='_blank' title='Report a bug'>Report a bug&hellip;</a></div>
-
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/jquery.easing.1.3.js"></script>
 		<!-- http://fisforformat.sourceforge.net/#date_f -->
 		<script src='js/date.f-0.5.0-min.js'></script>
-		<script src='js/ajax.js'></script>
 		<script src='js/main.js'></script>
-
-		<script>
-			var _gaq=[['_setAccount','UA-43063083-1'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src='//www.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
-		</script>
 	</body>
 </html>
