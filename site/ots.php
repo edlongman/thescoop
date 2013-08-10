@@ -2,7 +2,26 @@
 	include_once '../lib/simple_html_dom.php';
 	include_once '../lib/util.php';
 	error_reporting(E_ALL ^ E_NOTICE);
+	function strip_tag($html_dom,$tag) {
+		$elements = $html_dom->find($tag);
+		foreach ($elements as $element) {
+			$element->outertext = '';
+		}
+	}
 	function article_parse( $article_url ) {
+			$url = 'http://www.readability.com/api/content/v1/parser?token='. readability_api_key .'&url=';
+			$output = get_url_output($url . $article_url);
+			$json = json_decode($output);
+			$output = $json->content;
+			echo $output;
+			$html_parse = str_get_html($output);
+			strip_tag($html_parse,'img');
+			strip_tag($html_parse,'script');
+			$text = $html_parse->save();
+			return($text);
+		}
+		
+	function article_parse_old( $article_url ) {
 		$html = file_get_html($article_url);
 		// Find all text inside the first div with id=article-body-blocks
 		$text = '';
@@ -53,5 +72,6 @@
 		}
 		return($sum);
 	}
-	echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
+	//echo ots( article_parse($_REQUEST['to_sum']) , $_REQUEST['ratio']);
+	echo article_parse($_REQUEST['to_sum']);
 ?>
