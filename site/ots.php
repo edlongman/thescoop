@@ -23,6 +23,7 @@
 		if($text != null) {
 			$file = fopen('./txt.txt', 'w');
 			fwrite( $file , $text );
+			$ratio = intval($ratio);
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
