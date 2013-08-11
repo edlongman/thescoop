@@ -26,7 +26,6 @@
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
-			echo $sum;
 			$sum = str_replace('.','. ',$sum);
 			$sum = htmlspecialchars($sum);
 		}
