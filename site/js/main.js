@@ -157,14 +157,14 @@ function handleGuardianDailyNews(news){
             link = story[1];
             date = story[2];
 
-            str += '<li>';
-            str += '<h2 class="headline">' + headline + '</h2>';
-            str += '<article>';
-            str += '<div class="summary--content"><img src="img/loading.gif"></div>';
-            // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-            str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
-            str += '</article>';
-            str += '</li>';
+             str += '<li>';
+             str += '<h2 class="headline">' + headline + '</h2>';
+             str += '<article>';
+             str += '<div class="summary--content"><img src="img/loading.gif"></div>';
+             // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+             str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
+             str += '</article>';
+             str += '</li>';
         });
         str += '</ol>';
         str += '</div>'
