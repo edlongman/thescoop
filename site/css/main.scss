@@ -1,5 +1,6 @@
 @import "reset";
 
+
 $text: #333;
 $blue: #3498db;
 $dark-blue: #2676ab;
@@ -15,17 +16,16 @@ $font: "Helvetica Neue", Arial, sans-serif;
 
 .form-span {
 	display: none;
-	font: 300 3em $font;
+	font: 300 2.625em $font;
 }
 
 
 body {
 	background-color: $dark-blue;
-	color: white;
 	font-size: 16px;
 }
 
-.container {
+header {
 	background-color: $blue;
 
 	.inner {
@@ -33,14 +33,14 @@ body {
 		max-width: 1076px;
 		padding: 4em 2em 2em 2em;
 	}
-}
 
-header {
 	h1 {
-		font: 300 3em $font;
+		color: white;
+		font: 300 2.625em $font;
 		line-height: 1.2em;
 	}
 
+	// reset select and input?
 	select, input {
 		background: transparent;
 		border: none;
@@ -55,25 +55,20 @@ header {
 		-webkit-appearance: none;
 
 		&:focus {
-			// outline: 1px solid red;
-			// border-bottom: 1px dashed white;
+			// border-bottom-color
 		}
 	}
 
-	#section, #date {
-		cursor: pointer;
-	}
+	select { cursor: pointer; }
 
-	#number {
+	input {
 		cursor: text;
 		min-width: 0.6em;
 	}
 }
 
 .news {
-	// border-radius: 0.5em;
 	background-color: #f7f7f7;
-	width: 100%;
 
 	.loading {
 		margin: 0 auto;
@@ -81,18 +76,13 @@ header {
 		padding: 1em 2em;
 	}
 	
-	ol {
-		font: 300 1.25em $font;
-		list-style: none;
-		width: 100%;
+	li {
+		background: #eee;
 
-		li {
-			background: #eee;
-
-			.li-margin {
-				margin: 0 auto;
-				max-width: 1140px;
-			}
+		.inner {
+			margin: 0 auto;
+			max-width: 1076px;
+			padding: 0 2em;
 		}
 	}
 
@@ -100,25 +90,20 @@ header {
 		color: #555;
 		cursor: pointer;
 		display: block;
-		font: 400 1.4em $font;
+		font: 400 1.75em $font;
 		line-height: 1.2em;
-		padding: 0.6em 1.143em;
+		padding: 0.75em 0;
 
-		&:hover {
-			color: $blue;
-		}
+		&:hover { color: $blue; }
 	}
 
 	article {
-		line-height: 1.5em;
-		padding: 0 1.6em 1em 1.6em;
-
-		div { margin-bottom: 0.25em; }
+		padding-bottom: 1.3125em;
 
 		p {
 			color: #777;
+			font: 300 1.25em $font;
 			line-height: 1.4em;
-			margin-bottom: 0.25em;
 			-webkit-column-count: 2;
 			-moz-column-count: 2;
 			column-count: 2;
@@ -127,61 +112,40 @@ header {
 
 	a {
 		color: #777;
+		font: 300 1.25em $font;
 		text-decoration: underline;
 
-		&:hover {
-			color: $blue;
-		}
-
-		&:visited {
-			color: #777;
-		}
+		&:hover { color: $blue;	}
 	}
 
 	.read-more {
+		color: $blue;
 		display: block;
 		margin-top: 0.75em;
 
-		&:hover {
-			color: $blue;
-		}
-
-		&:focus {
-			color: #2980b9;
-			outline: none;
-		}
+		&:focus { color: $dark-blue; }
 	}
 }
 
 footer {
-	background-color: $dark-blue;
 	color: #fff;
 	font: 300 1.25em $font;
 
 	.inner {
 		margin: 0 auto;
 		max-width: 1076px;
-		// padding: 1em 2em;
-		padding: 1em 2em;
+		padding: 1.05em 1.6em;
 	}
 
 	a {
 		color: #fff;
 
-		&:hover {
-			color: $blue;
-		}
-	}
-
-	.share-links {
-		display: inline;
+		&:hover { color: $blue; }
 	}
 }
 
 @media screen and (max-width: 720px) {
-	body {
-		font-size: 14px;
-	}
+	body { font-size: 14px; }
 
 	.news article p {
 		-webkit-column-count: 1;
@@ -191,13 +155,5 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-	body {
-		font-size: 12px;
-	}
-
-	.news article p {
-		-webkit-column-count: 1;
-		-moz-column-count: 1;
-		column-count: 1;
-	}
+	body { font-size: 12px;	}
 }

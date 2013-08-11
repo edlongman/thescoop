@@ -50,7 +50,7 @@ $(document).ready(function() {
 });
 
 $(document).ajaxComplete(function() {
-	$('.news ol li:odd').css('background-color', '#f7f7f7');
+	$('.news ul li:odd').css('background-color', '#f7f7f7');
 })
 
 
@@ -82,14 +82,14 @@ function getNews(){
 // Loading headlines to page
 
 function handleGuardianNews(news){
-	str = '<ol>';
+	str = '<ul>';
 	$.each(news, function(index, story) {
 		headline = story[0];
 		link = story[1];
 		date = story[2];
 
 		str += '<li>';
-		str += '<div class="li-margin">'
+		str += '<div class="inner">'
 		str += '<h2 class="headline">' + headline + '</h2>';
 		str += '<article>';
 		str += '<div class="summary--content"><img src="img/loading.gif"></div>';
@@ -99,7 +99,7 @@ function handleGuardianNews(news){
 		str += '</div>'
 		str += '</li>';
 	});
-	str += '</ol>';
+	str += '</ul>';
 	$('.news').html(str).hide();
 	$('.news').slideDown(600, function() {
 		initializeLinkListeners();
