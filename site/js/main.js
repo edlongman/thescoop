@@ -241,7 +241,7 @@ function getSummary (object) {
 		url: 'ots.php',
 		type: 'GET',
 		dataType: 'html',
-		data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 5},
+		data: {to_sum: $(object).next('article').find('a.read-more').attr('href'), ratio: 10},
 		success: function(data, textStatus, xhr) {
 			data = $('<div/>').html(data).text();
 			if (data == 'null') {
