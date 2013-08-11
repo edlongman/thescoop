@@ -78,7 +78,10 @@ function getNews(){
 }
 
 function getDailyNews() {
-    $('.breakdown').append('<img src="img/loading.gif" alt="Loading" class="loading">')
+    $('#breakdown').empty();
+    $(window).unbind('scoll');
+
+    $('#breakdown').append('<img src="img/loading.gif" alt="Loading" class="loading">')
 
     section = $('#section option:selected').val();
     // keyword $('#keyword').val()
@@ -155,7 +158,7 @@ function handleGuardianDailyNews(news){
         date.setDate(lastDisplayedDate.getDate() - (news.length - i));
         str += 'Date: ' + date.f('d MMM');
         str += '<ol>';
-        $.each(news[i], function(index, story) {
+        $.each(day, function(index, story) {
             headline = story[0];
             link = story[1];
             date = story[2];
