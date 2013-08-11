@@ -96,7 +96,9 @@ function getDailyNews() {
         lastDisplayedDate = new Date(startDate);
     }
 
-    callAndEncreaseDailyGuardian(section, keyword);
+    if (callAndEncreaseDailyGuardian(section, keyword) == null){
+        $('#breakdown').append('<p class="no-more-days">No more days to display.</p>')
+    }
 } 
 
 function callAndEncreaseDailyGuardian(section, keyword){
@@ -110,6 +112,7 @@ function callAndEncreaseDailyGuardian(section, keyword){
     } else if (lastDisplayedDate.getDate() < today.getDate()){
         getGuardianDailyNews(lastDisplayedDate, today, section, keyword);
         lastDisplayedDate = today;
+        return this;
     } else {
         return null;
     }
@@ -169,9 +172,10 @@ function handleGuardianDailyNews(news){
         str += '</ol>';
         str += '</div>'
         $('#breakdown').append(str);
-
-        initializeLinkListeners();
-    };
+    }
+    
+    initializeLinkListeners();
+    initializeScollListener();
 }
 
 function initializeLinkListeners() {
@@ -209,6 +213,15 @@ function initializeTryAgain () {
             getNews();
         } else if ($(this).hasClass('try-again--summary')) {
             getSummary($(this).parent().parent().parent().prev('h2'));
+        }
+    });
+}
+
+function initializeScollListener () {
+    $(window).scroll(function() {
+        if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight )
+        { 
+            callAndEncreaseDailyGuardian();
         }
     });
 }
