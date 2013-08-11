@@ -16,9 +16,11 @@
 			$json = json_decode($output);
 			$output = $json->content;
 			$html_parse = str_get_html($output);
-			strip_tag($html_parse,'img');
-			strip_tag($html_parse,'script');
+			//strip_tag($html_parse,'img');
+			//strip_tag($html_parse,'script');
 			$text = $html_parse->save();
+			$text = strip_tags($text,'<a><strong><em><i><span><b><s>');
+			$text = str_replace('Photograph:','',$text);
 			return($text);
 		}
 		
