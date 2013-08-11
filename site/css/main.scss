@@ -108,14 +108,13 @@ header {
 			-moz-column-count: 2;
 			column-count: 2;
 		}
-	}
 
-	a {
-		color: #777;
-		font: 300 1.25em $font;
-		text-decoration: underline;
+		a {
+			color: #777;
+			text-decoration: underline;
 
-		&:hover { color: $blue;	}
+			&:hover { color: $blue;	}
+		}
 	}
 
 	.read-more {
