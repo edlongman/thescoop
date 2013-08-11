@@ -1,4 +1,9 @@
+// ajax variable to store latest ajax request if it needs to be aborted
+ajax = null;
+
 $(document).ready(function() {
+    ajax = $.ajax();
+
 	resizeSection();
 	resizeNumber();
 	resizeDate();
@@ -12,7 +17,6 @@ $(document).ready(function() {
 	getNews();
 
 	$('select[name="section"]').change(function() {
-		console.log('success');
 		resizeSection();
 		getNews();
 	});
@@ -69,8 +73,12 @@ function getNews(){
 		keyword = $.trim(keyword);
 		validate(amount, scope, section, keyword);
 
-		// make asynchronous request
-		getGuardianNews(amount, scope, section, keyword);
+        // make asynchronous request
+        if (window.location.href.split('/').pop().match('^bbc.html')){
+            getBBCNews(amount, scope, section, keyword);
+        } else {
+            getGuardianNews(amount, scope, section, keyword);
+        }
 	} catch (e) {
 		ajax.abort(); // using global variable containing current ajax request
 		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
@@ -107,6 +115,33 @@ function handleGuardianNews(news){
 	$('.news article').hide();
 }
 
+function handleBBCNews(news){
+    str = '<ul>';
+    $.each(news, function(index, story) {
+        link = story['url'];
+        headline = story['title'];
+        summary = story['description'];
+        largeThumbnail = story['large_thumb'];
+        smallThumbnail = story['small_thumb'];
+
+        str += '<li>';
+        str += '<div class="inner">'
+        str += '<h2 class="headline">' + headline + '</h2>';
+        str += '<article>';
+        str += '<div class="summary--content"><p>' + summary + '</p></div>';
+        // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+        str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
+        str += '</article>';
+        str += '</div>'
+    });
+    str += '</ul>';
+    $('.news').html(str).hide();
+    $('.news').slideDown(600, function() {
+        initializeLinkListenersBBC();
+    });
+    $('.news article').hide();
+}
+
 
 // On headline click...
 
@@ -125,7 +160,20 @@ function initializeLinkListeners() {
 			getSummary(headline);
 			headline.addClass('loaded');
 		}
-	})
+	});
+}
+
+function initializeLinkListenersBBC(){
+    var articles = $('.headline').next('article');
+    articles.hide();
+
+    $('.headline').click(function() {
+        var headline = $(this);
+        var article = headline.next('article');
+
+        article.slideToggle(300);
+        articles.not(article).slideUp(300);
+    });
 }
 
 function initializeTryAgain () {
@@ -213,6 +261,24 @@ function getGuardianNews(amount, scope, section, keyword){
 	ajaxGuardian(start_time, end_time, section, keyword);
 }
 
+function getBBCNews(amount, scope, section){
+    today = new Date(); // dates are entered relatively, today is needed
+
+    start_date = new Date();
+    end_date = today;
+    //section = section;
+
+    // get correct start time
+    switch (scope) {
+        case 'days': start_date.setDate(today.getDate()-amount); break;
+        case 'weeks': start_date.setDate(today.getDate()-amount*7); break;
+        case 'months': start_date.setMonth(today.getMonth()-amount); break;
+    }
+
+    // make asynchronous ajax request, calls handle
+    ajaxBBC(start_date, end_date, section);
+}
+
 function ajaxGuardian(start_time, end_time, section, keyword){
 	ajax = $.ajax({
 		url: 'guardian_feeds.php',
@@ -234,6 +300,24 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 			console.log('ERROR: ' + errorThrown);
 		}
 	});
+}
+
+function ajaxBBC(start_date, end_time, section){
+    ajax = $.ajax({
+        url: 'bbc_feeds.php',
+        type: 'GET',
+        dataType: 'json',
+        data: {start_date: start_date.f('yyyy-MM-dd'), end_date: end_date.f('yyyy-MM-dd'), section: section},
+        success: function(data, textStatus, xhr) {
+            // call handleBBCNews function
+            handleBBCNews(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" itle="Try again" class="try-again try-again--news">Try again</a></p>');
+            initializeTryAgain();
+            console.log('ERROR: ' + errorThrown);
+        }
+    });
 }
 
 function getSummary (object) {
