@@ -84,14 +84,12 @@ function getDailyNews() {
     // keyword $('#keyword').val()
     keyword = '';
 
-    if (startDate == null){
-        startDate = new Date();
-        // get correct start date
-        switch ($('#date option:selected').val()) {
-            case 'days': startDate.setDate(today.getDate()-amount); break;
-            case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
-            case 'months': startDate.setDate(today.getMonth()-amount); break;
-        }
+    startDate = new Date();
+    // get correct start date
+    switch ($('#date option:selected').val()) {
+        case 'days': startDate.setDate(today.getDate()-amount); break;
+        case 'weeks': startDate.setDate(today.getDate()-amount*7); break;
+        case 'months': startDate.setDate(today.getMonth()-amount); break;
     }
 
     if (lastDisplayedDate == null){
@@ -102,10 +100,13 @@ function getDailyNews() {
 } 
 
 function callAndEncreaseDailyGuardian(section, keyword){
-    if (lastDisplayedDate.getDate() + amountAddDates <= today.getDate()){
+    if (lastDisplayedDate.getDate() + amountAddDates+1 <= today.getDate()){
         increasedDate = new Date(); increasedDate.setDate(lastDisplayedDate.getDate() + amountAddDates);
-        getGuardianDailyNews(lastDisplayedDate, increasedDate, section, keyword);
-        lastDisplayedDate.setDate(increasedDate.getDate());
+        var startDate = new Date();
+        startDate.setDate(lastDisplayedDate.getDate()+1)
+        getGuardianDailyNews(startDate, increasedDate, section, keyword);
+        lastDisplayedDate.setDate(increasedDate.getDate() + 1);
+        return this;
     } else if (lastDisplayedDate.getDate() < today.getDate()){
         getGuardianDailyNews(lastDisplayedDate, today, section, keyword);
         lastDisplayedDate = today;
@@ -144,11 +145,12 @@ function handleGuardianNews(news){
 }
 
 function handleGuardianDailyNews(news){
-    for (var i = 0; i < amountAddDates; i++) {
-        str = '<div class="news">'
-        day = new Date();
-        day.setDate(lastDisplayedDate.getDate() + i);
-        str += 'Date: ' + day.f('d MMM');
+    for (i = 0; i < news.length; i++) {
+        day = news[i];
+        str = '<div class="news">';
+        date = new Date();
+        date.setDate(lastDisplayedDate.getDate() - (news.length - i));
+        str += 'Date: ' + date.f('d MMM');
         str += '<ol>';
         $.each(news[i], function(index, story) {
             headline = story[0];
