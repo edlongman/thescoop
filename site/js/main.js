@@ -57,7 +57,7 @@ $(document).ajaxComplete(function() {
 // Get headlines
 
 function getNews(){
-	$('.news').html('<img src="img/loading.gif">');
+	$('.news').html('<div class="loading"><img src="img/loading.gif"></div>');
 
 	amount = $('input[name="number"]').val();
 	scope = $('select[name="date"] option:selected').val();
@@ -101,7 +101,7 @@ function handleGuardianNews(news){
 	});
 	str += '</ol>';
 	$('.news').html(str).hide();
-	$('.news').slideDown(400, function() {
+	$('.news').slideDown(600, function() {
 		initializeLinkListeners();
 	});
 	$('.news article').hide();

@@ -74,6 +74,12 @@ header {
 	// border-radius: 0.5em;
 	background-color: #f7f7f7;
 	width: 100%;
+
+	.loading {
+		margin: 0 auto;
+		max-width: 1076px;
+		padding: 1em 2em;
+	}
 	
 	ol {
 		font: 300 1.25em $font;
