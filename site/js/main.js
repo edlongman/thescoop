@@ -130,6 +130,8 @@ function handleBBCNews(news){
         str += '<article>';
         str += '<div class="summary--content"><p>' + summary + '</p></div>';
         // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
+        str += '<a href="#" class="bbc-summary" tabindex="2">Get summary</a>';
+        str += ' | '
         str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
         str += '</article>';
         str += '</div>'
@@ -173,6 +175,18 @@ function initializeLinkListenersBBC(){
 
         article.slideToggle(300);
         articles.not(article).slideUp(300);
+    });
+
+    $('.bbc-summary').click(function() {
+        var headline = $(this).parent().prev('h2');
+        var article = headline.next('article');
+
+        $(article).find('.summary--content').slideUp(300, function(){
+            $(article).find('.summary--content').html('<img src="img/loading.gif">');
+            (article).find('.summary--content').slideDown(300);
+        });
+
+        getSummary(headline);
     });
 }
 
@@ -331,7 +345,12 @@ function getSummary (object) {
 			if (data == 'null') {
 				data = 'No summary found.'
 			}
-			$(object).next('article').find('.summary--content').html('<p>' + data + '</p>').hide().slideDown(400);
+            console.log(data);
+            console.log($(object).next('article').find('.summary--content'));
+			$(object).next('article').find('.summary--content').slideUp(300, function(){
+                $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
+                $(object).next('article').find('.summary--content').slideDown(300);
+            });
 			$(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
 			object.addClass('loaded');
 		},
