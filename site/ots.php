@@ -10,56 +10,15 @@
 		}
 	}
 	function article_parse( $article_url ) {
-			$url = 'http://www.readability.com/api/content/v1/parser?token='. $GLOBALS["readability_api_key"] .'&url=';
-			$output = file_get_contents($url . urlencode($article_url));
-			//$output = file_get_html($url . $article_url)->save();
-			$json = json_decode($output);
-			$output = $json->content;
-			$html_parse = str_get_html($output);
-			//strip_tag($html_parse,'img');
-			//strip_tag($html_parse,'script');
-			$text = $html_parse->save();
-			$text = strip_tags($text,'<a><strong><em><i><span><b><s>');
-			$text = str_replace('Photograph:','',$text);
-			return($text);
-		}
-		
-	function article_parse_old( $article_url ) {
-		$html = file_get_html($article_url);
-		// Find all text inside the first div with id=article-body-blocks
-		$text = '';
-		$error = 0;
-		try { //parse articles
-			$text .= $html->find('div[id=article-body-blocks]',0)->innertext;
-			//$error = 0;
-		}
-		catch(Exception $e) {
-			$error++;
-		}
-		try { //parse videos
-                        $text .= $html->find('p[itemprop=description]',0)->innertext;
-               	        //$error = 0;
-               	}
-               	catch(Exception $e) {
-               	        $error++;
-               	}
-                try {
-                	$text .= $html->find('div[class=flexible-content-body]',0)->innertext;
-                        //$error = 0;
-                }
-                catch(Exception $e) {
-                        $error++;
-                }
-		$text = str_replace('<p>','',$text);
-		$text = str_replace('</p>','',$text);
+		$url = 'http://www.readability.com/api/content/v1/parser?token='. $GLOBALS["readability_api_key"] .'&url=';
+		$output = file_get_contents($url . urlencode($article_url));
+		//$output = file_get_html($url . $article_url)->save();
+		$json = json_decode($output);
+		$text = $json->content;
+		$text = strip_tags($text,'<a><strong><em><i><span><b><s>');
 		$text = str_replace('Photograph:','',$text);
-		if($error <= 2) {
-			return($text);
+		return($text);
 		}
-		else {
-			return(null);
-		}
-	}
 	function ots($text , $ratio) {
 		if($text != null) {
 			$file = fopen('./txt.txt', 'w');
