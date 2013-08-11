@@ -38,7 +38,7 @@ body {
 header {
 	h1 {
 		font: 300 3em $font;
-		line-height: 1em;
+		line-height: 1.2em;
 	}
 
 	select, input {
@@ -181,6 +181,12 @@ footer {
 @media screen and (max-width: 720px) {
 	body {
 		font-size: 14px;
+	}
+
+	.news article p {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
 	}
 }
 
