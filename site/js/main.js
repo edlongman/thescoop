@@ -99,12 +99,12 @@ function getDailyNews() {
         lastDisplayedDate = new Date(startDate);
     }
 
-    if (callAndEncreaseDailyGuardian(section, keyword) == null){
+    if (callAndIncreaseDailyGuardian(section, keyword) == null){
         $('#breakdown').append('<p class="no-more-days">No more days to display.</p>')
     }
 } 
 
-function callAndEncreaseDailyGuardian(section, keyword){
+function callAndIncreaseDailyGuardian(section, keyword){
     if (lastDisplayedDate.getDate() + amountAddDates+1 <= today.getDate()){
         increasedDate = new Date(); increasedDate.setDate(lastDisplayedDate.getDate() + amountAddDates);
         var startDate = new Date();
@@ -224,7 +224,7 @@ function initializeScollListener () {
     $(window).scroll(function() {
         if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight )
         { 
-            callAndEncreaseDailyGuardian();
+            callAndIncreaseDailyGuardian();
         }
     });
 }
