@@ -2,7 +2,8 @@
 
 $text: #333;
 $blue: #3498db;
-$font: "pragmatica-web", "Helvetica Neue", Arial, sans-serif;
+$dark-blue: #2676ab;
+$font: "Helvetica Neue", Arial, sans-serif;
 
 
 .chromeframe {
@@ -12,41 +13,42 @@ $font: "pragmatica-web", "Helvetica Neue", Arial, sans-serif;
 	padding: 0.2em 0;
 }
 
-.form-fix {
+.form-span {
 	display: none;
-	font: 700 2.25em $font;
+	font: 300 3em $font;
 }
 
 
 body {
-	background-color: #eee;
-	color: $text;
+	background-color: $dark-blue;
+	color: white;
 	font-size: 16px;
 }
 
 .container {
-	background-color: white;
+	background-color: $blue;
 
 	.inner {
 		margin: 0 auto;
-		max-width: 896px;
-		padding: 4em 2em;
+		max-width: 1076px;
+		padding: 4em 2em 2em 2em;
 	}
 }
 
 header {
 	h1 {
-		font: 700 2.25em $font;
-		line-height: 1em;
+		font: 300 3em $font;
+		line-height: 1.2em;
 	}
 
 	select, input {
-		background-color: white;
+		background: transparent;
 		border: none;
-		border-bottom: 1px dashed $blue;
-		color: $blue;
+		border-bottom: 1px dashed $dark-blue;
+		color: $dark-blue;
 		display: inline-block;
 		font: inherit;
+		line-height: inherit;
 		outline: none;
 		vertical-align: baseline;
 		-moz-appearance: none;
@@ -54,7 +56,7 @@ header {
 
 		&:focus {
 			// outline: 1px solid red;
-			border-bottom: 1px dashed #333;
+			// border-bottom: 1px dashed white;
 		}
 	}
 
@@ -69,25 +71,38 @@ header {
 }
 
 .news {
-	color: #777;
-	margin-top: 1.5em;
+	// border-radius: 0.5em;
+	background-color: #f7f7f7;
+	width: 100%;
+
+	.loading {
+		margin: 0 auto;
+		max-width: 1076px;
+		padding: 1em 2em;
+	}
 	
 	ol {
-		font: 400 1.25em $font;
+		font: 300 1.25em $font;
 		list-style: none;
+		width: 100%;
 
 		li {
-			margin-bottom: 0.5em;
+			background: #eee;
+
+			.li-margin {
+				margin: 0 auto;
+				max-width: 1140px;
+			}
 		}
 	}
 
 	.headline {
-		color: $text;
+		color: #555;
 		cursor: pointer;
 		display: block;
 		font: 400 1.4em $font;
 		line-height: 1.2em;
-		padding: 0.2em 0;
+		padding: 0.6em 1.143em;
 
 		&:hover {
 			color: $blue;
@@ -96,7 +111,7 @@ header {
 
 	article {
 		line-height: 1.5em;
-		margin: 0.5em 0 1em 0;
+		padding: 0 1.6em 1em 1.6em;
 
 		div { margin-bottom: 0.25em; }
 
@@ -104,6 +119,9 @@ header {
 			color: #777;
 			line-height: 1.4em;
 			margin-bottom: 0.25em;
+			-webkit-column-count: 2;
+			-moz-column-count: 2;
+			column-count: 2;
 		}
 	}
 
@@ -136,18 +154,19 @@ header {
 }
 
 footer {
-	background-color: #eee;
-	color: #777;
-	font: 400 1.25em $font;
+	background-color: $dark-blue;
+	color: #fff;
+	font: 300 1.25em $font;
 
 	.inner {
 		margin: 0 auto;
-		max-width: 896px;
+		max-width: 1076px;
+		// padding: 1em 2em;
 		padding: 1em 2em;
 	}
 
 	a {
-		color: #777;
+		color: #fff;
 
 		&:hover {
 			color: $blue;
@@ -163,10 +182,22 @@ footer {
 	body {
 		font-size: 14px;
 	}
+
+	.news article p {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
 }
 
 @media screen and (max-width: 480px) {
 	body {
 		font-size: 12px;
+	}
+
+	.news article p {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
 	}
 }

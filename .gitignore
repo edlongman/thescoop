@@ -4,3 +4,5 @@ output.txt
 site/txt.txt
 site/css/.sass-cache
 *.pyc
+.htaccess
+.htpasswd
