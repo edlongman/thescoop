@@ -331,7 +331,10 @@ function getSummary (object) {
 			if (data == 'null') {
 				data = 'No summary found.'
 			}
-			$(object).next('article').find('.summary--content').html('<p>' + data + '</p>').hide().slideDown(400);
+			$(object).next('article').find('.summary--content').slideUp(400, function(){
+                $(object).next('article').find('.summary--content').html('<p>' + data + '</p>');
+                $(object).next('article').find('.summary--content').slideDown(400);
+            });
 			$(object).next('article').find('.summary--content').find('a').attr('target', '_blank');
 			object.addClass('loaded');
 		},
