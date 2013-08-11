@@ -123,7 +123,14 @@ header {
 		display: block;
 		margin-top: 0.75em;
 
-		&:focus { color: $dark-blue; }
+		&:hover {
+			color: $dark-blue;
+		}
+
+		&:focus {
+			color: $dark-blue;
+			outline: none;
+		}
 	}
 }
 
