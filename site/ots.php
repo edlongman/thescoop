@@ -11,7 +11,7 @@
 	}
 	function article_parse( $article_url ) {
 			$url = 'http://www.readability.com/api/content/v1/parser?token='. $GLOBALS["readability_api_key"] .'&url=';
-			$output = get_url_output($url . urlencode($article_url));
+			$output = file_get_contents($url . urlencode($article_url));
 			//$output = file_get_html($url . $article_url)->save();
 			$json = json_decode($output);
 			$output = $json->content;
