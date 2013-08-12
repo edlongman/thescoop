@@ -21,7 +21,7 @@ $(document).ready(function() {
 		getNews();
 	});
 
-	$('input[name="number"]').bind('keyup input paste', function() {
+	$('input[name="number"]').bind('input paste', function() {
 		resizeNumber();
 		if ($(this).val() != ''){
 			getNews();
@@ -90,6 +90,8 @@ function getNews(){
 // Loading headlines to page
 
 function handleGuardianNews(news){
+	var tabindex_count = 4;
+
 	str = '<ul>';
 	$.each(news, function(index, story) {
 		headline = story[0];
@@ -97,7 +99,7 @@ function handleGuardianNews(news){
 		date = story[2];
 
 		str += '<li>';
-		str += '<h2 class="headline"><div class="inner">' + headline + '</div></h2>';
+		str += '<h2 class="headline" tabindex="' + tabindex_count + '"><div class="inner">' + headline + '</div></h2>';
 		str += '<article>';
 		str += '<div class="inner">';
 		str += '<div class="summary--content"><img src="img/loading.gif"></div>';
@@ -106,6 +108,8 @@ function handleGuardianNews(news){
 		str += '</div>'
 		str += '</article>';
 		str += '</li>';
+
+		tabindex_count += 1;
 	});
 	str += '</ul>';
 	$('.news').html(str).hide();
@@ -149,9 +153,18 @@ function initializeLinkListeners() {
 	var articles = $('.headline').next('article');
 	articles.hide();
 
-	$('.headline').click(function() {
+	$('.headline').bind('click keydown', 'return', function() {
 		var headline = $(this);
 		var article = headline.next('article');
+
+		$('.headline').not(headline).removeClass('active');
+		
+		if (headline.hasClass('active')) {
+			headline.removeClass('active');
+		}
+		else {
+			headline.addClass('active');
+		}
 
 		article.slideToggle(300);
 		articles.not(article).slideUp(300);
