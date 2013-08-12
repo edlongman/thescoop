@@ -1,11 +1,8 @@
 The Scoop
 =========
-The fastest way to catch up on recent news <http://thescoop.io>
-With The Scoop, you can easily get all the top headlines for a time with a short paragraph and a link to the full story. 
-This is a hack from the YRS 2013 competition <http://hacks.youngrewiredstate.org/events/YRS2013/the-scoop>
-Using the guardian open platform <http://www.theguardian.com/open-platform>
-and
-BBC RSS news feeds <http://www.bbc.co.uk/news/10628494>
+The Scoop makes catching up on news you've missed easy.
+Choose a category and a time frane, and The Scoop will find the most popular news articles.
+The Scoop also provides summarisations of those articles, as well as a link to the full story.
 
 Pre-requisites
 ---------------
