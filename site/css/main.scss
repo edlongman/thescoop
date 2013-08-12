@@ -31,7 +31,7 @@ header {
 	.inner {
 		margin: 0 auto;
 		max-width: 1076px;
-		padding: 4em 2em 2em 2em;
+		padding: 4em 28px 2em 28px;
 	}
 
 	h1 {
@@ -83,7 +83,7 @@ header {
 		.inner {
 			margin: 0 auto;
 			max-width: 1076px;
-			padding: 0 2em;
+			padding: 0 28px;
 		}
 	}
 
@@ -98,7 +98,6 @@ header {
 		&.active, &:hover { color: $blue; }
 
 		&:focus {
-			color: $blue;
 			outline: none;
 		}
 	}
@@ -147,7 +146,7 @@ footer {
 	.inner {
 		margin: 0 auto;
 		max-width: 1076px;
-		padding: 1.05em 1.6em;
+		padding: 1.05em 28px;
 	}
 
 	a {
