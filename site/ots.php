@@ -15,6 +15,7 @@
 		//$output = file_get_html($url . $article_url)->save();
 		$json = json_decode($output);
 		$text = $json->content;
+		$text = str_replace('</p>',' </p>',$text);
 		$text = strip_tags($text,'<a><strong><em><i><span><b><s>');
 		$text = str_replace('Photograph:','',$text);
 		return($text);
@@ -27,8 +28,12 @@
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
-			$sum = str_replace('.','. ',$sum);
-			$sum = htmlspecialchars($sum);
+			if (strpos($sum,'When autoplay is on, videos on these pages will autoplay')) {
+				$sum = 'null';
+			}
+			else {
+				$sum = htmlspecialchars($sum);
+			}
 		}
 		else {
 			$sum = 'null';
