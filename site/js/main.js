@@ -21,7 +21,7 @@ $(document).ready(function() {
 		getNews();
 	});
 
-	$('input[name="number"]').bind('keyup input paste', function() {
+	$('input[name="number"]').bind('input paste', function() {
 		resizeNumber();
 		if ($(this).val() != ''){
 			getNews();
