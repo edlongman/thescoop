@@ -28,8 +28,12 @@
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
-			//$sum = str_replace('.','. ',$sum);
-			$sum = htmlspecialchars($sum);
+			if (strpos($sum,'When autoplay is on, videos on these pages will autoplay')) {
+				$sum = 'null';
+			}
+			else {
+				$sum = htmlspecialchars($sum);
+			}
 		}
 		else {
 			$sum = 'null';
