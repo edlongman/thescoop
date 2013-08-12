@@ -94,7 +94,7 @@ header {
 		line-height: 1.2em;
 		padding: 0.75em 0;
 
-		&:hover { color: $blue; }
+		&.active, &:hover { color: $blue; }
 	}
 
 	article {

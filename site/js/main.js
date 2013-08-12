@@ -153,6 +153,15 @@ function initializeLinkListeners() {
 		var headline = $(this);
 		var article = headline.next('article');
 
+		$('.headline').not(headline).removeClass('active');
+		
+		if (headline.hasClass('active')) {
+			headline.removeClass('active');
+		}
+		else {
+			headline.addClass('active');
+		}
+
 		article.slideToggle(300);
 		articles.not(article).slideUp(300);
 
