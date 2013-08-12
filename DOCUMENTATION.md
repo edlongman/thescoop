@@ -18,7 +18,7 @@ This is just a little API that simplifies the existing Guardian API for interact
 The Daily Guardian API
 ----------------------
 <h3>Description</h3>
-An API that returns <10 news stories for each day between two dates. This can be used to get more news stories, but it has to query the API for each day, so it may take a while to receive data. Due to the resources this requires from the server, output has been capped to 200 days.
+An API that returns <=10 news stories for each day between two dates. This can be used to get more news stories, but it has to query the API for each day, so it may take a while to receive data. Due to the resources this requires from the server, output has been capped to 200 days.
 <h3>Usage</h3>
 *http://thescoop.io/guardian_feeds_daily.php?<br />start_time=2012-12-31&<br />end_time=2013-12-31&<br />section=uk-news&<br />keyword=best%20website*
 
