@@ -28,7 +28,7 @@
 			$sum = shell_exec ( 'ots -r ' . $ratio . ' -d en txt.txt');
 			fwrite( $file , '' );
 			fclose( $file );
-			if (strpos($sum,'When autoplay is on, videos on these pages will autoplay')) {
+			if (strpos($sum,'Please activate cookies in order to turn autoplay off')) {
 				$sum = 'null';
 			}
 			else {
