@@ -4,6 +4,21 @@ ajax = null;
 $(document).ready(function() {
     ajax = $.ajax();
 
+	var section_cookie = $.cookie('section');
+    if (section_cookie != undefined) {
+	    $('select[name="section"]').val(section_cookie);
+	}
+
+	var number_cookie = $.cookie('number');
+	if (number_cookie != undefined) {
+		$('input[name="number"]').val(number_cookie);
+	}
+
+	var date_cookie = $.cookie('date');
+	if (date_cookie != undefined) {
+	    $('select[name="date"]').val(date_cookie);
+	}
+
 	resizeSection();
 	resizeNumber();
 	resizeDate();
@@ -19,6 +34,8 @@ $(document).ready(function() {
 	$('select[name="section"]').change(function() {
 		resizeSection();
 		getNews();
+
+		$.cookie('section', $(this).val()), { expires: 7 };
 	});
 
 	$('input[name="number"]').bind('input paste', function() {
@@ -26,6 +43,8 @@ $(document).ready(function() {
 		if ($(this).val() != ''){
 			getNews();
 		}
+
+		$.cookie('number', $(this).val()), { expires: 7 };
 
 		// Change days to day if value is 1 etc.
 
@@ -50,6 +69,7 @@ $(document).ready(function() {
 	$('select[name="date"]').change(function(){
 		resizeDate();
 		getNews();
+		$.cookie('date', $(this).val()), { expires: 7 };
 	});
 });
 
