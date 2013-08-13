@@ -19,6 +19,7 @@ $(document).ready(function() {
 	    $('select[name="date"]').val(date_cookie);
 	}
 
+	removeS();
 	resizeSection();
 	resizeNumber();
 	resizeDate();
@@ -39,31 +40,15 @@ $(document).ready(function() {
 	});
 
 	$('input[name="number"]').bind('input paste', function() {
+		removeS();
 		resizeNumber();
+		resizeDate();
+		
 		if ($(this).val() != ''){
 			getNews();
 		}
 
 		$.cookie('number', $(this).val()), { expires: 7 };
-
-		// Change days to day if value is 1 etc.
-
-		var first_option = $('select[name="date"] option:first-child').text();
-		var last_letter = first_option.substr(first_option.length - 1);
-
-		if (last_letter == 's' && $(this).val() == 1) {
-			$('select[name="date"] option').each(function() {
-				var removed_s = $(this).text().slice(0, -1);
-				$(this).text($(this).text().slice(0, -1));
-			})
-		}
-		else if (last_letter != 's' && $(this).val() != 1) {
-			$('select[name="date"] option').each(function() {
-				old_text = $(this).text();
-				$(this).text(old_text + 's');
-			})
-		}
-
 	});
 
 	$('select[name="date"]').change(function(){
@@ -224,6 +209,24 @@ function initializeTryAgain () {
 
 // Resize functions
 
+function removeS() {
+	var first_option = $('select[name="date"] option:first-child').text();
+	var last_letter = first_option.substr(first_option.length - 1);
+
+	if (last_letter == 's' && $('input[name="number"]').val() == 1) {
+		$('select[name="date"] option').each(function() {
+			var removed_s = $(this).text().slice(0, -1);
+			$(this).text($(this).text().slice(0, -1));
+		})
+	}
+	else if (last_letter != 's' && $('input[name="number"]').val() != 1) {
+		$('select[name="date"] option').each(function() {
+			old_text = $(this).text();
+			$(this).text(old_text + 's');
+		})
+	}
+}
+
 function resizeSection() {
 	option_val = $('select[name="section"] > option:selected').text();
 	$('.form-span').html(option_val);
@@ -248,7 +251,7 @@ function resizeNumber() {
 }
 
 function resizeDate() {
-	option_val = $('select[name="date"] > option:selected').val();
+	option_val = $('select[name="date"] > option:selected').text();
 	$('.form-span').html(option_val);
 	$('select[name="date"]').width($('.form-span').width() + 2);
 }
