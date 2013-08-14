@@ -24,8 +24,8 @@ for rss_url_data in rss_urls:
 		points_result=sql.store_result();
 		item['title']=urllib.quote(item['title'].encode('utf-8'))
 		item['summary']=urllib.quote(item['summary'].encode('utf-8'))
-		if 'media_thumbnail' in item:
-			item['media_thumbnail']=feed.channel.image.url
+		if 'media_thumbnail' not in item:
+			item['media_thumbnail']=[{'url':feed.channel.image.url}]
 		if len(item['media_thumbnail'])==1:
 			item['media_thumbnail'].append(item['media_thumbnail'][0])
 		if points_result.num_rows()==0:#if the url has not been logged today
