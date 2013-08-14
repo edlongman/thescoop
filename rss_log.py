@@ -39,5 +39,5 @@ for rss_url_data in rss_urls:
 			sql.query('UPDATE '+ table_name +' SET points=' + str(algo(currpoints,i)) + ',title="' + item['title'] + '",description="' + item['summary']  + '",small_thumb="' + item['media_thumbnail'][0]['url'] + '",large_thumb="' + item['media_thumbnail'][1]['url']+ '"' + conditions)#and update the points
 		i = i + 1
 timenow=datetime.datetime.now()
-print "success at: " + timenow.strftime('%d-%m-%y %H:%M\n')
+print "success at: " + timenow.strftime('%d-%m-%y %H:%M')
 #Fields I want: id INT, url VARSTRING(255), date (#a mysql date format), title VARSTRING(140), desc VARSTRING(255), points INT
