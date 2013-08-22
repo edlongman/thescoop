@@ -31,6 +31,14 @@
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
 
+
+		<!-- Inform users that they have to enable JavaScript to use our site -->
+		<div id="noscript"><p>Please enable JavaScript to use our service.</p></div>
+		<script>
+			var element = document.getElementById("noscript");
+			element.parentNode.removeChild(element);
+		</script>
+
 		<header>
 			<div class="inner">
 				<h1>
@@ -84,6 +92,6 @@
 		<script src='js/jquery.cookie.js'></script>
 		<script src='js/jquery.hotkeys.js'></script>
 		<script src='js/date.f-0.5.0-min.js'></script>
-		<script src='js/main.js'></script>
+		<script src='js/main-ck.js'></script>
 	</body>
 </html>
