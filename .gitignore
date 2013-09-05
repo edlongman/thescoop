@@ -6,3 +6,5 @@ site/css/.sass-cache
 *.pyc
 .htaccess
 .htpasswd
+.DS_Store
+.pydevproject
