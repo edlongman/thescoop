@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `bbcstories` (
   `url` varchar(140) DEFAULT NULL,
   `title` varchar(140) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `small_thumb` varchar(140) DEFAULT NULL,
   `large_thumb` varchar(140) DEFAULT NULL,
   `points` double(100,20) DEFAULT '1.00000000000000000000',
