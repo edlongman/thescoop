@@ -6,7 +6,7 @@ sql = MySQLdb.connect(host="localhost",
 sql.query("SELECT `site`,`section`,`url` FROM `feedurls`")
 db_feed_query=sql.store_result()
 rss_urls=db_feed_query.fetch_row(0)
-table_name = "bbcstories"
+table_name = "stories"
 def algo(pts,pos):
 	return pts * (1+0.02/(pos+1))
 for rss_url_data in rss_urls:
