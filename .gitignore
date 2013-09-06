@@ -8,3 +8,4 @@ site/css/.sass-cache
 .htpasswd
 .DS_Store
 .pydevproject
+.project
