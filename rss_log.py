@@ -6,8 +6,6 @@ sql = MySQLdb.connect(host="localhost",
 sql.query("SELECT `site`,`section`,`url` FROM `feedurls`")
 db_feed_query=sql.store_result()
 db_feed_rows=db_feed_query.fetch_row(0)
-for curr_url in db_feed_rows:
-	print curr_url[2]
 rss_urls = (('uk-news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') ,
 ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml') ,
 ('news' , 'http://feeds.bbci.co.uk/news/rss.xml') ,
@@ -17,11 +15,12 @@ table_name = "bbcstories"
 def algo(pts,pos):
 	return pts * (1+0.02/(pos+1))
 for rss_url_data in rss_urls:
+	rss_url=rss_url_data[1]
+	site="bbc"
+	section_name=rss_url_data[0]
 	i = 0
-	feed = feedparser.parse(rss_url_data[1])
+	feed = feedparser.parse(rss_url)
 	items = feed [ 'items' ]
-	section_name = rss_url_data[0]
-	rss_url = rss_url_data[1]
 	while i < len(items):
 		item=items[i];
 		conditions=' WHERE url="' + item['id'] + '" AND  date_added=CURDATE() AND section="'+ section_name +'"'
