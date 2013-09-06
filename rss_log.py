@@ -4,7 +4,10 @@ sql = MySQLdb.connect(host="localhost",
                             passwd=config.passwd,
                             db=config.db)
 sql.query("SELECT `site`,`section`,`url` FROM `feedurls`")
-db_feed_urls=sql.store_result()
+db_feed_query=sql.store_result()
+db_feed_rows=db_feed_query.fetch_row(0)
+for curr_url in db_feed_rows:
+	print curr_url[2]
 rss_urls = (('uk-news' , 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk') ,
 ('technology' , 'http://feeds.bbci.co.uk/news/technology/rss.xml') ,
 ('news' , 'http://feeds.bbci.co.uk/news/rss.xml') ,
