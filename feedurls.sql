@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `feedurls` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `site` text NOT NULL,
+  `site` varchar(50) NOT NULL,
   `section` varchar(50) NOT NULL,
   `url` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
