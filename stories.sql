@@ -817,6 +817,16 @@ INSERT INTO `stories` (`url`, `title`, `description`, `small_thumb`, `large_thum
 ('http://www.bbc.co.uk/news/world-us-canada-23644473', 'VIDEO%3A%20Vinyl%20fans%20in%20spin%20over%20record%20sale', 'Vinyl%20fans%20are%20flocking%20to%20New%20York%27s%20Public%20Library%20for%20the%20Performing%20Arts%20in%20search%20of%20hidden%20gems%20and%20great%20bargains.', 'http://news.bbcimg.co.uk/media/images/69214000/jpg/_69214619_69214610.jpg', 'http://news.bbcimg.co.uk/media/images/69214000/jpg/_69214620_69214610.jpg', 1.00119456459000000237, '2013-08-09', 'news', 'bbc'),
 ('http://www.bbc.co.uk/news/world-latin-america-23644467', 'VIDEO%3A%20Court%20frees%20drugs%20baron%20Quintero', 'Drugs%20baron%20Rafael%20Caro%20Quintero%20can%20be%20released%20from%20prison%20after%20serving%2028%20years%20for%20the%20kidnap%20and%20murder%20of%20a%20US%20agent%2C%20a%20court%20in%20Mexico%20has%20ruled.', 'http://news.bbcimg.co.uk/media/images/69214000/jpg/_69214591_69214582.jpg', 'http://news.bbcimg.co.uk/media/images/69214000/jpg/_69214603_69214582.jpg', 1.00153925063000004414, '2013-08-09', 'world', 'bbc');
 
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `stories`
+--
+ALTER TABLE `stories`
+  ADD CONSTRAINT `stories_ibfk_1` FOREIGN KEY (`feedid`) REFERENCES `feedurls` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
