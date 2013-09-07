@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `stories` (
   `section` varchar(40) NOT NULL DEFAULT 'uk-news',
   `site` varchar(50) NOT NULL DEFAULT 'bbc',
   KEY `url` (`url`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stories`
