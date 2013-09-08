@@ -3,7 +3,7 @@ sql = MySQLdb.connect(host="localhost",
                             user=config.username, 
                             passwd=config.passwd,
                             db=config.db)
-sql.query("SELECT `site`,`section`,`url` FROM `feedurls`")
+sql.query("SELECT `site`,`section`,`url`,`id` FROM `feedurls`")
 db_feed_query=sql.store_result()
 rss_urls=db_feed_query.fetch_row(0)
 table_name = "stories"
@@ -13,12 +13,13 @@ for rss_url_data in rss_urls:
 	rss_url=rss_url_data[2]
 	site=rss_url_data[0]
 	section_name=rss_url_data[1]
+	feed_id=rss_url_data[3]
 	i = 0
 	feed = feedparser.parse(rss_url)
 	items = feed [ 'items' ]
 	while i < len(items):
 		item=items[i];
-		conditions=' WHERE url="' + item['id'] + '" AND  date_added=CURDATE() AND section="'+ section_name +'"'
+		conditions=' WHERE `stories`.`url`="' + item['id'] + '" AND  date_added=CURDATE() AND feedid="'+ str(feed_id) +'"'
 		sql.query('SELECT points FROM '+ table_name + conditions)
 		points_result=sql.store_result();
 		item['title']=urllib.quote(item['title'].encode('utf-8'))
@@ -28,8 +29,8 @@ for rss_url_data in rss_urls:
 		if len(item['media_thumbnail'])==1:
 			item['media_thumbnail'].append(item['media_thumbnail'][0])
 		if points_result.num_rows()==0:#if the url has not been logged today
-			query='INSERT INTO '+ table_name +' (`url`,`title`,`description`,`points`,`date_added`,`small_thumb`,`large_thumb`,`section`,`site`) VALUES("' + item['id'] + '","' + item['title'] + '","' + item['summary'] + '",' + str(algo(1,i)) + ',CURDATE(),"'
-			query+=item['media_thumbnail'][0]['url']+'","'+item['media_thumbnail'][1]['url']+'","'+ section_name +'","'+ site +'")'
+			query='INSERT INTO '+ table_name +' (`feedid`,`url`,`title`,`description`,`points`,`date_added`,`small_thumb`,`large_thumb`) VALUES("' + str(feed_id) + '","' + item['id'] + '","' + item['title'] + '","' + item['summary'] + '",' + str(algo(1,i)) + ',CURDATE(),"'
+			query+=item['media_thumbnail'][0]['url']+'","'+item['media_thumbnail'][1]['url']+'")'
 			sql.query(query)#then add it to the db, setting points to 1 * (1.02/list_postition)
 			insert_result=sql.store_result()
 		else:
