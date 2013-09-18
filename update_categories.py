@@ -6,7 +6,7 @@ sql = MySQLdb.connect(host="localhost",
 sql.query("SELECT `site` FROM  `sites` ")
 sites=sql.store_result().fetch_row(0)
 
-def print_site_urls(site):
+def print_site_data(site):
     print "'"+site[0]+"':{"
     sql.query("SELECT  `sites`.`site` ,  `url`, `section` FROM  `feedurls` ,  `sites` WHERE  `sites`.`site` =  '"+site[0]+"'")
     feeds=sql.store_result().fetch_row(0)
