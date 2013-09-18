@@ -11,10 +11,10 @@ def print_site_data(site):
     sql.query("SELECT  `sites`.`site` ,  `url`, `section` FROM  `feedurls` ,  `sites` WHERE  `sites`.`site` =  '"+site[0]+"'")
     feeds=sql.store_result().fetch_row(0)
     for feed in feeds:
-        print_feed_data()
+        print_feed_data(feed)
     print "}"
 
-def print_feed_data():
+def print_feed_data(feed):
     print "'"+feed[2]+"':'"+feed[1]+"',"
 print "{"
 i=1
