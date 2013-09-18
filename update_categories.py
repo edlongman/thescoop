@@ -20,6 +20,7 @@ print "{"
 i=1
 print_site_data(sites[0])
 while i<len(sites):
+    print ","
     print_site_data(sites[i])
     i+=1
 print "}"
