@@ -7,15 +7,19 @@ sql.query("SELECT `site` FROM  `sites` ")
 sites=sql.store_result().fetch_row(0)
 
 def print_site_data(site):
-    print "'"+site[0]+"':{"
+    print '"'+site[0]+'":{'
     sql.query("SELECT  `sites`.`site` ,  `url`, `section` FROM  `feedurls` ,  `sites` WHERE  `sites`.`site` =  '"+site[0]+"'")
     feeds=sql.store_result().fetch_row(0)
-    for feed in feeds:
-        print_feed_data(feed)
+    i=1
+    print_feed_data(feeds[0])
+    while i<len(feeds):
+        print ","
+        print_feed_data(feeds[i])
+        i+=1
     print "}"
 
 def print_feed_data(feed):
-    print "'"+feed[2]+"':'"+feed[1]+"',"
+    print '"'+feed[2]+'":"'+feed[1]+'"'
 print "{"
 i=1
 print_site_data(sites[0])
