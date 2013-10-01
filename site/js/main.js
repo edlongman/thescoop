@@ -3,6 +3,16 @@ ajax = null;
 
 $(document).ready(function() {
     ajax = $.ajax();
+    
+	var site_cookie = $.cookie('section');
+    if (site_cookie != undefined) {
+	    $('select[name="site"]').val(site_cookie);
+	}
+	
+    if (window.location.href.split('/').pop().match('^bbc.html')){
+        populateSelect(amount, scope, section, keyword);
+    } else {
+    }
 
 	var section_cookie = $.cookie('section');
     if (section_cookie != undefined) {
@@ -38,6 +48,14 @@ $(document).ready(function() {
 
 		$.cookie('section', $(this).val()), { expires: 7 };
 	});
+	
+	$('select[name="site"]').change(function() {
+		populateSelect()
+		resizeSection();
+		getNews();
+
+		$.cookie('site', $(this).val()), { expires: 7 };
+	});
 
 	$('input[name="number"]').bind('input paste', function() {
 		removeS();
@@ -62,6 +80,11 @@ $(document).ajaxComplete(function() {
 	$('.news ul li:odd').css('background-color', '#f7f7f7');
 })
 
+
+//populate select with categories for site
+function populateSelect(){
+	
+}
 
 // Get headlines
 
