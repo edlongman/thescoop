@@ -3,17 +3,17 @@ ajax = null;
 
 $(document).ready(function() {
     ajax = $.ajax();
-    
-	var site_cookie = $.cookie('section');
-    if (site_cookie != undefined) {
-	    $('select[name="site"]').val(site_cookie);
-	}
 	
     if (window.location.href.split('/').pop().match('^bbc.html')){
         populateSelect(amount, scope, section, keyword);
     } else {
     }
 
+	var site_cookie = $.cookie('section');
+    if (site_cookie != undefined) {
+	    $('select[name="site"]').val(site_cookie);
+	}
+	
 	var section_cookie = $.cookie('section');
     if (section_cookie != undefined) {
 	    $('select[name="section"]').val(section_cookie);
@@ -81,8 +81,32 @@ $(document).ajaxComplete(function() {
 })
 
 
-//populate select with categories for site
-function populateSelect(){
+//get site & section data
+var siteSections;
+function getSiteCategories(){
+	$.ajax({
+		url: 'sites.json',
+		type: 'GET',
+		dataType: 'json',
+		success: function(data, textStatus, xhr) {
+			siteSections=data;
+			populateSiteSelect()
+		}
+	});
+}
+
+function populateSiteSelect(){
+	var select = $('select[name="site"]').html("");
+	var sites = Object.keys(siteSections);
+	var options=$();
+	for(var i=0;i<sites.length;i++){
+		options.append($("<option/>").attr("name",sites[i]).html(sites[i]));
+	}
+	select.html(options.html());
+}
+
+// Populate section select with categories from site
+function populateSectionSelect(){
 	
 }
 
