@@ -8,15 +8,13 @@
 		$json = get_url_output('http://content.guardianapis.com/search?q='. $term .'&section='. $section .'&from-date='. $start_time .'&to-date='. $end_time .'&order-by=relevance&format=json');
 		$json_obj = JSON_decode($json,true);
 		//print_r($json_obj["response"]["results"][0]["webTitle"]);
-		$titles_array = array();
-		$url_array= array();
+		$ret_me=array();
 		for($i=0;$i<count($json_obj["response"]["results"]);$i++){
-			$titles_array[] = $json_obj["response"]["results"][$i]["webTitle"];
-			$url_array[] = $json_obj["response"]["results"][$i]["webUrl"];
-			$date_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
-		}
-		for($i=0;$i<count($json_obj["response"]["results"]);$i++){
-			$ret_me[] = array($titles_array[$i] , $url_array[$i] , $date_array[$i]);
+			$result_array=array();
+			$result_array[] = $json_obj["response"]["results"][$i]["webTitle"];
+			$result_array[] = $json_obj["response"]["results"][$i]["webUrl"];
+			$result_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
+			$ret_me[]=$result_array;
 		}
 		if(isset($ret_me)) {
 			return($ret_me);
