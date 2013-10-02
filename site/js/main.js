@@ -38,6 +38,7 @@ $(document).ready(function() {
 		resizeSection();
 		resizeNumber();
 		resizeDate();
+		resizeSite();
 	});
 
 	getNews();
@@ -51,6 +52,7 @@ $(document).ready(function() {
 	
 	$('select[name="site"]').change(function() {
 		populateSectionSelect()
+		resizeSite();
 		resizeSection();
 		getNews();
 
@@ -105,6 +107,7 @@ function populateSiteSelect(){
 		options=options.add($("<option/>").attr("name",sites[i]).html(sites[i]));
 	}
 	select.append(options);
+	resizeSite();
 	populateSectionSelect();
 }
 
@@ -118,6 +121,7 @@ function populateSectionSelect(){
 		options=options.add($("<option/>").attr("name",sections[i]).html(sections[i]));
 	}
 	select.append(options);
+	resizeSection();
 }
 
 // Get headlines
@@ -312,6 +316,13 @@ function resizeDate() {
 	option_val = $('select[name="date"] > option:selected').text();
 	$('.form-span').html(option_val);
 	$('select[name="date"]').width($('.form-span').width() + 2);
+}
+
+
+function resizeSite() {
+	option_val = $('select[name="site"] > option:selected').text();
+	$('.form-span').html(option_val);
+	$('select[name="site"]').width($('.form-span').width() + 2);
 }
 
 
