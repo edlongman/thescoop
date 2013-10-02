@@ -128,6 +128,7 @@ function getNews(){
 	amount = $('input[name="number"]').val();
 	scope = $('select[name="date"] option:selected').val();
 	section = $('select[name="section"] option:selected').val();
+	site = $('select[name="site"] option:selected').val();
 	// keyword $('#keyword').val()
 	keyword = '';
 
