@@ -5,7 +5,7 @@ $(document).ready(function() {
     ajax = $.ajax();
 	
     if (window.location.href.split('/').pop().match('^bbc.html')){
-        populateSelect(amount, scope, section, keyword);
+        getSiteCategories();
     } else {
     }
 
@@ -50,7 +50,7 @@ $(document).ready(function() {
 	});
 	
 	$('select[name="site"]').change(function() {
-		populateSelect()
+		populateSectionSelect()
 		resizeSection();
 		getNews();
 
@@ -82,7 +82,6 @@ $(document).ajaxComplete(function() {
 
 
 //get site & section data
-var siteSections;
 function getSiteCategories(){
 	$.ajax({
 		url: 'sites.json',
