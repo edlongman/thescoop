@@ -5,8 +5,9 @@ function get_feeds_with_range($section,$start_date,$end_date,$site){
 	$section=preg_replace("/[`;'\"]/","",$section);
 	$start_date=preg_replace("/[`;'\"]/","",$start_date);
 	$end_date=preg_replace("/[`;'\"]/","",$end_date);
+	$site=preg_replace("/[`;'\"]/","",$site);
 	$db=mysqli_connect("localhost",$GLOBALS["mysql_user"],$GLOBALS["mysql_passwd"],$GLOBALS["mysql_db"]);
-	$getfeed="SELECT `feedurls`.`id` FROM `feedurls`,`sites` WHERE `sites`.`site`='bbc' AND `section`='$section'";
+	$getfeed="SELECT `feedurls`.`id` FROM `feedurls`,`sites` WHERE `sites`.`site`='$site' AND `section`='$section'";
 	$feedrow=$db->query($getfeed);
 	$feedrow=mysqli_fetch_assoc($feedrow);
 	$feedid=$feedrow["id"];

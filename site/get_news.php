@@ -19,7 +19,7 @@
 		$_GET["keyword"]="";
 	}
 	if($_GET["site"]=="guardian"){
-		echo json_encode(get_news($_GET['start_time'],$_GET['end_time'],$_GET['section'],$_GET['keyword']));
+		echo json_encode(get_news($_GET['start_date'],$_GET['end_date'],$_GET['section'],$_GET['keyword']));
 	}
 	else{
 		echo json_encode(get_feeds_with_range($_GET["section"],$_GET["start_date"],$_GET["end_date"],$_GET["site"]));
