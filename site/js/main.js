@@ -138,7 +138,7 @@ function getNews(){
 
         // make asynchronous request
         if (window.location.href.split('/').pop().match('^bbc.html')){
-            getBBCNews(amount, scope, section, keyword);
+            getBBCNews(amount, scope, section, keyword, site);
         } else {
             getGuardianNews(amount, scope, section, keyword);
         }
@@ -355,7 +355,7 @@ function getGuardianNews(amount, scope, section, keyword){
 	ajaxGuardian(start_time, end_time, section, keyword);
 }
 
-function getBBCNews(amount, scope, section){
+function getBBCNews(amount, scope, section, keyword, site){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_date = new Date();
@@ -370,7 +370,7 @@ function getBBCNews(amount, scope, section){
     }
 
     // make asynchronous ajax request, calls handle
-    ajaxBBC(start_date, end_date, section);
+    ajaxBBC(start_date, end_date, section, site);
 }
 
 function ajaxGuardian(start_time, end_time, section, keyword){
@@ -396,12 +396,12 @@ function ajaxGuardian(start_time, end_time, section, keyword){
 	});
 }
 
-function ajaxBBC(start_date, end_time, section){
+function ajaxBBC(start_date, end_time, section, site){
     ajax = $.ajax({
-        url: 'bbc_feeds.php',
+        url: 'get_news.php',
         type: 'GET',
         dataType: 'json',
-        data: {start_date: start_date.f('yyyy-MM-dd'), end_date: end_date.f('yyyy-MM-dd'), section: section},
+        data: {start_date: start_date.f('yyyy-MM-dd'), end_date: end_date.f('yyyy-MM-dd'), section: section, site: site},
         success: function(data, textStatus, xhr) {
             // call handleBBCNews function
             handleBBCNews(data);
