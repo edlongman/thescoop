@@ -110,7 +110,14 @@ function populateSiteSelect(){
 
 // Populate section select with categories from site
 function populateSectionSelect(){
-	
+	var selectedSite=$('select[name="site"]')[0].value;
+	var select = $('select[name="section"]').html("");
+	var sections = Object.keys(siteSections[selectedSite]);
+	var options=$("<option/>").attr("name",sections[0]).html(sections[0]);
+	for(var i=1;i<sections.length;i++){
+		options=options.add($("<option/>").attr("name",sections[i]).html(sections[i]));
+	}
+	select.append(options);
 }
 
 // Get headlines
