@@ -11,9 +11,12 @@
 		$ret_me=array();
 		for($i=0;$i<count($json_obj["response"]["results"]);$i++){
 			$result_array=array();
-			$result_array[] = $json_obj["response"]["results"][$i]["webTitle"];
-			$result_array[] = $json_obj["response"]["results"][$i]["webUrl"];
-			$result_array[] = $json_obj["response"]["results"][$i]["webPublicationDate"];
+			$result_array["title"] = $json_obj["response"]["results"][$i]["webTitle"];
+			$result_array["url"] = $json_obj["response"]["results"][$i]["webUrl"];
+			$result_array["date"] = $json_obj["response"]["results"][$i]["webPublicationDate"];
+			$result_array["small_thumb"] = "";
+			$result_array["large_thumb"] = "";
+			$result_array["description"] = "%%LOAD%%";
 			$ret_me[]=$result_array;
 		}
 		if(isset($ret_me)) {
