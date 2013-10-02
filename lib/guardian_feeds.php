@@ -1,7 +1,7 @@
 <?php
 	include_once '../lib/util.php';
 	include_once '../lib/simple_html_dom.php';
-	function get_news($start_time, $end_time,$section,$term) { //returns a multidimentional array of titles and URLs of news between time frames
+	function get_guardian_news($start_time, $end_time,$section,$term) { //returns a multidimentional array of titles and URLs of news between time frames
 		header("Content-type: text/json");
 		$section = urlencode($section);
 		$term = urlencode($term);
@@ -26,7 +26,7 @@
 		}
 	}
 
-	function daily_news($start_time, $end_time) { //Returns news for each day between start_time and end_time. Caps at 200 days of news.
+	function get_guardian_daily_news($start_time, $end_time) { //Returns news for each day between start_time and end_time. Caps at 200 days of news.
                 $start_date = strtotime($start_time);//changes start time to seconds
                 $end_date = strtotime($end_time);//^*end time*^
                 $num = ($end_date - $start_date) / (60*60*24);//calculates number of days between dates
