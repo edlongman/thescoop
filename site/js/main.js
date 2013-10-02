@@ -90,6 +90,9 @@ function getSiteCategories(){
 		success: function(data, textStatus, xhr) {
 			siteSections=data;
 			populateSiteSelect()
+		},
+		error: function(a,b,error){
+			alert("error getting catggories: "+error)
 		}
 	});
 }
