@@ -12,7 +12,7 @@ def print_site_data(site):
     sql.query("SELECT  `sites`.`site` ,  `url`, `section` FROM  `feedurls` ,  `sites` WHERE  `sites`.`site` =  '"+site[0]+"'")
     feeds=sql.store_result().fetch_row(0)
     i=1
-    print_feed_data(feeds[0])
+    output+=print_feed_data(feeds[0])
     while i<len(feeds):
         output+= ","
         output+=print_feed_data(feeds[i])
