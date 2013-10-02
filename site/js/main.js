@@ -41,7 +41,6 @@ $(document).ready(function() {
 		resizeSite();
 	});
 
-	getNews();
 
 	$('select[name="section"]').change(function() {
 		resizeSection();
@@ -122,6 +121,7 @@ function populateSectionSelect(){
 	}
 	select.append(options);
 	resizeSection();
+	getNews();
 }
 
 // Get headlines
@@ -187,6 +187,7 @@ function handleGuardianNews(news){
 }
 
 function handleBBCNews(news){
+	var tabindex_count = 4;
     str = '<ul>';
     $.each(news, function(index, story) {
         link = story['url'];
@@ -194,16 +195,24 @@ function handleBBCNews(news){
         summary = story['description'];
         largeThumbnail = story['large_thumb'];
         smallThumbnail = story['small_thumb'];
-
-        str += '<li>';
-        str += '<div class="inner">'
-        str += '<h2 class="headline">' + headline + '</h2>';
+		$('.news').removeClass('guardian');
+		if(summary=="%%LOAD%%"){
+			summary='<img src="img/loading.gif"/>';
+			$('.news').addClass('guardian');
+		}
+		else{
+			summary="<p>"+summary+"</p>"
+		}
+        str += '<li>';	
+        str += '<h2 class="headline" tabindex="' + tabindex_count + '"><div class="inner">' + headline + '</div></h2>';
         str += '<article>';
-        str += '<div class="summary--content"><p>' + summary + '</p></div>';
+        str += '<div class="inner">'
+        str += '<div class="summary--content">' + summary + '</div>';
         // str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-        str += '<a href="' + link + '" class="read-more" target="_blank" tabindex="2">Full article</a>';
+		str += '<a href="' + link + '" class="read-more" tabindex="2" target="_blank">Full article</a>';
+        str += '</div>';
         str += '</article>';
-        str += '</div>'
+        str += '</li>';
     });
     str += '</ul>';
     $('.news').html(str).hide();
@@ -244,6 +253,10 @@ function initializeLinkListeners() {
 }
 
 function initializeLinkListenersBBC(){
+	if($('.news').hasClass('guardian')){
+		initializeLinkListeners();
+		return;
+	}
     var articles = $('.headline').next('article');
     articles.hide();
 
