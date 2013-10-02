@@ -100,11 +100,12 @@ function getSiteCategories(){
 function populateSiteSelect(){
 	var select = $('select[name="site"]').html("");
 	var sites = Object.keys(siteSections);
-	var options=$();
-	for(var i=0;i<sites.length;i++){
-		options.append($("<option/>").attr("name",sites[i]).html(sites[i]));
+	var options=$("<option/>").attr("name",sites[0]).html(sites[0]);
+	for(var i=1;i<sites.length;i++){
+		options=options.add($("<option/>").attr("name",sites[i]).html(sites[i]));
 	}
-	select.html(options.html());
+	select.append(options);
+	populateSectionSelect();
 }
 
 // Populate section select with categories from site
