@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('GMT');
 require("../config.php");
-function get_bbc_feeds_with_range($section,$start_date,$end_date){
+function get_feeds_with_range($section,$start_date,$end_date,$site){
 	$section=preg_replace("/[`;'\"]/","",$section);
 	$start_date=preg_replace("/[`;'\"]/","",$start_date);
 	$end_date=preg_replace("/[`;'\"]/","",$end_date);

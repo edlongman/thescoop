@@ -13,7 +13,15 @@
 		$_GET["section"]="uk-news";
 	}
 	if(!array_key_exists("site",$_GET)){
-		$_GET["section"]="bbc";
+		$_GET["site"]="bbc";
 	}
-	echo json_encode(get_bbc_feeds_with_range($_GET["section"],$_GET["start_date"],$_GET["end_date"]));
+	if(!array_key_exists("keyword",$_GET)){
+		$_GET["keyword"]="";
+	}
+	if($_GET["site"]=="guardian"){
+		echo json_encode(get_news($_GET['start_time'],$_GET['end_time'],$_GET['section'],$_GET['keyword']));
+	}
+	else{
+		echo json_encode(get_feeds_with_range($_GET["section"],$_GET["start_date"],$_GET["end_date"],$_GET["site"]));
+	}
 ?>
