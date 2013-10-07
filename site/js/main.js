@@ -1,6 +1,5 @@
 // ajax variable to store latest ajax request if it needs to be aborted
 ajax = null;
-getNews();
 
 $(document).ready(function() {
     ajax = $.ajax();
@@ -30,6 +29,7 @@ $(document).ready(function() {
 	    $('select[name="date"]').val(date_cookie);
 	}
 
+	getNews();
 	removeS();
 	resizeSection();
 	resizeNumber();
