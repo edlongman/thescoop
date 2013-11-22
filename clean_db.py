@@ -15,5 +15,5 @@ for rss_url_data in rss_urls:
     i = date_from 
     while i <= date_to:
         print i.strftime("%d/%m/%Y")
-        i += datetime.timedelta(days=1)
+        i += timedelta(days=1)
  
