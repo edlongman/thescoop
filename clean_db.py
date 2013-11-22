@@ -12,7 +12,7 @@ date_from = datetime.strptime(raw_input("start date inc. in form 'dd-mm-yyyy'"),
 date_to = datetime.strptime(raw_input("end date inc. in form 'dd-mm-yyyy'"),"%d-%m-%Y")
 for rss_url_data in rss_urls:
     feed_id=rss_url_data[0]
-    i = start_date 
-    while i <= end_date:
-        print end_dates
+    i = date_from 
+    while i <= date_to:
+        print i.strftime("%d/%m/%Y")
  
