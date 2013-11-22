@@ -3,7 +3,7 @@ ajax = null;
 
 $(document).ready(function() {
     ajax = $.ajax();
-	
+
     if (window.location.href.split('/').pop().match('^bbc.html')){
         getSiteCategories();
     } else {
@@ -13,7 +13,7 @@ $(document).ready(function() {
     if (site_cookie != undefined) {
 	    $('select[name="site"]').val(site_cookie);
 	}
-	
+
 	var section_cookie = $.cookie('section');
     if (section_cookie != undefined) {
 	    $('select[name="section"]').val(section_cookie);
@@ -29,6 +29,7 @@ $(document).ready(function() {
 	    $('select[name="date"]').val(date_cookie);
 	}
 
+	getNews();
 	removeS();
 	resizeSection();
 	resizeNumber();
@@ -48,7 +49,7 @@ $(document).ready(function() {
 
 		$.cookie('section', $(this).val()), { expires: 7 };
 	});
-	
+
 	$('select[name="site"]').change(function() {
 		populateSectionSelect()
 		resizeSite();
@@ -62,7 +63,7 @@ $(document).ready(function() {
 		removeS();
 		resizeNumber();
 		resizeDate();
-		
+
 		if ($(this).val() != ''){
 			getNews();
 		}
@@ -203,7 +204,7 @@ function handleBBCNews(news){
 		else{
 			summary="<p>"+summary+"</p>"
 		}
-        str += '<li>';	
+        str += '<li>';
         str += '<h2 class="headline" tabindex="' + tabindex_count + '"><div class="inner">' + headline + '</div></h2>';
         str += '<article>';
         str += '<div class="inner">'
@@ -234,7 +235,7 @@ function initializeLinkListeners() {
 		var article = headline.next('article');
 
 		$('.headline').not(headline).removeClass('active');
-		
+
 		if (headline.hasClass('active')) {
 			headline.removeClass('active');
 		}
@@ -463,5 +464,5 @@ function getSummary (object) {
 			console.log(xhr);
 		}
 	});
-	
+
 }
