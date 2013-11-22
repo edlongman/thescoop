@@ -15,7 +15,7 @@ for rss_url_data in rss_urls:
     while i <= date_to:
         print i.strftime("%d/%m/%Y")
         whereclause="`date_added` = '" + i.strftime("%d/%m/%Y") + "'"
-        whereclause+=" AND `feedid`= "+ feed_id +"'"
+        whereclause+=" AND `feedid`= "+ str(feed_id) +"'"
         query="DELETE stories WHERE " + whereclause 
         query+="AND `url` NOT IN (SELECT `url`,`points` FROM stories "+whereclause+" ORDER BY `points` DESC LIMIT 0,20);"
         print query;
