@@ -17,7 +17,7 @@ for rss_url_data in rss_urls:
         whereclause="`date_added` = '" + i.strftime("%Y-%m-%d") + "'"
         whereclause+=" AND `feedid`= "+ str(feed_id) +""
         query="DELETE FROM stories WHERE " + whereclause 
-        query+=" AND `url` NOT IN (SELECT * FROM (SELECT `url`,`points` FROM stories WHERE "+whereclause
+        query+=" AND `url` NOT IN (SELECT * FROM (SELECT `url` FROM stories WHERE "+whereclause
         query+=" ORDER BY `points` DESC LIMIT 0,20) AS TAB);"
         print query;
         sql.query(query)
