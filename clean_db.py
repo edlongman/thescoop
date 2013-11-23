@@ -2,7 +2,7 @@ import MySQLdb, config, urllib, cgi, datetime
 sql = MySQLdb.connect(host="localhost", 
                             user=config.username, 
                             passwd=config.passwd,
-                            db=config.test_db)
+                            db=config.db)
 sql.query("SELECT `id` FROM `feedurls`")
 db_feed_query=sql.store_result()
 rss_urls=db_feed_query.fetch_row(0)
