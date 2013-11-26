@@ -139,7 +139,7 @@ function getNews(){
 		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        getNews(amount, scope, section, keyword, site);
+        getArticles(amount, scope, section, keyword, site);
 	} catch (e) {
 		ajax.abort(); // using global variable containing current ajax request
 		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
@@ -298,7 +298,7 @@ function validate(amount, scope, section, keyword) {
 ajax = null;
 
 
-function getNews(amount, scope, section, keyword, site){
+function getArticles(amount, scope, section, keyword, site){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_date = new Date();
