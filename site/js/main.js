@@ -194,7 +194,7 @@ function initializeLinkListeners(){
     var articles = $('.headline').next('article');
     articles.hide();
 
-    $('.headline').click(function() {
+    $('h2.headline').click(function() {
 		var headline = $(this);
 		var article = headline.next('article');
 
