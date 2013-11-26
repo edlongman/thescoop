@@ -160,15 +160,17 @@ function handleNews(news){
         largeThumbnail = story['large_thumb'];
         smallThumbnail = story['small_thumb'];
 		$('.news').removeClass('guardian');
+		headlineClass=" loaded";
 		if(summary=="%%LOAD%%"){
 			summary='<img src="img/loading.gif"/>';
 			$('.news').addClass('guardian');
+			headlineClass="";
 		}
 		else{
 			summary="<p>"+summary+"</p>"
 		}
         str += '<li>';
-        str += '<h2 class="headline" tabindex="' + tabindex_count + '"><div class="inner">' + headline + '</div></h2>';
+        str += '<h2 class="headline'+headlineClass+'" tabindex="' + tabindex_count + '"><div class="inner">' + headline + '</div></h2>';
         str += '<article>';
         str += '<div class="inner">'
         str += '<div class="summary--content">' + summary + '</div>';
@@ -193,11 +195,25 @@ function initializeLinkListeners(){
     articles.hide();
 
     $('.headline').click(function() {
-        var headline = $(this);
-        var article = headline.next('article');
+		var headline = $(this);
+		var article = headline.next('article');
 
-        article.slideToggle(300);
-        articles.not(article).slideUp(300);
+		$('.headline').not(headline).removeClass('active');
+
+		if (headline.hasClass('active')) {
+			headline.removeClass('active');
+		}
+		else {
+			headline.addClass('active');
+		}
+
+		article.slideToggle(300);
+		articles.not(article).slideUp(300);
+
+		if (! headline.hasClass('loaded')) {
+			getSummary(headline);
+			headline.addClass('loaded');
+		}
     });
 }
 
