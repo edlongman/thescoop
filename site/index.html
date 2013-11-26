@@ -14,15 +14,17 @@
 		<![endif]-->
 
 		<script>
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-43063083-1']);
-			_gaq.push(['_trackPageview']);
-
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
+			if (window.location.href.match('thescoop.io')){
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-43063083-1']);
+				_gaq.push(['_trackPageview']);
+	
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			}
 		</script>
 	</head>
 
@@ -60,6 +62,13 @@
 						<option value="weeks" selected>weeks</option>
 						<option value="months">months</option>
 					</select>
+					
+					from
+					
+					<select name="site" tabindex="3">
+						<option value="bbc">the bbc</option>
+						<option value="guardian" selected>the guardian</option>
+					</select>
 				</h1>
 			</div>
 		</header>
@@ -68,21 +77,21 @@
 		
 		<footer>
 			<div class="inner">
-				<a href="http://twitter.com/thescoop_io" target="_blank">Twitter</a>
-				&sdot;
-				<a href="https://github.com/edlongman/thescoop#the-scoop" target="_blank">About</a>
-				&sdot;
-				<a href="mailto:mail@thescoop.io">mail@thescoop.io</a>
+				Share on
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fthescoop.io" target="_blank">Facebook</a>
+				or
+				<a href="http://twitter.com/home?status=I+just+used+http%3A%2F%2Fthescoop.io+to+catch+up+on+the+latest+news.+Check+it+out&#33;" target="_blank">Twitter</a>
 				&sdot;
 				<a href="https://github.com/edlongman/thescoop" target="_blank">Github</a>
+				&sdot;
+				<a href="https://github.com/edlongman/thescoop/issues/new" target="_blank">Report bug</a>
 			</div>
 		</footer>
 
 		<span class="form-span"></span>
-
+		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src='js/jquery.cookie.js'></script>
-		<script src='js/jquery.hotkeys.js'></script>
 		<script src='js/date.f-0.5.0-min.js'></script>
 		<script src='js/main.js'></script>
 	</body>
