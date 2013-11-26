@@ -189,10 +189,6 @@ function handleNews(news){
 
 // On headline click...
 function initializeLinkListeners(){
-	if($('.news').hasClass('guardian')){
-		initializeLinkListeners();
-		return;
-	}
     var articles = $('.headline').next('article');
     articles.hide();
 
