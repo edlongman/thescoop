@@ -313,10 +313,10 @@ function getNews(amount, scope, section, keyword, site){
     }
 
     // make asynchronous ajax request, calls handle
-    ajax(start_date, end_date, section, site);
+    ajaxNews(start_date, end_date, section, site);
 }
 
-function ajax(start_date, end_time, section, site){
+function ajaxNews(start_date, end_time, section, site){
     ajax = $.ajax({
         url: 'get_news.php',
         type: 'GET',
