@@ -139,7 +139,7 @@ function getNews(){
 		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        getBBCNews(amount, scope, section, keyword, site);
+        getNews(amount, scope, section, keyword, site);
 	} catch (e) {
 		ajax.abort(); // using global variable containing current ajax request
 		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
@@ -150,7 +150,7 @@ function getNews(){
 
 // Loading headlines to page
 
-function handleBBCNews(news){
+function handleNews(news){
 	var tabindex_count = 4;
     str = '<ul>';
     $.each(news, function(index, story) {
@@ -298,7 +298,7 @@ function validate(amount, scope, section, keyword) {
 ajax = null;
 
 
-function getBBCNews(amount, scope, section, keyword, site){
+function getNews(amount, scope, section, keyword, site){
     today = new Date(); // dates are entered relatively, today is needed
 
     start_date = new Date();
@@ -313,18 +313,18 @@ function getBBCNews(amount, scope, section, keyword, site){
     }
 
     // make asynchronous ajax request, calls handle
-    ajaxBBC(start_date, end_date, section, site);
+    ajax(start_date, end_date, section, site);
 }
 
-function ajaxBBC(start_date, end_time, section, site){
+function ajax(start_date, end_time, section, site){
     ajax = $.ajax({
         url: 'get_news.php',
         type: 'GET',
         dataType: 'json',
         data: {start_date: start_date.f('yyyy-MM-dd'), end_date: end_date.f('yyyy-MM-dd'), section: section, site: site},
         success: function(data, textStatus, xhr) {
-            // call handleBBCNews function
-            handleBBCNews(data);
+            // call handleNews function
+            handleNews(data);
         },
         error: function(xhr, textStatus, errorThrown) {
             $('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" itle="Try again" class="try-again try-again--news">Try again</a></p>');
