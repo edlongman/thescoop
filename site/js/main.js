@@ -4,10 +4,7 @@ ajax = null;
 $(document).ready(function() {
     ajax = $.ajax();
 
-    if (window.location.href.split('/').pop().match('^bbc.html')){
-        getSiteCategories();
-    } else {
-    }
+    getSiteCategories();
 
 	var site_cookie = $.cookie('section');
     if (site_cookie != undefined) {
@@ -142,11 +139,7 @@ function getNews(){
 		validate(amount, scope, section, keyword);
 
         // make asynchronous request
-        if (window.location.href.split('/').pop().match('^bbc.html')){
-            getBBCNews(amount, scope, section, keyword, site);
-        } else {
-            getGuardianNews(amount, scope, section, keyword);
-        }
+        getBBCNews(amount, scope, section, keyword, site);
 	} catch (e) {
 		ajax.abort(); // using global variable containing current ajax request
 		$('.news').html('<p class="error">Please assure your input is correct (' + e + ')</p>')
@@ -156,36 +149,6 @@ function getNews(){
 
 
 // Loading headlines to page
-
-function handleGuardianNews(news){
-	var tabindex_count = 4;
-
-	str = '<ul>';
-	$.each(news, function(index, story) {
-		headline = story[0];
-		link = story[1];
-		date = story[2];
-
-		str += '<li>';
-		str += '<h2 class="headline" tabindex="' + tabindex_count + '"><div class="inner">' + headline + '</div></h2>';
-		str += '<article>';
-		str += '<div class="inner">';
-		str += '<div class="summary--content"><img src="img/loading.gif"></div>';
-		// str += '<time datetime="' + date.toJSON() + '"> ' + date.f('d MMM') + '</time> // ';
-		str += '<a href="' + link + '" class="read-more" tabindex="2" target="_blank">Full article</a>';
-		str += '</div>'
-		str += '</article>';
-		str += '</li>';
-
-		tabindex_count += 1;
-	});
-	str += '</ul>';
-	$('.news').html(str).hide();
-	$('.news').slideDown(600, function() {
-		initializeLinkListeners();
-	});
-	$('.news article').hide();
-}
 
 function handleBBCNews(news){
 	var tabindex_count = 4;
@@ -218,42 +181,14 @@ function handleBBCNews(news){
     str += '</ul>';
     $('.news').html(str).hide();
     $('.news').slideDown(600, function() {
-        initializeLinkListenersBBC();
+        initializeLinkListeners();
     });
     $('.news article').hide();
 }
 
 
 // On headline click...
-
-function initializeLinkListeners() {
-	var articles = $('.headline').next('article');
-	articles.hide();
-
-	$('.headline').bind('click keydown', 'return', function() {
-		var headline = $(this);
-		var article = headline.next('article');
-
-		$('.headline').not(headline).removeClass('active');
-
-		if (headline.hasClass('active')) {
-			headline.removeClass('active');
-		}
-		else {
-			headline.addClass('active');
-		}
-
-		article.slideToggle(300);
-		articles.not(article).slideUp(300);
-
-		if (! headline.hasClass('loaded')) {
-			getSummary(headline);
-			headline.addClass('loaded');
-		}
-	});
-}
-
-function initializeLinkListenersBBC(){
+function initializeLinkListeners(){
 	if($('.news').hasClass('guardian')){
 		initializeLinkListeners();
 		return;
@@ -362,23 +297,6 @@ function validate(amount, scope, section, keyword) {
 // global variable containing the current AJAX request, needed if it must be aborted
 ajax = null;
 
-function getGuardianNews(amount, scope, section, keyword){
-	today = new Date(); // dates are entered relatively, today is needed
-
-	start_time = new Date();
-	end_time = today;
-	//section = section;
-
-	// get correct start time
-	switch (scope) {
-		case 'days': start_time.setDate(today.getDate()-amount); break;
-		case 'weeks': start_time.setDate(today.getDate()-amount*7); break;
-		case 'months': start_time.setMonth(today.getMonth()-amount); break;
-	}
-
-	// make asynchronous ajax request, calls handle
-	ajaxGuardian(start_time, end_time, section, keyword);
-}
 
 function getBBCNews(amount, scope, section, keyword, site){
     today = new Date(); // dates are entered relatively, today is needed
@@ -396,29 +314,6 @@ function getBBCNews(amount, scope, section, keyword, site){
 
     // make asynchronous ajax request, calls handle
     ajaxBBC(start_date, end_date, section, site);
-}
-
-function ajaxGuardian(start_time, end_time, section, keyword){
-	ajax = $.ajax({
-		url: 'guardian_feeds.php',
-		type: 'GET',
-		dataType: 'json',
-		data: {start_time: start_time.f('yyyy-MM-dd'), end_time: end_time.f('yyyy-MM-dd'), section: section, keyword: keyword},
-		success: function(data, textStatus, xhr) {
-			// replace JSON date format with JavaScript Date Objects
-			$.each(data, function(index, story) {
-				story[2] = new Date(story[2]);
-			});
-
-			// call handleGuardianNews function of main.js
-			handleGuardianNews(data);
-		},
-		error: function(xhr, textStatus, errorThrown) {
-			$('.news').html('<p class="error">Couldn’t scoop the news for you&hellip; <a href="#" title="Try again" class="try-again try-again--news">Try again</a></p>');
-			initializeTryAgain();
-			console.log('ERROR: ' + errorThrown);
-		}
-	});
 }
 
 function ajaxBBC(start_date, end_time, section, site){
