@@ -19,7 +19,7 @@ for rss_url_data in rss_urls:
         query="DELETE FROM stories WHERE " + whereclause 
         query+=" AND `url` NOT IN (SELECT * FROM (SELECT `url` FROM stories WHERE "+whereclause
         query+=" ORDER BY `points` DESC LIMIT 0,20) AS TAB);"
-        print(i.strftime("%d/%m/%Y")+str(time.clock()-t0))
+        print(i.strftime("%d/%m/%Y")+","+str(time.clock()-t0))
         sql.query(query)
         sql.commit()
         i += datetime.timedelta(days=1)
